@@ -1,54 +1,55 @@
-(function(window){
+(function(window) {
 
-  function MMath(){ 
-  }
-  
-  MMath.random = function(min, max){
-    return Math.random() * (max - min) + min;
-  }
-    
-  MMath.linear_regression = function(x, y){
-    
-    // calculate number points
-    var n = x.length;
+	function MMath() {
+	}
 
-    // ensure both arrays of points are the same size
-    if(n != y.length){
-      return ['Error'];
-    }
 
-    // calculate sums
-    var x_sum = 0;
+	MMath.random = function(min, max) {
+		return Math.random() * (max - min) + min;
+	}
 
-    for (var i = 0; i < x.length; i++) {
-      x_sum += x[i];
-    }
+	MMath.linear_regression = function(x, y) {
 
-    var y_sum = 0;
+		// calculate number points
+		var n = x.length;
 
-    for (var i = 0; i < y.length; i++) {
-      y_sum += y[i];
-    }
+		// ensure both arrays of points are the same size
+		if (n != y.length) {
+			return ['Error'];
+		}
 
-    var xx_sum = 0;
-    var xy_sum = 0;
+		// calculate sums
+		var x_sum = 0;
 
-    for(var i = 0; i < n; i++){
-      xy_sum += (x[i] * y[i]);
-      xx_sum += (x[i] * x[i]);
-    }
+		for (var i = 0; i < x.length; i++) {
+			x_sum += x[i];
+		}
 
-    // calculate slope
-    var m = ((n * xy_sum) - (x_sum * y_sum)) / ((n * xx_sum) - (x_sum * x_sum));
+		var y_sum = 0;
 
-    // calculate intercept
-    var b = (y_sum - (m * x_sum)) / n;
+		for (var i = 0; i < y.length; i++) {
+			y_sum += y[i];
+		}
 
-    // return result
-    return [m,b];
+		var xx_sum = 0;
+		var xy_sum = 0;
 
-  }
-  
-  window.MMath = MMath;
-  
-})(window);
+		for (var i = 0; i < n; i++) {
+			xy_sum += (x[i] * y[i]);
+			xx_sum += (x[i] * x[i]);
+		}
+
+		// calculate slope
+		var m = ((n * xy_sum) - (x_sum * y_sum)) / ((n * xx_sum) - (x_sum * x_sum));
+
+		// calculate intercept
+		var b = (y_sum - (m * x_sum)) / n;
+
+		// return result
+		return [m, b];
+
+	}
+
+	window.MMath = MMath;
+
+})(window); 
