@@ -3,7 +3,6 @@
 	function MTime() {
 	}
 
-
 	MTime.sec2hms = function(sec) {
 
 		var hms = '';

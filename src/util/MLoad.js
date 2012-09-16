@@ -3,7 +3,6 @@
 	function MLoad() {
 	}
 
-
 	MLoad.js = function(url) {
 		var headID = document.getElementsByTagName('head')[0];
 		var scriptNode = document.createElement('script');

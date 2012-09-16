@@ -1,3 +1,11 @@
+(function($) {
+
+	$.fn.Class = function(param) {
+		
+	};
+	
+})(jQuery); 
+
 $(window).resize(function() {
 
 	sidebarMenuPlaceholderHeight();

@@ -3,7 +3,6 @@
 	function MColor() {
 	}
 
-
 	MColor.fadeHex = function(hex, hex2, ratio) {
 		var r = hex >> 16;
 		var g = hex >> 8 & 0xFF;

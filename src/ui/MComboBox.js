@@ -1,6 +1,6 @@
 (function($) {
 
-	$.fn.MTab = function(param) {
+	$.fn.MComboBox = function(param) {
 		
 	};
 	

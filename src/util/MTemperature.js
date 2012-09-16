@@ -3,7 +3,6 @@
 	function MTemperature() {
 	}
 
-
 	MTemperature.c2f = function(value) {
 		return value * 9 / 5 + 32;
 	}
