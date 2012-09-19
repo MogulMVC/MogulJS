@@ -17,11 +17,11 @@ $(window).resize(function() {
 
 	if (isNaN(headerHeight)) {
 		headerHeight = 0;
-	}
+	};
 
 	if (isNaN(toolbarHeight)) {
 		toolbarHeight = 0;
-	}
+	};
 
 	var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
 	$("#MSidebar").css("top", headerHeight + toolbarHeight);
@@ -37,7 +37,7 @@ function sidebarMenuPlaceholderHeight() {
 		var sidebar_menu_fixed_height = $("#MSidebarMenuFixed").height();
 		$("#MSidebarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
 
-	}
+	};
 }
 
 function sidebarMenuTop() {
@@ -50,17 +50,17 @@ function sidebarMenuTop() {
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
-		}
+		};
 
 		if (isNaN(toolbarHeight)) {
 			toolbarHeight = 0;
-		}
+		};
 
 		var sidebarMenuTop = headerHeight + toolbarHeight;
 
 		$("#MSidebarMenuFixed").css("top", sidebarMenuTop);
 
-	}
+	};
 
 }
 
@@ -71,9 +71,11 @@ function sidebarRightShow() {
 	$("#MSidebarContainer").animate({
 		minWidth : 352
 	}, speedNorm);
+	
 	$("#MSidebar").animate({
 		right : 0
 	}, speedNorm);
+	
 	$(".MIconArrowLeft").hide();
 }
 
@@ -81,9 +83,11 @@ function sidebarRightHide() {
 	$("#MSidebarContainer").animate({
 		minWidth : 0
 	}, speedNorm);
+	
 	$("#MSidebar").animate({
 		right : -360
 	}, speedNorm);
+	
 	$(".MIconArrowLeft").show();
 }
 
@@ -94,9 +98,11 @@ function sidebarLeftShow() {
 	$("#MSidebarContainer").animate({
 		minWidth : 352
 	}, speedNorm);
+	
 	$("#MSidebar").animate({
 		left : 0
 	}, speedNorm);
+	
 	$(".MIconArrowRight").hide();
 }
 
@@ -104,20 +110,22 @@ function sidebarLeftHide() {
 	$("#MSidebarContainer").animate({
 		minWidth : 0
 	}, speedNorm);
+	
 	$("#MSidebar").animate({
 		left : -360
 	}, speedNorm);
+	
 	$(".MIconArrowRight").show();
 }
 
 function sidebarTriggerIndicatorSet() {
 	if (document.getElementById("MSidebarTriggerLeft") && !document.getElementById("MSidebarTriggerLeftIndicator")) {
 		$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
-	}
+	};
 
 	if (document.getElementById("SidebarTriggerRight") && !document.getElementById("SidebarTriggerRightIndicator")) {
 		$("#SidebarTriggerRight").append('<div id="SidebarTriggerRightIndicator"></div>');
-	}
+	};
 }
 
 function sidebarTriggerProximity(event) {
@@ -141,9 +149,9 @@ function sidebarTriggerProximity(event) {
 			$("#MSidebarTriggerLeftIndicator").css("left", indicatorCSSLeft);
 		} else {
 			$("#MSidebarTriggerLeftIndicator").css("left", -indicatorWidth);
-		}
+		};
 
-	}
+	};
 
 	//Right
 	if (document.getElementById("SidebarTriggerRightIndicator")) {
@@ -156,8 +164,8 @@ function sidebarTriggerProximity(event) {
 			$("#SidebarTriggerRightIndicator").css("right", indicatorCSSLeft);
 		} else {
 			$("#SidebarTriggerRightIndicator").css("right", -indicatorWidth);
-		}
+		};
 
-	}
+	};
 
 }

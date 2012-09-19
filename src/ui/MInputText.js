@@ -10,18 +10,24 @@
 		
 		//Set the focus
 		$(this).focus(function() {
+			
 			var currentPrompt=$(this).val();
+			
 			if(currentPrompt==originalPrompt) {
 				$(this).val("");
-			}
+			};
+			
 		});
 		
 		//Set the blur
 		$(this).blur(function() {
+			
 			var currentPrompt=$(this).val();
+			
 			if(currentPrompt=="") {
 				$(this).val(originalPrompt);
-			}
+			};
+			
 		});
 		
 	});
@@ -34,20 +40,27 @@
 		
 		//Set the focus
 		$(this).focus(function() {
+			
 			var currentPrompt=$(this).val();
+			
 			if(currentPrompt==originalPrompt) {
 				$(this).val("");
 				this.type="password";
-			}
+			};
+			
 		});
 		
 		//Set the blur
 		$(this).blur(function() {
+			
 			var currentPrompt=$(this).val();
+			
 			if(currentPrompt=="") {
+				
 				$(this).val(originalPrompt);
 				this.type="text";
-			}
+			};
+			
 		});
 		
 	});
