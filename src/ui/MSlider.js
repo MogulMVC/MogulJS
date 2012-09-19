@@ -1,6 +1,6 @@
 (function($) {
 
-	$.fn.Class = function(param) {
+	$.fn.MSlider = function(param) {
 		
 	};
 	

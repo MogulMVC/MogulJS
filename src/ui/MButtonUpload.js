@@ -4,4 +4,4 @@
 		
 	};
 	
-})(jQuery); 
+})(jQuery);
