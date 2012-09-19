@@ -169,3 +169,29 @@ function sidebarTriggerProximity(event) {
 	};
 
 }
+
+$(window).load(function(){
+	
+	sidebarScale();
+	
+	  sidebarMenuPlaceholderHeight();
+  sidebarMenuTop();
+
+  $("#MSidebar").mouseenter(function(){
+    $("#MSidebar").css("overflow-y", "auto");
+  });
+
+  $("#MSidebar").mouseleave(function(){
+    $("#MSidebar").css("overflow-y", "hidden");
+  });
+
+});
+
+$(window).resize(function(){
+  sidebarScale();
+});
+
+
+$(document).mousemove(function(event){
+  sidebarTriggerProximity(event);
+});
