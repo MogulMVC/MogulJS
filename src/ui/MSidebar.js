@@ -1,10 +1,10 @@
 (function($) {
 
 	$.fn.Class = function(param) {
-		
+
 	};
-	
-})(jQuery); 
+
+})(jQuery);
 
 $(window).resize(function() {
 
@@ -64,6 +64,28 @@ function sidebarMenuTop() {
 
 }
 
+function sidebarScale() {
+
+	sidebarMenuPlaceholderHeight();
+	sidebarMenuTop();
+
+	var windowHeight = $(window).height();
+	var headerHeight = $("#MHeader").height();
+	var toolbarHeight = $("#MToolbar").height();
+
+	if (isNaN(headerHeight)) {
+		headerHeight = 0;
+	}
+
+	if (isNaN(toolbarHeight)) {
+		toolbarHeight = 0;
+	}
+
+	var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
+	$("#MSidebar").css("top", headerHeight + toolbarHeight);
+	$("#MSidebar").css("height", sidebarHeight);
+}
+
 function sidebarRightShow() {
 
 	sidebarScale();
@@ -71,11 +93,11 @@ function sidebarRightShow() {
 	$("#MSidebarContainer").animate({
 		minWidth : 352
 	}, speedNorm);
-	
+
 	$("#MSidebar").animate({
 		right : 0
 	}, speedNorm);
-	
+
 	$(".MIconArrowLeft").hide();
 }
 
@@ -83,11 +105,11 @@ function sidebarRightHide() {
 	$("#MSidebarContainer").animate({
 		minWidth : 0
 	}, speedNorm);
-	
+
 	$("#MSidebar").animate({
 		right : -360
 	}, speedNorm);
-	
+
 	$(".MIconArrowLeft").show();
 }
 
@@ -98,11 +120,11 @@ function sidebarLeftShow() {
 	$("#MSidebarContainer").animate({
 		minWidth : 352
 	}, speedNorm);
-	
+
 	$("#MSidebar").animate({
 		left : 0
 	}, speedNorm);
-	
+
 	$(".MIconArrowRight").hide();
 }
 
@@ -110,11 +132,11 @@ function sidebarLeftHide() {
 	$("#MSidebarContainer").animate({
 		minWidth : 0
 	}, speedNorm);
-	
+
 	$("#MSidebar").animate({
 		left : -360
 	}, speedNorm);
-	
+
 	$(".MIconArrowRight").show();
 }
 
@@ -170,28 +192,28 @@ function sidebarTriggerProximity(event) {
 
 }
 
-$(window).load(function(){
-	
+
+$(window).load(function() {
+
 	sidebarScale();
-	
-	  sidebarMenuPlaceholderHeight();
-  sidebarMenuTop();
 
-  $("#MSidebar").mouseenter(function(){
-    $("#MSidebar").css("overflow-y", "auto");
-  });
+	sidebarMenuPlaceholderHeight();
+	sidebarMenuTop();
 
-  $("#MSidebar").mouseleave(function(){
-    $("#MSidebar").css("overflow-y", "hidden");
-  });
+	$("#MSidebar").mouseenter(function() {
+		$("#MSidebar").css("overflow-y", "auto");
+	});
+
+	$("#MSidebar").mouseleave(function() {
+		$("#MSidebar").css("overflow-y", "hidden");
+	});
 
 });
 
-$(window).resize(function(){
-  sidebarScale();
+$(window).resize(function() {
+	sidebarScale();
 });
 
-
-$(document).mousemove(function(event){
-  sidebarTriggerProximity(event);
+$(document).mousemove(function(event) {
+	sidebarTriggerProximity(event);
 });

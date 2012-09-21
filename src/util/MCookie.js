@@ -25,6 +25,6 @@
 		};
 	};
 
-	window.MLoad = MLoad;
+	window.MCookie = MCookie;
 
 })(window);
