@@ -6,12 +6,12 @@ $(window).load(function() {
 	}, speedSlow);
 
 	// Draggable
-	$(".MPopupContainer").draggable();
-	$(".MHoverForm").draggable();
-	$(".MHoverMessage").draggable();
+	//$(".MPopupContainer").draggable();
+	//$(".MHoverForm").draggable();
+	//$(".MHoverMessage").draggable();
 
-	$(".MPopupContainer").addTouch();
-	$(".MHoverForm").addTouch();
-	$(".MHoverMessage").addTouch();
+	//$(".MPopupContainer").addTouch();
+	//$(".MHoverForm").addTouch();
+	//$(".MHoverMessage").addTouch();
 
 });

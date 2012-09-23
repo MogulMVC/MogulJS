@@ -1,7 +1,7 @@
-(function($) {
-
-	$.fn.MButtonUpload = function(param) {
-		
-	};
-	
-})(jQuery);
+(function() {
+	$(document).ready(function() {
+		$('input[type="file"]').addClass('MButtonUploadInput');
+		$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
+		$('.MButtonUpload').append('<span>Upload</span>')
+	});
+})();
