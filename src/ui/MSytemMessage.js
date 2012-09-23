@@ -1,6 +1,5 @@
-function MSystemMessageContainerScale() {
+function MSystemMessageContainerPostion() {
 
-	var windowHeight = $(window).height();
 	var headerHeight = $("#MHeader").height();
 	var toolbarHeight = $("#MToolbar").height();
 
@@ -12,20 +11,29 @@ function MSystemMessageContainerScale() {
 		toolbarHeight = 0;
 	}
 
-	var messageContainerHeight = windowHeight - headerHeight - toolbarHeight;
 	$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
-	$("#MSystemMessageContainer").css("height", messageContainerHeight);
 }
 
-
 $(document).ready(function() {
-	//$('.MToolbarMessage').delay(5000).fadeOut(speedNorm);
+	
+	$("#MSystemMessageContainer").fadeIn(speedSlow);
+	
+	// var i = 5000;
+	// $(".MSystemMessage").each(function() {
+		// $(this).delay(i).animate({
+			// opacity : 0
+		// }).slideUp(speedSlow, function() {//slide up
+			// $(this).remove();
+		// });
+		// i = i + 5000;
+	// });
+	
 });
 
 $(window).load(function() {
-	MSystemMessageContainerScale();
+	MSystemMessageContainerPostion();
 });
 
 $(window).resize(function() {
-	MSystemMessageContainerScale();
-}); 
+	MSystemMessageContainerPostion();
+});
