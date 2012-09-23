@@ -70,24 +70,13 @@ var rounded_large = '2em';$(window).load(function() {
 	//$(".MHoverMessage").addTouch();
 
 });
-(function($) {
-
-	$.fn.MButtonUpload = function(param) {
-		
-	};
-	
-})(jQuery);
-
 (function() {
 	$(document).ready(function() {
 		$('input[type="file"]').addClass('MButtonUploadInput');
 		$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
 		$('.MButtonUpload').append('<span>Upload</span>')
 	});
-})(); 
-
-
-(function($) {
+})();(function($) {
 
 	$.fn.MComboBox = function(param) {
 		
@@ -130,73 +119,90 @@ var rounded_large = '2em';$(window).load(function() {
 	};
 
 })(jQuery);
+(function(window) {
+
+	MInputText = {
+		passWordToggle : function passwordToggle(id) {
+			var element = document.getElementById(id);
+			if (element.type == "password") {
+				element.type = "text";
+			} else {
+				element.type = "password";
+			}
+		}
+	};
+
+	window.MInputText = MInputText;
+
+})(window);
+
 (function() {
-	
-	$("input").attr("autocomplete","off");
+
+	$("input").attr("autocomplete", "off");
 
 	$("[prompt]").each(function(index) {
-		
+
 		//Set the prompt
-		var originalPrompt=$(this).attr("prompt");
+		var originalPrompt = $(this).attr("prompt");
 		$(this).val(originalPrompt);
-		
+
 		//Set the focus
 		$(this).focus(function() {
-			
-			var currentPrompt=$(this).val();
-			
-			if(currentPrompt==originalPrompt) {
+
+			var currentPrompt = $(this).val();
+
+			if (currentPrompt == originalPrompt) {
 				$(this).val("");
 			};
-			
+
 		});
-		
+
 		//Set the blur
 		$(this).blur(function() {
-			
-			var currentPrompt=$(this).val();
-			
-			if(currentPrompt=="") {
+
+			var currentPrompt = $(this).val();
+
+			if (currentPrompt == "") {
 				$(this).val(originalPrompt);
 			};
-			
+
 		});
-		
+
 	});
-	
+
 	$("[promptPassword]").each(function(index) {
-		
+
 		//Set the prompt
-		var originalPrompt=$(this).attr("promptPassword");
+		var originalPrompt = $(this).attr("promptPassword");
 		$(this).val(originalPrompt);
-		
+
 		//Set the focus
 		$(this).focus(function() {
-			
-			var currentPrompt=$(this).val();
-			
-			if(currentPrompt==originalPrompt) {
+
+			var currentPrompt = $(this).val();
+
+			if (currentPrompt == originalPrompt) {
 				$(this).val("");
-				this.type="password";
+				this.type = "password";
 			};
-			
+
 		});
-		
+
 		//Set the blur
 		$(this).blur(function() {
-			
-			var currentPrompt=$(this).val();
-			
-			if(currentPrompt=="") {
-				
+
+			var currentPrompt = $(this).val();
+
+			if (currentPrompt == "") {
+
 				$(this).val(originalPrompt);
-				this.type="text";
+				this.type = "text";
 			};
-			
+
 		});
-		
+
 	});
-	
+
 })();
 function MListFadeIn() {
 	var i = 0;
@@ -1590,7 +1596,7 @@ $(window).resize(function() {
 		random : function(min, max) {
 			return Math.random() * (max - min) + min;
 		},
-		
+
 		linear_regression : function(x, y) {
 
 			// calculate number points
@@ -1637,34 +1643,20 @@ $(window).resize(function() {
 	window.MMath = MMath;
 
 })(window);
-function passwordToggle(id){
-   var element = document.getElementById(id);
-   if(element.type == "password"){
-      element.type = "text";
-   }else{
-      element.type = "password";
-   }
-}function scrollBottom(){
-  var scrollBottom = $(window).scrollTop() + $(window).height();
-  var documentHeight = $(document).height();
+function MSearch(search) {
 
-  if(scrollBottom == documentHeight){
-    return true;
-  }
-}function searchableHide(string){
-  
-  /*Makes contains case insensitive*/
-  $.expr[':'].Contains = function(x, y, z){
-    return jQuery(x).text().toUpperCase().indexOf(z[3].toUpperCase())>=0;
-  };
-  
-  if(string == ""){
-    $("[searchable=true]").show();
-  }else{
-    $("[searchable=true]").hide();
-    $("[searchable=true]:Contains(" + string + ")").show();
-  }
-  
+	// Creates the Contains function which is case insensitive
+	$.expr[':'].Contains = function(x, y, z) {
+		return jQuery(x).text().toUpperCase().indexOf(z[3].toUpperCase()) >= 0;
+	};
+
+	if (search == "") {
+		$('[searchable=true]').show();
+	} else {
+		$('[searchable=true]').hide();
+		$('[searchable=true]:Contains(' + search + ')').show();
+	}
+
 }(function(window) {
 
 	MTemperature = {
