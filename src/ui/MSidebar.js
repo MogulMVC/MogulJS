@@ -1,34 +1,3 @@
-(function($) {
-
-	$.fn.Class = function(param) {
-
-	};
-
-})(jQuery);
-
-$(window).resize(function() {
-
-	sidebarMenuPlaceholderHeight();
-	sidebarMenuTop();
-
-	var windowHeight = $(window).height();
-	var headerHeight = $("#MHeader").height();
-	var toolbarHeight = $("#MToolbar").height();
-
-	if (isNaN(headerHeight)) {
-		headerHeight = 0;
-	};
-
-	if (isNaN(toolbarHeight)) {
-		toolbarHeight = 0;
-	};
-
-	var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
-	$("#MSidebar").css("top", headerHeight + toolbarHeight);
-	$("#MSidebar").css("height", sidebarHeight);
-
-});
-
 function sidebarMenuPlaceholderHeight() {
 
 	if (document.getElementById("MSidebarMenuFixed")) {
@@ -86,33 +55,6 @@ function sidebarScale() {
 	$("#MSidebar").css("height", sidebarHeight);
 }
 
-function sidebarRightShow() {
-
-	sidebarScale();
-
-	$("#MSidebarContainer").animate({
-		minWidth : 352
-	}, speedNorm);
-
-	$("#MSidebar").animate({
-		right : 0
-	}, speedNorm);
-
-	$(".MIconArrowLeft").hide();
-}
-
-function sidebarRightHide() {
-	$("#MSidebarContainer").animate({
-		minWidth : 0
-	}, speedNorm);
-
-	$("#MSidebar").animate({
-		right : -360
-	}, speedNorm);
-
-	$(".MIconArrowLeft").show();
-}
-
 function sidebarLeftShow() {
 
 	sidebarScale();
@@ -140,14 +82,36 @@ function sidebarLeftHide() {
 	$(".MIconArrowRight").show();
 }
 
-function sidebarTriggerIndicatorSet() {
-	if (document.getElementById("MSidebarTriggerLeft") && !document.getElementById("MSidebarTriggerLeftIndicator")) {
-		$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
-	};
+function sidebarRightShow() {
 
-	if (document.getElementById("SidebarTriggerRight") && !document.getElementById("SidebarTriggerRightIndicator")) {
-		$("#SidebarTriggerRight").append('<div id="SidebarTriggerRightIndicator"></div>');
-	};
+	sidebarScale();
+
+	$("#MSidebarContainer").animate({
+		minWidth : 352
+	}, speedNorm);
+
+	$("#MSidebar").animate({
+		right : 0
+	}, speedNorm);
+
+	$(".MIconArrowLeft").hide();
+}
+
+function sidebarRightHide() {
+	$("#MSidebarContainer").animate({
+		minWidth : 0
+	}, speedNorm);
+
+	$("#MSidebar").animate({
+		right : -360
+	}, speedNorm);
+
+	$(".MIconArrowLeft").show();
+}
+
+function sidebarTriggerIndicatorSet() {
+	$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
+	$("#SidebarTriggerRight").append('<div id="SidebarTriggerRightIndicator"></div>');
 }
 
 function sidebarTriggerProximity(event) {
@@ -191,7 +155,6 @@ function sidebarTriggerProximity(event) {
 	};
 
 }
-
 
 $(window).load(function() {
 

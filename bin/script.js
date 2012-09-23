@@ -74,7 +74,7 @@ var rounded_large = '2em';$(window).load(function() {
 	$(document).ready(function() {
 		$('input[type="file"]').addClass('MButtonUploadInput');
 		$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
-		$('.MButtonUpload').append('<span>Upload</span>')
+		$('.MButtonUpload').append('<span>Select File</span>')
 	});
 })();(function($) {
 
@@ -259,38 +259,7 @@ $(window).load(function() {
 		
 	};
 	
-})(jQuery); (function($) {
-
-	$.fn.Class = function(param) {
-
-	};
-
-})(jQuery);
-
-$(window).resize(function() {
-
-	sidebarMenuPlaceholderHeight();
-	sidebarMenuTop();
-
-	var windowHeight = $(window).height();
-	var headerHeight = $("#MHeader").height();
-	var toolbarHeight = $("#MToolbar").height();
-
-	if (isNaN(headerHeight)) {
-		headerHeight = 0;
-	};
-
-	if (isNaN(toolbarHeight)) {
-		toolbarHeight = 0;
-	};
-
-	var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
-	$("#MSidebar").css("top", headerHeight + toolbarHeight);
-	$("#MSidebar").css("height", sidebarHeight);
-
-});
-
-function sidebarMenuPlaceholderHeight() {
+})(jQuery); function sidebarMenuPlaceholderHeight() {
 
 	if (document.getElementById("MSidebarMenuFixed")) {
 
@@ -347,33 +316,6 @@ function sidebarScale() {
 	$("#MSidebar").css("height", sidebarHeight);
 }
 
-function sidebarRightShow() {
-
-	sidebarScale();
-
-	$("#MSidebarContainer").animate({
-		minWidth : 352
-	}, speedNorm);
-
-	$("#MSidebar").animate({
-		right : 0
-	}, speedNorm);
-
-	$(".MIconArrowLeft").hide();
-}
-
-function sidebarRightHide() {
-	$("#MSidebarContainer").animate({
-		minWidth : 0
-	}, speedNorm);
-
-	$("#MSidebar").animate({
-		right : -360
-	}, speedNorm);
-
-	$(".MIconArrowLeft").show();
-}
-
 function sidebarLeftShow() {
 
 	sidebarScale();
@@ -401,14 +343,36 @@ function sidebarLeftHide() {
 	$(".MIconArrowRight").show();
 }
 
-function sidebarTriggerIndicatorSet() {
-	if (document.getElementById("MSidebarTriggerLeft") && !document.getElementById("MSidebarTriggerLeftIndicator")) {
-		$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
-	};
+function sidebarRightShow() {
 
-	if (document.getElementById("SidebarTriggerRight") && !document.getElementById("SidebarTriggerRightIndicator")) {
-		$("#SidebarTriggerRight").append('<div id="SidebarTriggerRightIndicator"></div>');
-	};
+	sidebarScale();
+
+	$("#MSidebarContainer").animate({
+		minWidth : 352
+	}, speedNorm);
+
+	$("#MSidebar").animate({
+		right : 0
+	}, speedNorm);
+
+	$(".MIconArrowLeft").hide();
+}
+
+function sidebarRightHide() {
+	$("#MSidebarContainer").animate({
+		minWidth : 0
+	}, speedNorm);
+
+	$("#MSidebar").animate({
+		right : -360
+	}, speedNorm);
+
+	$(".MIconArrowLeft").show();
+}
+
+function sidebarTriggerIndicatorSet() {
+	$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
+	$("#SidebarTriggerRight").append('<div id="SidebarTriggerRightIndicator"></div>');
 }
 
 function sidebarTriggerProximity(event) {
@@ -453,7 +417,6 @@ function sidebarTriggerProximity(event) {
 
 }
 
-
 $(window).load(function() {
 
 	sidebarScale();
@@ -484,13 +447,37 @@ $(document).mousemove(function(event) {
 		
 	};
 	
-})(jQuery); (function($) {
+})(jQuery); function MSystemMessageContainerScale() {
 
-	$.fn.MSystemMessage = function(text, type) {
-		
-	};
-	
-})(jQuery); /*
+	var windowHeight = $(window).height();
+	var headerHeight = $("#MHeader").height();
+	var toolbarHeight = $("#MToolbar").height();
+
+	if (isNaN(headerHeight)) {
+		headerHeight = 0;
+	}
+
+	if (isNaN(toolbarHeight)) {
+		toolbarHeight = 0;
+	}
+
+	var messageContainerHeight = windowHeight - headerHeight - toolbarHeight;
+	$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
+	$("#MSystemMessageContainer").css("height", messageContainerHeight);
+}
+
+
+$(document).ready(function() {
+	//$('.MToolbarMessage').delay(5000).fadeOut(speedNorm);
+});
+
+$(window).load(function() {
+	MSystemMessageContainerScale();
+});
+
+$(window).resize(function() {
+	MSystemMessageContainerScale();
+}); /*
  * Forked from jQuery EasyTabs
  * 
  */
