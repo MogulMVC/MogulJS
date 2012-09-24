@@ -447,45 +447,50 @@ $(document).mousemove(function(event) {
 		
 	};
 	
-})(jQuery); function MSystemMessageContainerPostion() {
+})(jQuery); (function() {
 
-	var headerHeight = $("#MHeader").height();
-	var toolbarHeight = $("#MToolbar").height();
+	function MSystemMessageContainerPostion() {
 
-	if (isNaN(headerHeight)) {
-		headerHeight = 0;
+		var headerHeight = $("#MHeader").height();
+		var toolbarHeight = $("#MToolbar").height();
+
+		if (isNaN(headerHeight)) {
+			headerHeight = 0;
+		}
+
+		if (isNaN(toolbarHeight)) {
+			toolbarHeight = 0;
+		}
+
+		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
 	}
 
-	if (isNaN(toolbarHeight)) {
-		toolbarHeight = 0;
-	}
+	$(document).ready(function() {
 
-	$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
-}
+		$("#MSystemMessageContainer").fadeIn(speedSlow);
 
-$(document).ready(function() {
-	
-	$("#MSystemMessageContainer").fadeIn(speedSlow);
-	
-	var i = 5000;
-	$(".MSystemMessage").each(function() {
-		$(this).delay(i).animate({
-			opacity : 0
-		}).slideUp(speedSlow, function() {//slide up
-			$(this).remove();
+		var i = 5000;
+		$(".MSystemMessage").each(function() {
+			$(this).delay(i).animate({
+				opacity : 0
+			}).slideUp(speedSlow, function() {//slide up
+				$(this).remove();
+			});
+			i = i + 5000;
 		});
-		i = i + 5000;
+
 	});
-	
-});
 
-$(window).load(function() {
-	MSystemMessageContainerPostion();
-});
+	$(window).load(function() {
+		MSystemMessageContainerPostion();
+	});
 
-$(window).resize(function() {
-	MSystemMessageContainerPostion();
-});
+	$(window).resize(function() {
+		MSystemMessageContainerPostion();
+	});
+
+})();
+
 /*
  * Forked from jQuery EasyTabs
  * 

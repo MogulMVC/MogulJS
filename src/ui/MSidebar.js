@@ -1,182 +1,186 @@
-function sidebarMenuPlaceholderHeight() {
+(function() {
 
-	if (document.getElementById("MSidebarMenuFixed")) {
+	function sidebarMenuPlaceholderHeight() {
 
-		/*Placeholder height*/
-		var sidebar_menu_fixed_height = $("#MSidebarMenuFixed").height();
-		$("#MSidebarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
+		if (document.getElementById("MSidebarMenuFixed")) {
+
+			/*Placeholder height*/
+			var sidebar_menu_fixed_height = $("#MSidebarMenuFixed").height();
+			$("#MSidebarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
+
+		};
+	};
+
+	function sidebarMenuTop() {
+
+		if (document.getElementById("MSidebarMenuFixed")) {
+
+			/*Top Position*/
+			var headerHeight = $("#MHeader").height();
+			var toolbarHeight = $("#MToolbar").height();
+
+			if (isNaN(headerHeight)) {
+				headerHeight = 0;
+			};
+
+			if (isNaN(toolbarHeight)) {
+				toolbarHeight = 0;
+			};
+
+			var sidebarMenuTop = headerHeight + toolbarHeight;
+
+			$("#MSidebarMenuFixed").css("top", sidebarMenuTop);
+
+		};
 
 	};
-}
 
-function sidebarMenuTop() {
+	function sidebarScale() {
 
-	if (document.getElementById("MSidebarMenuFixed")) {
+		sidebarMenuPlaceholderHeight();
+		sidebarMenuTop();
 
-		/*Top Position*/
+		var windowHeight = $(window).height();
 		var headerHeight = $("#MHeader").height();
 		var toolbarHeight = $("#MToolbar").height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
-		};
+		}
 
 		if (isNaN(toolbarHeight)) {
 			toolbarHeight = 0;
-		};
+		}
 
-		var sidebarMenuTop = headerHeight + toolbarHeight;
-
-		$("#MSidebarMenuFixed").css("top", sidebarMenuTop);
-
+		var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
+		$("#MSidebar").css("top", headerHeight + toolbarHeight);
+		$("#MSidebar").css("height", sidebarHeight);
 	};
 
-}
+	function sidebarLeftShow() {
 
-function sidebarScale() {
+		sidebarScale();
 
-	sidebarMenuPlaceholderHeight();
-	sidebarMenuTop();
+		$("#MSidebarContainer").animate({
+			minWidth : 352
+		}, speedNorm);
 
-	var windowHeight = $(window).height();
-	var headerHeight = $("#MHeader").height();
-	var toolbarHeight = $("#MToolbar").height();
+		$("#MSidebar").animate({
+			left : 0
+		}, speedNorm);
 
-	if (isNaN(headerHeight)) {
-		headerHeight = 0;
-	}
+		$(".MIconArrowRight").hide();
+	};
 
-	if (isNaN(toolbarHeight)) {
-		toolbarHeight = 0;
-	}
+	function sidebarLeftHide() {
+		$("#MSidebarContainer").animate({
+			minWidth : 0
+		}, speedNorm);
 
-	var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
-	$("#MSidebar").css("top", headerHeight + toolbarHeight);
-	$("#MSidebar").css("height", sidebarHeight);
-}
+		$("#MSidebar").animate({
+			left : -360
+		}, speedNorm);
 
-function sidebarLeftShow() {
+		$(".MIconArrowRight").show();
+	};
 
-	sidebarScale();
+	function sidebarRightShow() {
 
-	$("#MSidebarContainer").animate({
-		minWidth : 352
-	}, speedNorm);
+		sidebarScale();
 
-	$("#MSidebar").animate({
-		left : 0
-	}, speedNorm);
+		$("#MSidebarContainer").animate({
+			minWidth : 352
+		}, speedNorm);
 
-	$(".MIconArrowRight").hide();
-}
+		$("#MSidebar").animate({
+			right : 0
+		}, speedNorm);
 
-function sidebarLeftHide() {
-	$("#MSidebarContainer").animate({
-		minWidth : 0
-	}, speedNorm);
+		$(".MIconArrowLeft").hide();
+	};
 
-	$("#MSidebar").animate({
-		left : -360
-	}, speedNorm);
+	function sidebarRightHide() {
+		$("#MSidebarContainer").animate({
+			minWidth : 0
+		}, speedNorm);
 
-	$(".MIconArrowRight").show();
-}
+		$("#MSidebar").animate({
+			right : -360
+		}, speedNorm);
 
-function sidebarRightShow() {
+		$(".MIconArrowLeft").show();
+	};
+	function sidebarTriggerIndicatorSet() {
+		$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
+		$("#SidebarTriggerRight").append('<div id="SidebarTriggerRightIndicator"></div>');
+	};
 
-	sidebarScale();
+	function sidebarTriggerProximity(event) {
 
-	$("#MSidebarContainer").animate({
-		minWidth : 352
-	}, speedNorm);
+		sidebarTriggerIndicatorSet();
 
-	$("#MSidebar").animate({
-		right : 0
-	}, speedNorm);
+		var mouseX = event.pageX;
+		var windowWidth = $(window).width();
 
-	$(".MIconArrowLeft").hide();
-}
+		//Distace away that the indicator should show, in px
+		var indicationDistanceStart = 150;
 
-function sidebarRightHide() {
-	$("#MSidebarContainer").animate({
-		minWidth : 0
-	}, speedNorm);
+		//Left
+		if (document.getElementById("MSidebarTriggerLeftIndicator")) {
 
-	$("#MSidebar").animate({
-		right : -360
-	}, speedNorm);
+			var indicatorWidth = $("#MSidebarTriggerLeftIndicator").width();
 
-	$(".MIconArrowLeft").show();
-}
+			if (mouseX < indicationDistanceStart && mouseX != 0) {
+				var percentAwayDecimal = mouseX / indicationDistanceStart;
+				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
+				$("#MSidebarTriggerLeftIndicator").css("left", indicatorCSSLeft);
+			} else {
+				$("#MSidebarTriggerLeftIndicator").css("left", -indicatorWidth);
+			};
 
-function sidebarTriggerIndicatorSet() {
-	$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
-	$("#SidebarTriggerRight").append('<div id="SidebarTriggerRightIndicator"></div>');
-}
+		};
 
-function sidebarTriggerProximity(event) {
+		//Right
+		if (document.getElementById("SidebarTriggerRightIndicator")) {
 
-	sidebarTriggerIndicatorSet();
+			var indicatorWidth = $("#SidebarTriggerRightIndicator").width();
 
-	var mouseX = event.pageX;
-	var windowWidth = $(window).width();
+			if (mouseX > windowWidth - indicationDistanceStart && mouseX != windowWidth) {
+				var percentAwayDecimal = (windowWidth - mouseX) / indicationDistanceStart;
+				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
+				$("#SidebarTriggerRightIndicator").css("right", indicatorCSSLeft);
+			} else {
+				$("#SidebarTriggerRightIndicator").css("right", -indicatorWidth);
+			};
 
-	//Distace away that the indicator should show, in px
-	var indicationDistanceStart = 150;
-
-	//Left
-	if (document.getElementById("MSidebarTriggerLeftIndicator")) {
-
-		var indicatorWidth = $("#MSidebarTriggerLeftIndicator").width();
-
-		if (mouseX < indicationDistanceStart && mouseX != 0) {
-			var percentAwayDecimal = mouseX / indicationDistanceStart;
-			var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-			$("#MSidebarTriggerLeftIndicator").css("left", indicatorCSSLeft);
-		} else {
-			$("#MSidebarTriggerLeftIndicator").css("left", -indicatorWidth);
 		};
 
 	};
 
-	//Right
-	if (document.getElementById("SidebarTriggerRightIndicator")) {
+	$(window).load(function() {
 
-		var indicatorWidth = $("#SidebarTriggerRightIndicator").width();
+		sidebarScale();
 
-		if (mouseX > windowWidth - indicationDistanceStart && mouseX != windowWidth) {
-			var percentAwayDecimal = (windowWidth - mouseX) / indicationDistanceStart;
-			var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-			$("#SidebarTriggerRightIndicator").css("right", indicatorCSSLeft);
-		} else {
-			$("#SidebarTriggerRightIndicator").css("right", -indicatorWidth);
-		};
+		sidebarMenuPlaceholderHeight();
+		sidebarMenuTop();
 
-	};
+		$("#MSidebar").mouseenter(function() {
+			$("#MSidebar").css("overflow-y", "auto");
+		});
 
-}
+		$("#MSidebar").mouseleave(function() {
+			$("#MSidebar").css("overflow-y", "hidden");
+		});
 
-$(window).load(function() {
-
-	sidebarScale();
-
-	sidebarMenuPlaceholderHeight();
-	sidebarMenuTop();
-
-	$("#MSidebar").mouseenter(function() {
-		$("#MSidebar").css("overflow-y", "auto");
 	});
 
-	$("#MSidebar").mouseleave(function() {
-		$("#MSidebar").css("overflow-y", "hidden");
+	$(window).resize(function() {
+		sidebarScale();
 	});
 
-});
+	$(document).mousemove(function(event) {
+		sidebarTriggerProximity(event);
+	});
 
-$(window).resize(function() {
-	sidebarScale();
-});
+})();
 
-$(document).mousemove(function(event) {
-	sidebarTriggerProximity(event);
-});
