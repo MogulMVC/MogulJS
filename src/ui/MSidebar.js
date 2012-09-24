@@ -1,4 +1,4 @@
-(function() {
+(function(window) {
 
 	var MSidebar = {
 		menuPlaceholderHeight : function() {
@@ -38,8 +38,8 @@
 
 		scale : function() {
 
-			sidebarMenuPlaceholderHeight();
-			sidebarMenuTop();
+			this.menuPlaceholderHeight();
+			this.menuTop();
 
 			var windowHeight = $(window).height();
 			var headerHeight = $("#MHeader").height();
@@ -60,7 +60,7 @@
 
 		leftShow : function() {
 
-			sidebarScale();
+			this.scale();
 
 			$("#MSidebarContainer").animate({
 				minWidth : 352
@@ -87,7 +87,7 @@
 
 		rightShow : function() {
 
-			sidebarScale();
+			this.scale();
 
 			$("#MSidebarContainer").animate({
 				minWidth : 352
@@ -111,6 +111,7 @@
 
 			$(".MIconArrowLeft").show();
 		},
+
 		triggerIndicatorInit : function() {
 			if ($('#MSidebarTriggerLeft').length != 0 && $('#MSidebarTriggerLeftIndicator').length == 0) {
 				$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
@@ -164,7 +165,9 @@
 		}
 	};
 
-})();
+	window.MSidebar = MSidebar;
+
+})(window);
 
 $(window).load(function() {
 
@@ -188,5 +191,5 @@ $(window).resize(function() {
 });
 
 $(document).mousemove(function(event) {
-	MSidebar.triggerProximity();
+	MSidebar.triggerProximity(event);
 });

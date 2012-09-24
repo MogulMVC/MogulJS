@@ -165,7 +165,7 @@ var rounded_large = '2em';$(window).load(function() {
 		
 	};
 	
-})(jQuery); (function() {
+})(jQuery); (function(window) {
 
 	var MSidebar = {
 		menuPlaceholderHeight : function() {
@@ -205,8 +205,8 @@ var rounded_large = '2em';$(window).load(function() {
 
 		scale : function() {
 
-			sidebarMenuPlaceholderHeight();
-			sidebarMenuTop();
+			this.menuPlaceholderHeight();
+			this.menuTop();
 
 			var windowHeight = $(window).height();
 			var headerHeight = $("#MHeader").height();
@@ -227,7 +227,7 @@ var rounded_large = '2em';$(window).load(function() {
 
 		leftShow : function() {
 
-			sidebarScale();
+			this.scale();
 
 			$("#MSidebarContainer").animate({
 				minWidth : 352
@@ -254,7 +254,7 @@ var rounded_large = '2em';$(window).load(function() {
 
 		rightShow : function() {
 
-			sidebarScale();
+			this.scale();
 
 			$("#MSidebarContainer").animate({
 				minWidth : 352
@@ -278,6 +278,7 @@ var rounded_large = '2em';$(window).load(function() {
 
 			$(".MIconArrowLeft").show();
 		},
+
 		triggerIndicatorInit : function() {
 			if ($('#MSidebarTriggerLeft').length != 0 && $('#MSidebarTriggerLeftIndicator').length == 0) {
 				$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
@@ -331,7 +332,9 @@ var rounded_large = '2em';$(window).load(function() {
 		}
 	};
 
-})();
+	window.MSidebar = MSidebar;
+
+})(window);
 
 $(window).load(function() {
 
@@ -355,7 +358,7 @@ $(window).resize(function() {
 });
 
 $(document).mousemove(function(event) {
-	MSidebar.triggerProximity();
+	MSidebar.triggerProximity(event);
 });
 (function($) {
 
