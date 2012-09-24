@@ -1,6 +1,6 @@
 (function(window) {
 
-	MCookie = {
+	var MCookie = {
 		set : function(name, value, expires, path, domain, secure) {
 			var today = new Date();
 			today.setTime(today.getTime());

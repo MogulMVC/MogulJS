@@ -1,6 +1,6 @@
 (function(window) {
 
-	MTemperature = {
+	var MTemperature = {
 
 		c2f : function(value) {
 			return value * 9 / 5 + 32;

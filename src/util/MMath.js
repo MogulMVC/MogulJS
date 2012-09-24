@@ -1,6 +1,6 @@
 (function(window) {
 
-	MMath = {
+	var MMath = {
 		random : function(min, max) {
 			return Math.random() * (max - min) + min;
 		},

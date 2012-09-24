@@ -1,6 +1,6 @@
 (function(window) {
 
-	MColor = {
+	var MColor = {
 		fadeHex : function(hex, hex2, ratio) {
 			this.r = hex >> 16;
 			this.g = hex >> 8 & 0xFF;
