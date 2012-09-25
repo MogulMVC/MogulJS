@@ -103,7 +103,7 @@ var rounded_large = '2em';$(window).load(function() {
 
 	function MListFadeIn() {
 		var i = 0;
-		$(".MListItemContainer").each(function() {
+		$(".MListItem").each(function() {
 			$(this).delay(i).animate({
 				opacity : 1
 			}, speedNorm);

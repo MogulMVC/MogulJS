@@ -2,7 +2,7 @@
 
 	function MListFadeIn() {
 		var i = 0;
-		$(".MListItemContainer").each(function() {
+		$(".MListItem").each(function() {
 			$(this).delay(i).animate({
 				opacity : 1
 			}, speedNorm);
