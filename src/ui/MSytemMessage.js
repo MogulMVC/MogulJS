@@ -43,19 +43,7 @@
 })(window);
 
 $(document).ready(function() {
-
 	$("#MSystemMessageContainer").fadeIn(speedSlow);
-
-	var i = 5000;
-	$(".MSystemMessage").each(function() {
-		$(this).delay(i).animate({
-			opacity : 0
-		}).slideUp(speedSlow, function() {//slide up
-			$(this).remove();
-		});
-		i = i + 5000;
-	});
-
 });
 
 $(window).load(function() {
