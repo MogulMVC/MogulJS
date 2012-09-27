@@ -509,27 +509,19 @@ $(document).mousemove(function(event) {
 			$("#MSystemMessageContainer").append(systemMessage);
 
 			// Click close
-			$('#MSystemMessageContainer .MSystemMessage:last-child').find('.MIconClose').click(function() {
-				console.log('click');
-				MSystemMessage.closeRemove(systemMessage);
+			$('.MSystemMessage:last-child .MIconClose').click(function() {
+				$(this).closest('.MSystemMessage').remove();
 			});
 
 			// Fade out
-			$('#MSystemMessageContainer .MSystemMessage:last-child').delay(5000).animate({
+			$('.MSystemMessage:last-child').delay(5000).animate({
 				opacity : 0
 			}).slideUp(speedSlow, function() {//slide up
 				$(this).remove();
 			});
+			
 		},
-
-		closeRemove : function(selector) {
-			$(selector).animate({
-				opacity : 0
-			}).slideUp(speedSlow, function() {
-				$(selector).remove();
-			});
-		},
-
+		
 		containerPostion : function() {
 
 			var headerHeight = $("#MHeader").height();
