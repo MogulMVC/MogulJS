@@ -190,13 +190,24 @@ $(window).load(function() {
 //Accepts a width and height. If height isn't set it will be automatic.
 //Also can have a modal background.
 
-(function($) {
+(function(window) {
 
-	$.fn.MPopup = function(param) {
-		
+	var MPopup = {
+		init : function(width, height) {
+
+		},
+		setWidth : function(value) {
+
+		},
+		setHeight : function(value) {
+
+		}
 	};
-	
-})(jQuery); (function(window) {
+
+	window.MPopup = MPopup;
+
+})(window);
+(function(window) {
 
 	var MProgressBar = {
 
@@ -234,7 +245,7 @@ $(document).ready(function() {
 		}
 
 		// Replace with the Mogul progress bar
-		$(this).replaceWith('<div ' + idString + ' class="MProgressBarContainer"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
+		$(this).replaceWith('<div ' + idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
 
 	});
 
@@ -318,17 +329,17 @@ $(document).ready(function() {
 
 				/*Top Position*/
 				var headerHeight = $("#MHeader").height();
-				var toolbarHeight = $("#MToolbar").height();
+				var toolBarHeight = $("#MToolBar").height();
 
 				if (isNaN(headerHeight)) {
 					headerHeight = 0;
 				};
 
-				if (isNaN(toolbarHeight)) {
-					toolbarHeight = 0;
+				if (isNaN(toolBarHeight)) {
+					toolBarHeight = 0;
 				};
 
-				var sidebarMenuTop = headerHeight + toolbarHeight;
+				var sidebarMenuTop = headerHeight + toolBarHeight;
 
 				$("#MSidebarMenuFixed").css("top", sidebarMenuTop);
 
@@ -343,18 +354,18 @@ $(document).ready(function() {
 
 			var windowHeight = $(window).height();
 			var headerHeight = $("#MHeader").height();
-			var toolbarHeight = $("#MToolbar").height();
+			var toolBarHeight = $("#MToolBar").height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
 			}
 
-			if (isNaN(toolbarHeight)) {
-				toolbarHeight = 0;
+			if (isNaN(toolBarHeight)) {
+				toolBarHeight = 0;
 			}
 
-			var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
-			$("#MSidebar").css("top", headerHeight + toolbarHeight);
+			var sidebarHeight = windowHeight - headerHeight - toolBarHeight;
+			$("#MSidebar").css("top", headerHeight + toolBarHeight);
 			$("#MSidebar").css("height", sidebarHeight);
 		},
 
@@ -525,7 +536,7 @@ $(document).mousemove(function(event) {
 		containerPostion : function() {
 
 			var headerHeight = $("#MHeader").height();
-			var toolbarHeight = $("#MToolbar").height();
+			var toolbarHeight = $("#MToolBar").height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
@@ -1565,31 +1576,34 @@ $(window).resize(function() {
 })();
 
 (function() {
-	
-	function MToolbarPosition() {
-		if (!document.getElementById("MHeader") && !document.getElementById("MHeaderPlaceholder")) {
-			$("#MToolbar").css("top", "0px");
-		};
+
+	var MToolBar = {
+		position : function() {
+			if (!document.getElementById("MHeader") && !document.getElementById("MHeaderPlaceholder")) {
+				$("#MToolBar").css("top", "0px");
+			};
+			this.placeholderScale();
+		},
+
+		placeholderScale : function() {
+			if (!document.getElementById("MToolBar")) {
+				var toolbarHeight = $("#MToolBar").height();
+				$("#MToolBarPlaceholder").height(toolbarHeight);
+			};
+		}
 	};
 
-	function MToolbarPlaceholderScale() {
-		if (!document.getElementById("MToolbar")) {
-			var toolbarHeight = $("#MToolbar").height();
-			$("#MToolbarPlaceholder").height(toolbarHeight);
-		};
-	};
-
-	$(window).load(function() {
-		MToolbarPosition();
-	});
-
-	$(window).resize(function() {
-		MToolbarPosition();
-	});
+	window.MToolBar = MToolBar;
 
 })();
 
-(function(window) {
+$(window).load(function() {
+	MToolBar.position();
+});
+
+$(window).resize(function() {
+	MToolBar.position();
+}); (function(window) {
 
 	var MColor = {
 		fadeHex : function(hex, hex2, ratio) {

@@ -36,7 +36,7 @@ $(document).ready(function() {
 		}
 
 		// Replace with the Mogul progress bar
-		$(this).replaceWith('<div ' + idString + ' class="MProgressBarContainer"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
+		$(this).replaceWith('<div ' + idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
 
 	});
 

@@ -18,17 +18,17 @@
 
 				/*Top Position*/
 				var headerHeight = $("#MHeader").height();
-				var toolbarHeight = $("#MToolbar").height();
+				var toolBarHeight = $("#MToolBar").height();
 
 				if (isNaN(headerHeight)) {
 					headerHeight = 0;
 				};
 
-				if (isNaN(toolbarHeight)) {
-					toolbarHeight = 0;
+				if (isNaN(toolBarHeight)) {
+					toolBarHeight = 0;
 				};
 
-				var sidebarMenuTop = headerHeight + toolbarHeight;
+				var sidebarMenuTop = headerHeight + toolBarHeight;
 
 				$("#MSidebarMenuFixed").css("top", sidebarMenuTop);
 
@@ -43,18 +43,18 @@
 
 			var windowHeight = $(window).height();
 			var headerHeight = $("#MHeader").height();
-			var toolbarHeight = $("#MToolbar").height();
+			var toolBarHeight = $("#MToolBar").height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
 			}
 
-			if (isNaN(toolbarHeight)) {
-				toolbarHeight = 0;
+			if (isNaN(toolBarHeight)) {
+				toolBarHeight = 0;
 			}
 
-			var sidebarHeight = windowHeight - headerHeight - toolbarHeight;
-			$("#MSidebar").css("top", headerHeight + toolbarHeight);
+			var sidebarHeight = windowHeight - headerHeight - toolBarHeight;
+			$("#MSidebar").css("top", headerHeight + toolBarHeight);
 			$("#MSidebar").css("height", sidebarHeight);
 		},
 

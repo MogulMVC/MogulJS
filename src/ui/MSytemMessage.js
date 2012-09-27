@@ -24,7 +24,7 @@
 		containerPostion : function() {
 
 			var headerHeight = $("#MHeader").height();
-			var toolbarHeight = $("#MToolbar").height();
+			var toolbarHeight = $("#MToolBar").height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
