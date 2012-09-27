@@ -3,9 +3,9 @@
 	var MRatingsBar = {
 
 		setPercent : function(selector, value) {
-			
+
 			console.log(value);
-			
+
 			// If a value number is set
 			if (!isNaN(value) && value > 0) {
 				// Set the correct display
@@ -15,7 +15,7 @@
 
 				// Set the width
 				$(selector + ' .MRatingsBarFG').css('width', value + '%');
-			} 
+			}
 			// If a value number is not set
 			else {
 				$(selector).removeClass('MRatingsBarBG');

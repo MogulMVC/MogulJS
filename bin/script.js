@@ -243,9 +243,9 @@ $(document).ready(function() {
 	var MRatingsBar = {
 
 		setPercent : function(selector, value) {
-			
+
 			console.log(value);
-			
+
 			// If a value number is set
 			if (!isNaN(value) && value > 0) {
 				// Set the correct display
@@ -255,7 +255,7 @@ $(document).ready(function() {
 
 				// Set the width
 				$(selector + ' .MRatingsBarFG').css('width', value + '%');
-			} 
+			}
 			// If a value number is not set
 			else {
 				$(selector).removeClass('MRatingsBarBG');
@@ -499,49 +499,81 @@ $(document).mousemove(function(event) {
 		
 	};
 	
-})(jQuery); (function() {
+})(jQuery); (function(window) {
 
-	function MSystemMessageContainerPostion() {
+	var MSystemMessage = {
 
-		var headerHeight = $("#MHeader").height();
-		var toolbarHeight = $("#MToolbar").height();
+		init : function(message) {
 
-		if (isNaN(headerHeight)) {
-			headerHeight = 0;
-		}
+			var systemMessage = '<div class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + message + '</span></div>';
+			$("#MSystemMessageContainer").append(systemMessage);
 
-		if (isNaN(toolbarHeight)) {
-			toolbarHeight = 0;
-		}
+			// Click close
+			$('#MSystemMessageContainer .MSystemMessage:last-child').find('.MIconClose').click(function() {
+				console.log('click');
+				MSystemMessage.closeRemove(systemMessage);
+			});
 
-		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
-	};
-
-	$(document).ready(function() {
-
-		$("#MSystemMessageContainer").fadeIn(speedSlow);
-
-		var i = 5000;
-		$(".MSystemMessage").each(function() {
-			$(this).delay(i).animate({
+			// Fade out
+			$('#MSystemMessageContainer .MSystemMessage:last-child').delay(5000).animate({
 				opacity : 0
 			}).slideUp(speedSlow, function() {//slide up
 				$(this).remove();
 			});
-			i = i + 5000;
+		},
+
+		closeRemove : function(selector) {
+			$(selector).animate({
+				opacity : 0
+			}).slideUp(speedSlow, function() {
+				$(selector).remove();
+			});
+		},
+
+		containerPostion : function() {
+
+			var headerHeight = $("#MHeader").height();
+			var toolbarHeight = $("#MToolbar").height();
+
+			if (isNaN(headerHeight)) {
+				headerHeight = 0;
+			}
+
+			if (isNaN(toolbarHeight)) {
+				toolbarHeight = 0;
+			}
+
+			$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
+		}
+	};
+
+	window.MSystemMessage = MSystemMessage;
+
+})(window);
+
+$(document).ready(function() {
+
+	$("#MSystemMessageContainer").fadeIn(speedSlow);
+
+	var i = 5000;
+	$(".MSystemMessage").each(function() {
+		$(this).delay(i).animate({
+			opacity : 0
+		}).slideUp(speedSlow, function() {//slide up
+			$(this).remove();
 		});
-
+		i = i + 5000;
 	});
 
-	$(window).load(function() {
-		MSystemMessageContainerPostion();
-	});
+});
 
-	$(window).resize(function() {
-		MSystemMessageContainerPostion();
-	});
+$(window).load(function() {
+	MSystemMessage.containerPostion();
+});
 
-})();
+$(window).resize(function() {
+	MSystemMessage.containerPostion();
+});
 /*
  * Forked from jQuery EasyTabs
  * 
