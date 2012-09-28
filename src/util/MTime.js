@@ -1,8 +1,7 @@
-(function(window) {
+(function() {
 
-	MTime = {
+	var MTime = {
 		sec2hms : function(sec) {
-
 			var hms = '';
 
 			var hours = parseInt(sec / 3600);
@@ -50,8 +49,8 @@
 
 			return hms;
 		}
-	};
+	}
 
 	window.MTime = MTime;
 
-})(window);
+})();

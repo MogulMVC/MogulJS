@@ -1,7 +1,7 @@
-(function($) {
+(function() {
 
-	$.fn.MComboBox = function(param) {
+	var MComboBox = {
 		
-	};
+	}
 	
-})(jQuery);
+})();

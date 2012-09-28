@@ -1,12 +1,10 @@
-(function(window) {
+(function() {
 
 	var MMath = {
 		random : function(min, max) {
 			return Math.random() * (max - min) + min;
 		},
-
 		linear_regression : function(x, y) {
-
 			// calculate number points
 			var n = x.length;
 
@@ -44,10 +42,9 @@
 
 			// return result
 			return [m, b];
-
 		}
-	};
+	}
 
 	window.MMath = MMath;
 
-})(window);
+})();

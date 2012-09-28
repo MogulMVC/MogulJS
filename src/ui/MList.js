@@ -19,7 +19,6 @@
 			});
 		},
 		selectAll : function(selector) {
-
 			// Set a deault parameter
 			selector = typeof selector !== 'undefined' ? selector : '';
 
@@ -29,7 +28,6 @@
 			});
 		},
 		deselectAll : function(selector) {
-
 			// Set a deault parameter
 			selector = typeof selector !== 'undefined' ? selector : '';
 
@@ -39,18 +37,14 @@
 			});
 		},
 		updateUI : function() {
-
 			$('.MListItem input[type=checkbox]').each(function(index) {
-
 				// Set the default state
 				if ($(this).is(':checked')) {
 					$(this).closest('.MListItem').addClass('active');
 				} else {
 					$(this).closest('.MListItem').removeClass('active');
 				}
-
 			});
-
 		}
 	};
 
@@ -60,20 +54,16 @@
 
 // Setup checked when the page loads
 $(document).ready(function() {
-
 	// Set the default state
 	MList.updateUI();
 
 	$('.MListItem input[type=checkbox]').each(function(index) {
-
 		// Add a change event listener
 		// A label can change the state of the checkbox so I am using change instead of click
 		$(this).change(function() {
 			MList.updateUI();
 		});
-
 	});
-
 });
 
 $(window).load(function() {

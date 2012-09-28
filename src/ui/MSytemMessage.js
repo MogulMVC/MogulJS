@@ -1,9 +1,7 @@
-(function(window) {
+(function() {
 
 	var MSystemMessage = {
-
 		init : function(message) {
-
 			var systemMessage = '<div class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + message + '</span></div>';
 			$("#MSystemMessageContainer").append(systemMessage);
 
@@ -18,11 +16,8 @@
 			}).slideUp(speedSlow, function() {//slide up
 				$(this).remove();
 			});
-			
 		},
-		
 		containerPostion : function() {
-
 			var headerHeight = $("#MHeader").height();
 			var toolbarHeight = $("#MToolBar").height();
 
@@ -36,11 +31,11 @@
 
 			$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
 		}
-	};
+	}
 
 	window.MSystemMessage = MSystemMessage;
 
-})(window);
+})();
 
 $(document).ready(function() {
 	$("#MSystemMessageContainer").fadeIn(speedSlow);

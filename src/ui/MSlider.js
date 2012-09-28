@@ -1,7 +1,7 @@
-(function($) {
+(function() {
 
-	$.fn.MSlider = function(param) {
+	var MSlider = {
 		
-	};
+	}
 	
-})(jQuery); 
+})(); 

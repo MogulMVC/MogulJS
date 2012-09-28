@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
 
 	var MColor = {
 		fadeHex : function(hex, hex2, ratio) {
@@ -12,8 +12,8 @@
 
 			return (this.r << 16 | this.g << 8 | this.b);
 		}
-	};
+	}
 
 	window.MColor = MColor;
 
-})(window);
+})();

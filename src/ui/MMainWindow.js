@@ -1,11 +1,6 @@
-(function() {
-
-	$(window).load(function() {
-		// Fade in all images
-		$("#MMainWindow img").animate({
-			opacity : 1
-		}, speedSlow);
-	});
-
-})();
-
+$(window).load(function() {
+	// Fade in all images
+	$("#MMainWindow img").animate({
+		opacity : 1
+	}, speedSlow);
+}); 

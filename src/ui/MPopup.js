@@ -1,7 +1,7 @@
 //Accepts a width and height. If height isn't set it will be automatic.
 //Also can have a modal background.
 
-(function(window) {
+(function() {
 
 	var MPopup = {
 		init : function(width, height) {
@@ -17,4 +17,4 @@
 
 	window.MPopup = MPopup;
 
-})(window);
+})();

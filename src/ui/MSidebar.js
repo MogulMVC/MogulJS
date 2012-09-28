@@ -1,21 +1,15 @@
-(function(window) {
+(function() {
 
 	var MSidebar = {
 		menuPlaceholderHeight : function() {
-
 			if (document.getElementById("MSidebarMenuFixed")) {
-
 				/*Placeholder height*/
 				var sidebar_menu_fixed_height = $("#MSidebarMenuFixed").height();
 				$("#MSidebarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
-
-			};
+			}
 		},
-
 		menuTop : function() {
-
 			if (document.getElementById("MSidebarMenuFixed")) {
-
 				/*Top Position*/
 				var headerHeight = $("#MHeader").height();
 				var toolBarHeight = $("#MToolBar").height();
@@ -31,13 +25,9 @@
 				var sidebarMenuTop = headerHeight + toolBarHeight;
 
 				$("#MSidebarMenuFixed").css("top", sidebarMenuTop);
-
-			};
-
+			}
 		},
-
 		scale : function() {
-
 			this.menuPlaceholderHeight();
 			this.menuTop();
 
@@ -57,9 +47,7 @@
 			$("#MSidebar").css("top", headerHeight + toolBarHeight);
 			$("#MSidebar").css("height", sidebarHeight);
 		},
-
 		leftShow : function() {
-
 			this.scale();
 
 			$("#MSidebarContainer").animate({
@@ -72,7 +60,6 @@
 
 			$(".MIconArrowRight").hide();
 		},
-
 		leftHide : function() {
 			$("#MSidebarContainer").animate({
 				minWidth : 0
@@ -84,7 +71,6 @@
 
 			$(".MIconArrowRight").show();
 		},
-
 		rightShow : function() {
 
 			this.scale();
@@ -99,7 +85,6 @@
 
 			$(".MIconArrowLeft").hide();
 		},
-
 		rightHide : function() {
 			$("#MSidebarContainer").animate({
 				minWidth : 0
@@ -111,7 +96,6 @@
 
 			$(".MIconArrowLeft").show();
 		},
-
 		triggerIndicatorInit : function() {
 			if ($('#MSidebarTriggerLeft').length != 0 && $('#MSidebarTriggerLeftIndicator').length == 0) {
 				$("#MSidebarTriggerLeft").append('<div id="MSidebarTriggerLeftIndicator"></div>');
@@ -121,9 +105,7 @@
 				$("#MSidebarTriggerRight").append('<div id="MSidebarTriggerRightIndicator"></div>');
 			}
 		},
-
 		triggerProximity : function(event) {
-
 			this.triggerIndicatorInit();
 
 			var mouseX = event.pageX;
@@ -134,7 +116,6 @@
 
 			//Left
 			if (document.getElementById("MSidebarTriggerLeftIndicator")) {
-
 				var indicatorWidth = $("#MSidebarTriggerLeftIndicator").width();
 
 				if (mouseX < indicationDistanceStart && mouseX != 0) {
@@ -143,13 +124,12 @@
 					$("#MSidebarTriggerLeftIndicator").css("left", indicatorCSSLeft);
 				} else {
 					$("#MSidebarTriggerLeftIndicator").css("left", -indicatorWidth);
-				};
+				}
 
-			};
+			}
 
 			//Right
 			if (document.getElementById("MSidebarTriggerRightIndicator")) {
-
 				var indicatorWidth = $("#MSidebarTriggerRightIndicator").width();
 
 				if (mouseX > windowWidth - indicationDistanceStart && mouseX != windowWidth) {
@@ -158,10 +138,9 @@
 					$("#MSidebarTriggerRightIndicator").css("right", indicatorCSSLeft);
 				} else {
 					$("#MSidebarTriggerRightIndicator").css("right", -indicatorWidth);
-				};
+				}
 
-			};
-
+			}
 		}
 	};
 
@@ -170,7 +149,6 @@
 })(window);
 
 $(window).load(function() {
-
 	MSidebar.scale();
 
 	MSidebar.menuPlaceholderHeight();

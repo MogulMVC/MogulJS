@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
 
 	MInputText = {
 		passWordToggle : function passwordToggle(id) {
@@ -9,8 +9,8 @@
 				element.type = "password";
 			}
 		}
-	};
+	}
 
 	window.MInputText = MInputText;
 
-})(window);
+})();

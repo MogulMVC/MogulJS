@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
 
 	var MURL = {
 		current : function() {
@@ -13,4 +13,4 @@
 	
 	window.MURL = MURL;
 
-})(window);
+})();

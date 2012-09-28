@@ -1,11 +1,7 @@
-(function(window) {
+(function() {
 
 	var MRatingsBar = {
-
 		setPercent : function(selector, value) {
-
-			console.log(value);
-
 			// If a value number is set
 			if (!isNaN(value) && value > 0) {
 				// Set the correct display
@@ -23,21 +19,18 @@
 				$(selector + ' .MRatingsBarFG').hide();
 			}
 		},
-
 		getPercent : function(selector) {
 			// ???
 			$(selector + ' .MRatingsBar').val();
 		}
-	};
+	}
 
 	window.MRatingsBar = MRatingsBar;
 
 })(window);
 
 $(document).ready(function() {
-
 	$("meter").each(function() {
-
 		// Get default settings to reapply later
 		var currentId = $(this).attr('id');
 		var currentPercent = $(this).attr('value');
@@ -54,7 +47,5 @@ $(document).ready(function() {
 
 		// Replace with the Mogul progress bar
 		$(this).replaceWith('<div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div>');
-
 	});
-
 });
