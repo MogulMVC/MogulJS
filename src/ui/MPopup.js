@@ -4,8 +4,8 @@
 (function() {
 
 	var MPopup = {
-		init : function(width, height) {
-
+		setup : function(selector, width, height) {
+			
 		},
 		setWidth : function(value) {
 
@@ -13,7 +13,7 @@
 		setHeight : function(value) {
 
 		}
-	};
+	}
 
 	window.MPopup = MPopup;
 

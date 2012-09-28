@@ -2,10 +2,10 @@
 
 	var MDraggableManager = {
 
-		setup : function(initializer) {
+		setup : function(selector) {
 
 			var drag = false;
-			var item = initializer;
+			var item = selector;
 
 			$(item).mousedown(function() {
 				drag = true;

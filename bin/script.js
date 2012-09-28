@@ -74,10 +74,10 @@ var rounded_large = '2em';$(window).load(function() {
 
 	var MDraggableManager = {
 
-		setup : function(initializer) {
+		setup : function(selector) {
 
 			var drag = false;
-			var item = initializer;
+			var item = selector;
 
 			$(item).mousedown(function() {
 				drag = true;
@@ -213,8 +213,8 @@ $(window).load(function() {
 (function() {
 
 	var MPopup = {
-		init : function(width, height) {
-
+		setup : function(selector, width, height) {
+			
 		},
 		setWidth : function(value) {
 
@@ -222,7 +222,7 @@ $(window).load(function() {
 		setHeight : function(value) {
 
 		}
-	};
+	}
 
 	window.MPopup = MPopup;
 
