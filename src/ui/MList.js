@@ -11,7 +11,7 @@
 			});
 
 			var i = 0;
-			$('#MSidebar li').each(function() {
+			$('#MSideBar li').each(function() {
 				$(this).delay(i).animate({
 					opacity : 1
 				}, speedNorm);
