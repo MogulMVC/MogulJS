@@ -129,7 +129,7 @@
 
 		tip : function() {
 			if (!this.$tip) {
-				this.$tip = $('<div class="MTip"></div>').html('<div class="MTipArrow"></div><div class="MTipInner shadow_large"></div>');
+				this.$tip = $('<div class="MTip"></div>').html('<div class="MTipArrow"></div><div class="MTipInner"></div>');
 			}
 			return this.$tip;
 		},

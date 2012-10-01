@@ -201,7 +201,18 @@ $(window).load(function() {
 	$("#MMainWindow img").animate({
 		opacity : 1
 	}, speedSlow);
-}); //Accepts a width and height. If height isn't set it will be automatic.
+}); $(document).ready(function() {
+	$('.MNote').each(function() {
+		var rotation = MMath.random(-8, 8);
+		$(this).css({
+			'-webkit-transform' : 'rotate(' + rotation + 'deg)',
+			'-moz-transform' : 'rotate(' + rotation + 'deg)',
+			'-o-transform' : 'rotate(' + rotation + 'deg)',
+			'-ms-transform' : 'rotate(' + rotation + 'deg)'
+		})
+	});
+});
+//Accepts a width and height. If height isn't set it will be automatic.
 //Also can have a modal background.
 
 (function() {
@@ -1321,7 +1332,7 @@ $(document).ready(function() {
 
 		tip : function() {
 			if (!this.$tip) {
-				this.$tip = $('<div class="MTip"></div>').html('<div class="MTipArrow"></div><div class="MTipInner shadow_large"></div>');
+				this.$tip = $('<div class="MTip"></div>').html('<div class="MTipArrow"></div><div class="MTipInner"></div>');
 			}
 			return this.$tip;
 		},
