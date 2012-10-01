@@ -500,10 +500,10 @@ $(document).ready(function() {
 	// Set the default state
 	MSideBar.updateUI();
 
-	$('#MListItem li input[type=checkbox]').each(function(index) {
+	$('#MSideBar li input[type=checkbox]').each(function(index) {
 		// Add a change event listener
 		// A label can change the state of the checkbox so I am using change instead of click
-		$(this).change(function() {
+		$(this).click(function() {
 			MSideBar.updateUI();
 		});
 	});
