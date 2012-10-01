@@ -1,12 +1,9 @@
 //Speed
-
-/* Needs Matching */
 var speedFast = 125;
 var speedNorm = 250;
 var speedSlow = 500; 
 
 //Color
-
 var mono_1 = '#0a0a0a';
 var mono_1_2 = '#141414'; /* Will Fix Later */
 var mono_1_3 = '#232323'; /* Will Fix Later */
@@ -51,6 +48,5 @@ var outline = mono_3;
 var outline_down = mono_2;
 		
 //Visual
-		
 var rounded = '3px'; //Same size as CSS
 var rounded_large = '2em';
