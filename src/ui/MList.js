@@ -9,14 +9,6 @@
 				}, speedNorm);
 				i = i + 50;
 			});
-
-			var i = 0;
-			$('#MSideBar li').each(function() {
-				$(this).delay(i).animate({
-					opacity : 1
-				}, speedNorm);
-				i = i + 50;
-			});
 		},
 		selectAll : function(selector) {
 			// Set a deault parameter

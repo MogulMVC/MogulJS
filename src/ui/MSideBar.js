@@ -1,32 +1,6 @@
 (function() {
 
 	var MSideBar = {
-		menuPlaceholderHeight : function() {
-			if (document.getElementById("MSideBarMenuFixed")) {
-				/*Placeholder height*/
-				var sidebar_menu_fixed_height = $("#MSideBarMenuFixed").height();
-				$("#MSideBarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
-			}
-		},
-		menuTop : function() {
-			if (document.getElementById("MSideBarMenuFixed")) {
-				/*Top Position*/
-				var headerHeight = $("#MHeader").height();
-				var toolBarHeight = $("#MToolBar").height();
-
-				if (isNaN(headerHeight)) {
-					headerHeight = 0;
-				};
-
-				if (isNaN(toolBarHeight)) {
-					toolBarHeight = 0;
-				};
-
-				var sidebarMenuTop = headerHeight + toolBarHeight;
-
-				$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
-			}
-		},
 		scale : function() {
 			this.menuPlaceholderHeight();
 			this.menuTop();
@@ -141,12 +115,89 @@
 				}
 
 			}
+		},
+		menuPlaceholderHeight : function() {
+			if (document.getElementById("MSideBarMenuFixed")) {
+				/*Placeholder height*/
+				var sidebar_menu_fixed_height = $("#MSideBarMenuFixed").height();
+				$("#MSideBarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
+			}
+		},
+		menuTop : function() {
+			if (document.getElementById("MSideBarMenuFixed")) {
+				/*Top Position*/
+				var headerHeight = $("#MHeader").height();
+				var toolBarHeight = $("#MToolBar").height();
+
+				if (isNaN(headerHeight)) {
+					headerHeight = 0;
+				};
+
+				if (isNaN(toolBarHeight)) {
+					toolBarHeight = 0;
+				};
+
+				var sidebarMenuTop = headerHeight + toolBarHeight;
+
+				$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
+			}
+		},
+		fadeIn : function() {
+			var i = 0;
+			$('#MSideBar li').each(function() {
+				$(this).delay(i).animate({
+					opacity : 1
+				}, speedNorm);
+				i = i + 50;
+			});
+		},
+		selectAll : function(selector) {
+			// Set a deault parameter
+			selector = typeof selector !== 'undefined' ? selector : '';
+
+			$('#MSideBar li input[type=checkbox]:visible').each(function() {
+				$(this).attr('checked', 'checked');
+				MSideBar.updateUI();
+			});
+		},
+		deselectAll : function(selector) {
+			// Set a deault parameter
+			selector = typeof selector !== 'undefined' ? selector : '';
+
+			$('#MSideBar li input[type=checkbox]').each(function() {
+				$(this).removeAttr('checked');
+				MSideBar.updateUI();
+			});
+		},
+		updateUI : function() {
+			$('#MSideBar li input[type=checkbox]').each(function(index) {
+				// Set the default state
+				if ($(this).is(':checked')) {
+					$(this).closest('li').addClass('active');
+				} else {
+					$(this).closest('li').removeClass('active');
+				}
+			});
 		}
 	};
 
 	window.MSideBar = MSideBar;
 
-})(window);
+})();
+
+// Setup checked when the page loads
+$(document).ready(function() {
+	// Set the default state
+	MSideBar.updateUI();
+
+	$('#MListItem li input[type=checkbox]').each(function(index) {
+		// Add a change event listener
+		// A label can change the state of the checkbox so I am using change instead of click
+		$(this).change(function() {
+			MSideBar.updateUI();
+		});
+	});
+});
 
 $(window).load(function() {
 	MSideBar.scale();
@@ -161,7 +212,8 @@ $(window).load(function() {
 	$("#MSideBar").mouseleave(function() {
 		$("#MSideBar").css("overflow-y", "hidden");
 	});
-
+	
+	MSideBar.fadeIn();
 });
 
 $(window).resize(function() {
