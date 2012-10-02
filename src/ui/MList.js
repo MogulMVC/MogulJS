@@ -1,7 +1,7 @@
 (function() {
 
 	var MList = {
-		fadeIn : function() {
+		/*fadeIn : function() {
 			var i = 0;
 			$('.MListItem').each(function() {
 				$(this).delay(i).animate({
@@ -9,7 +9,7 @@
 				}, speedNorm);
 				i = i + 50;
 			});
-		},
+		},*/
 		selectAll : function(selector) {
 			// Set a deault parameter
 			selector = typeof selector !== 'undefined' ? selector : '';
@@ -59,5 +59,5 @@ $(document).ready(function() {
 });
 
 $(window).load(function() {
-	MList.fadeIn();
+	//MList.fadeIn();
 });

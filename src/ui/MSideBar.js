@@ -142,7 +142,7 @@
 				$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
 			}
 		},
-		fadeIn : function() {
+		/*fadeIn : function() {
 			var i = 0;
 			$('#MSideBar li').each(function() {
 				$(this).delay(i).animate({
@@ -150,7 +150,7 @@
 				}, speedNorm);
 				i = i + 50;
 			});
-		},
+		},*/
 		selectAll : function(selector) {
 			// Set a deault parameter
 			selector = typeof selector !== 'undefined' ? selector : '';
@@ -213,7 +213,7 @@ $(window).load(function() {
 		$("#MSideBar").css("overflow-y", "hidden");
 	});
 	
-	MSideBar.fadeIn();
+	//MSideBar.fadeIn();
 });
 
 $(window).resize(function() {
