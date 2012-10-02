@@ -170,7 +170,8 @@
 			});
 		},
 		updateUI : function() {
-			$('#MSideBar li input[type=checkbox]').each(function(index) {
+			console.log('MSideBar updateUI');
+			$('#MSideBar li input[type=checkbox]').each(function() {
 				// Set the default state
 				if ($(this).is(':checked')) {
 					$(this).closest('li').addClass('active');
@@ -190,12 +191,14 @@ $(document).ready(function() {
 	// Set the default state
 	MSideBar.updateUI();
 
-	$('#MSideBar li input[type=checkbox]').each(function(index) {
-		// Add a change event listener
-		// A label can change the state of the checkbox so I am using change instead of click
-		$(this).click(function() {
-			MSideBar.updateUI();
-		});
+	//Tracking it with live so I can add new items and they still work
+	$('#MSideBar li input[type=checkbox]').live('click', function() {
+		console.log
+		MSideBar.updateUI();
+	});
+	
+	$(document).live('click', function(){
+		console.log('something');
 	});
 });
 
