@@ -1,21 +1,24 @@
-var MList = (function() {
+var MListItem = (function() {
 
-	function MList() {
-		_content = '';
+	function MListItem() {
+		_idString = '';
 	};
 
 	// Methods
-	MList.prototype.toHTML = function() {
-		return '<li class="MListItem">' + _content + '</li>';
+	MListItem.prototype.toHTML = function() {
+		console.log("sdsadasdasdas");
+		return '<li ' + _idString + ' class="MListItem"></li>';
 	};
 
 	// Setters / Getters
-	MList.prototype.setContent = function(value) {
-		_content = value;
+	MListItem.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
 	};
 
 	// Static Methods
-	MList.selectAll = function(selector) {
+	MListItem.selectAll = function(selector) {
 		// Set a deault parameter
 		selector = typeof selector !== 'undefined' ? selector : '';
 
@@ -25,7 +28,7 @@ var MList = (function() {
 		});
 	};
 
-	MList.deselectAll = function(selector) {
+	MListItem.deselectAll = function(selector) {
 		// Set a deault parameter
 		selector = typeof selector !== 'undefined' ? selector : '';
 
@@ -35,8 +38,8 @@ var MList = (function() {
 		});
 	};
 
-	MList.updateUI = function() {
-		$('.MListItem input[type=checkbox]').each(function(index) {
+	MListItem.updateUI = function() {
+		$('.MListItem input[type=checkbox]').each(function() {
 			// Set the default state
 			if ($(this).is(':checked')) {
 				$(this).closest('.MListItem').addClass('active');
@@ -46,20 +49,18 @@ var MList = (function() {
 		});
 	};
 
-	return MList;
+	return MListItem;
 
 })();
 
 // Setup checked when the page loads
 $(document).ready(function() {
 	// Set the default state
-	MList.updateUI();
+	MListItem.updateUI();
 
-	$('.MListItem input[type=checkbox]').each(function(index) {
+	$('.MListItem input[type=checkbox]').live('change', function() {
 		// Add a change event listener
 		// A label can change the state of the checkbox so I am using change instead of click
-		$(this).change(function() {
-			MList.updateUI();
-		});
+		MListItem.updateUI();
 	});
 });

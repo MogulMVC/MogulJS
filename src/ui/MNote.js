@@ -1,19 +1,30 @@
 var MNote = (function() {
 
 	function MNote() {
-		_content = "Note";
+		_idString = '';
+		_text = 'Note';
 	};
 
 	// Methods
 	MNote.prototype.toHTML = function() {
-		return '<span class="MNote">' + _content + '</span>';
+		return '<span ' + _idString + ' class="MNote">' + _text + '</span>';
 	};
 
 	// Setters / Getters
-	MNote.prototype.setContent = function(value) {
-		_content = value;
+	MNote.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
 	};
-	
+
+	MNote.prototype.setText = function(value) {
+		if ( typeof value == 'string') {
+			if (value != "" && value != null) {
+				_text = value;
+			}
+		}
+	};
+
 	return MNote;
 
 })();

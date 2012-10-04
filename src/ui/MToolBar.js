@@ -1,21 +1,25 @@
-(function() {
+var MToolBar = (function() {
 
-	var MToolBar = {
-		position : function() {
-			if (!document.getElementById("MHeader") && !document.getElementById("MHeaderPlaceholder")) {
-				$("#MToolBar").css("top", "0px");
-			}
-			this.placeholderScale();
-		},
-		placeholderScale : function() {
-			if (!document.getElementById("MToolBar")) {
-				var toolbarHeight = $("#MToolBar").height();
-				$("#MToolBarPlaceholder").height(toolbarHeight);
-			}
+	function MToolBar() {
+
+	};
+
+	MToolBar.position = function() {
+		if ($("MHeader").length != 0 && $("MHeaderPlaceholder").length != 0) {
+			$("#MToolBar").css("top", "0px");
 		}
-	}
+		this.placeholderScale();
+	};
 
-	window.MToolBar = MToolBar;
+	MToolBar.placeholderScale = function() {
+		console.log("something");
+		if ($("MToolBar") != 0) {
+			var toolbarHeight = $("#MToolBar").height();
+			$("#MToolBarPlaceholder").height(toolbarHeight);
+		}
+	};
+
+	return MToolBar;
 
 })();
 

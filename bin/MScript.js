@@ -105,16 +105,23 @@ var rounded_large = '2em';$(window).load(function() {
 var MButton = (function() {
 
 	function MButton() {
+		_idString = '';
 		_color = '';
-		_label = 'Button';
+		_text = 'Button';
 	};
 
 	// Methods
 	MButton.prototype.toHTML = function() {
-		return '<button class="MButton' + _color + '">' + _label + '</button>';
+		return '<button ' + _idString + ' class="MButton' + _color + '">' + _text + '</button>';
 	};
 
 	// Setters / Getters
+	MButton.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
+	};
+
 	MButton.prototype.setColor = function(value) {
 		if ( typeof value == 'string') {
 			value.toUpperCase();
@@ -124,10 +131,10 @@ var MButton = (function() {
 		}
 	};
 
-	MButton.prototype.setLabel = function(value) {
+	MButton.prototype.setText = function(value) {
 		if ( typeof value == 'string') {
 			if (value != "" && value != null) {
-				_label = value;
+				_text = value;
 			}
 		}
 	};
@@ -144,32 +151,9 @@ $(document).ready(function() {
 var MInputText = (function() {
 
 	function MInputText() {
-		_type = 'text';
-		_placeholder = '';
+
 	};
 
-	// Methods
-	MInputText.prototype.toHTML = function() {
-		return '<input type="' + _type + '" placeholder="' + _placeholder + '" />'
-	};
-
-	// Setters / Getters
-	MInputText.prototype.setType = function(value) {
-		if ( typeof value == 'string') {
-			if (value != '' && value != null) {
-				_type = value;
-			}
-		}
-	};
-
-	MInputText.prototype.setPlaceholder = function(value) {
-		if ( typeof value == 'string') {
-			if (value != '' && value != null) {
-				_placeholder = value;
-			}
-		}
-	};
-	
 	// Static Methods
 	MInputText.passWordToggle = function(id) {
 		var element = document.getElementById(id);
@@ -183,24 +167,27 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
-var MList = (function() {
+var MListItem = (function() {
 
-	function MList() {
-		_content = '';
+	function MListItem() {
+		_idString = '';
 	};
 
 	// Methods
-	MList.prototype.toHTML = function() {
-		return '<li class="MListItem">' + _content + '</li>';
+	MListItem.prototype.toHTML = function() {
+		console.log("sdsadasdasdas");
+		return '<li ' + _idString + ' class="MListItem"></li>';
 	};
 
 	// Setters / Getters
-	MList.prototype.setContent = function(value) {
-		_content = value;
+	MListItem.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
 	};
 
 	// Static Methods
-	MList.selectAll = function(selector) {
+	MListItem.selectAll = function(selector) {
 		// Set a deault parameter
 		selector = typeof selector !== 'undefined' ? selector : '';
 
@@ -210,7 +197,7 @@ var MList = (function() {
 		});
 	};
 
-	MList.deselectAll = function(selector) {
+	MListItem.deselectAll = function(selector) {
 		// Set a deault parameter
 		selector = typeof selector !== 'undefined' ? selector : '';
 
@@ -220,8 +207,8 @@ var MList = (function() {
 		});
 	};
 
-	MList.updateUI = function() {
-		$('.MListItem input[type=checkbox]').each(function(index) {
+	MListItem.updateUI = function() {
+		$('.MListItem input[type=checkbox]').each(function() {
 			// Set the default state
 			if ($(this).is(':checked')) {
 				$(this).closest('.MListItem').addClass('active');
@@ -231,21 +218,19 @@ var MList = (function() {
 		});
 	};
 
-	return MList;
+	return MListItem;
 
 })();
 
 // Setup checked when the page loads
 $(document).ready(function() {
 	// Set the default state
-	MList.updateUI();
+	MListItem.updateUI();
 
-	$('.MListItem input[type=checkbox]').each(function(index) {
+	$('.MListItem input[type=checkbox]').live('change', function() {
 		// Add a change event listener
 		// A label can change the state of the checkbox so I am using change instead of click
-		$(this).change(function() {
-			MList.updateUI();
-		});
+		MListItem.updateUI();
 	});
 });
 $(window).load(function() {
@@ -253,22 +238,34 @@ $(window).load(function() {
 	$("#MMainWindow img").animate({
 		opacity : 1
 	}, speedSlow);
-}); var MNote = (function() {
+});
+var MNote = (function() {
 
 	function MNote() {
-		_content = "Note";
+		_idString = '';
+		_text = 'Note';
 	};
 
 	// Methods
 	MNote.prototype.toHTML = function() {
-		return '<span class="MNote">' + _content + '</span>';
+		return '<span ' + _idString + ' class="MNote">' + _text + '</span>';
 	};
 
 	// Setters / Getters
-	MNote.prototype.setContent = function(value) {
-		_content = value;
+	MNote.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
 	};
-	
+
+	MNote.prototype.setText = function(value) {
+		if ( typeof value == 'string') {
+			if (value != "" && value != null) {
+				_text = value;
+			}
+		}
+	};
+
 	return MNote;
 
 })();
@@ -287,19 +284,25 @@ $(document).ready(function() {
 var MPopup = (function() {
 
 	function MPopup() {
+		_idString = '';
 		_width = 400;
 		_height = 300;
 		_title = 'Popup';
-		_content = 'null';
 	};
 
 	// Methods
 	MPopup.prototype.toHTML = function() {
 		var widthOffset = -1 * (_width / 2);
-		return '<div class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p>' + _content + '</div>';
+		return '<div ' + _idString + ' class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p></div>';
 	};
 
 	// Setters / Getters
+	MPopup.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
+	};
+
 	MPopup.prototype.setWidth = function(value) {
 		_width = value;
 	};
@@ -312,23 +315,32 @@ var MPopup = (function() {
 		_title = value;
 	};
 
-	MPopup.prototype.setContent = function(value) {
-		_content = value;
-	};
-	
 	return MPopup;
 
 })();
 
+$(document).ready(function() {
+	$('.MPopup .MIconClose').live('click', function() {
+		$(this).parent().hide();
+	});
+});
 var MProgressBar = (function() {
 
 	function MProgressBar() {
+		_idString = '';
 		_percent = 0;
 	};
 
 	// Methods
 	MProgressBar.prototype.toHTML = function() {
-		return '<div class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + _percent + '%"><span class="MProgressBarIndicator">' + _percent + '%</span></div></div></div>';
+		return '<div ' + _idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + _percent + '%"><span class="MProgressBarIndicator">' + _percent + '%</span></div></div></div>';
+	};
+
+	// Static Methods
+	MProgressBar.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
 	};
 
 	MProgressBar.prototype.setPercent = function(value) {
@@ -338,7 +350,6 @@ var MProgressBar = (function() {
 		}
 	};
 
-	// Static Methods
 	MProgressBar.setPercent = function(selector, value) {
 		$(selector + ' .MProgressBarFG').css('width', value + '%');
 		$(selector + ' .MProgressBarIndicator').html(value + '%');
@@ -377,19 +388,26 @@ $(document).ready(function() {
 var MRatingsBar = (function() {
 
 	function MRatingsBar() {
+		_idString = '';
 		_percent = 0;
 	};
 
 	// Methods
 	MRatingsBar.prototype.toHTML = function() {
-		return '<div class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div>';
+		return '<div class="MRatingsBar"><div ' + _idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div></div>';
+	};
+
+	// Static Methods
+	MRatingsBar.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
 	};
 
 	MRatingsBar.prototype.setPercent = function(value) {
-		if ( typeof _percent == 'number') {
-			if (_percent > 0 && _percent < 100) {
-				_percent = value;
-			}
+		value = parseInt(value);
+		if (value > 0 && value < 100) {
+			_percent = value;
 		}
 	};
 
@@ -440,183 +458,196 @@ $(document).ready(function() {
 
 		// Replace with the Mogul progress bar
 		// Might need to fix this by creating a new object
-		$(this).replaceWith('<div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div>');
+		$(this).replaceWith('<div class="MRatingsBar"><div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div></div>');
 	});
 });
-(function() {
+var MSideBar = (function() {
 
-	var MSideBar = {
-		scale : function() {
-			this.menuPlaceholderHeight();
-			this.menuTop();
+	function MSideBar() {
 
-			var windowHeight = $(window).height();
+	};
+
+	MSideBar.scale = function() {
+		this.menuPlaceholderHeight();
+		this.menuTop();
+
+		var windowHeight = $(window).height();
+		var headerHeight = $("#MHeader").height();
+		var toolBarHeight = $("#MToolBar").height();
+
+		if (isNaN(headerHeight)) {
+			headerHeight = 0;
+		}
+
+		if (isNaN(toolBarHeight)) {
+			toolBarHeight = 0;
+		}
+
+		var sidebarHeight = windowHeight - headerHeight - toolBarHeight;
+		$("#MSideBar").css("top", headerHeight + toolBarHeight);
+		$("#MSideBar").css("height", sidebarHeight);
+	};
+
+	MSideBar.leftShow = function() {
+		this.scale();
+
+		$("#MSideBarContainer").animate({
+			minWidth : 352
+		}, speedNorm);
+
+		$("#MSideBar").animate({
+			left : 0
+		}, speedNorm);
+
+		$(".MIconArrowRight").hide();
+	};
+
+	MSideBar.leftHide = function() {
+		$("#MSideBarContainer").animate({
+			minWidth : 0
+		}, speedNorm);
+
+		$("#MSideBar").animate({
+			left : -360
+		}, speedNorm);
+
+		$(".MIconArrowRight").show();
+	};
+
+	MSideBar.rightShow = function() {
+		this.scale();
+
+		$("#MSideBarContainer").animate({
+			minWidth : 352
+		}, speedNorm);
+
+		$("#MSideBar").animate({
+			right : 0
+		}, speedNorm);
+
+		$(".MIconArrowLeft").hide();
+	};
+
+	MSideBar.rightHide = function() {
+		$("#MSideBarContainer").animate({
+			minWidth : 0
+		}, speedNorm);
+
+		$("#MSideBar").animate({
+			right : -360
+		}, speedNorm);
+
+		$(".MIconArrowLeft").show();
+	};
+
+	MSideBar.triggerIndicatorInit = function() {
+		if ($('#MSideBarTriggerLeft').length != 0 && $('#MSideBarTriggerLeftIndicator').length == 0) {
+			$("#MSideBarTriggerLeft").append('<div id="MSideBarTriggerLeftIndicator"></div>');
+		}
+
+		if ($('#MSideBarTriggerRight').length != 0 && $('#MSideBarTriggerRightIndicator').length == 0) {
+			$("#MSideBarTriggerRight").append('<div id="MSideBarTriggerRightIndicator"></div>');
+		}
+	};
+
+	MSideBar.triggerProximity = function(event) {
+		this.triggerIndicatorInit();
+
+		var mouseX = event.pageX;
+		var windowWidth = $(window).width();
+
+		//Distace away that the indicator should show, in px
+		var indicationDistanceStart = 150;
+
+		//Left
+		if (document.getElementById("MSideBarTriggerLeftIndicator")) {
+			var indicatorWidth = $("#MSideBarTriggerLeftIndicator").width();
+
+			if (mouseX < indicationDistanceStart && mouseX != 0) {
+				var percentAwayDecimal = mouseX / indicationDistanceStart;
+				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
+				$("#MSideBarTriggerLeftIndicator").css("left", indicatorCSSLeft);
+			} else {
+				$("#MSideBarTriggerLeftIndicator").css("left", -indicatorWidth);
+			}
+
+		}
+
+		//Right
+		if (document.getElementById("MSideBarTriggerRightIndicator")) {
+			var indicatorWidth = $("#MSideBarTriggerRightIndicator").width();
+
+			if (mouseX > windowWidth - indicationDistanceStart && mouseX != windowWidth) {
+				var percentAwayDecimal = (windowWidth - mouseX) / indicationDistanceStart;
+				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
+				$("#MSideBarTriggerRightIndicator").css("right", indicatorCSSLeft);
+			} else {
+				$("#MSideBarTriggerRightIndicator").css("right", -indicatorWidth);
+			}
+
+		}
+	};
+
+	MSideBar.menuPlaceholderHeight = function() {
+		if (document.getElementById("MSideBarMenuFixed")) {
+			/*Placeholder height*/
+			var sidebar_menu_fixed_height = $("#MSideBarMenuFixed").height();
+			$("#MSideBarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
+		}
+	};
+
+	MSideBar.menuTop = function() {
+		if (document.getElementById("MSideBarMenuFixed")) {
+			/*Top Position*/
 			var headerHeight = $("#MHeader").height();
 			var toolBarHeight = $("#MToolBar").height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
-			}
+			};
 
 			if (isNaN(toolBarHeight)) {
 				toolBarHeight = 0;
-			}
+			};
 
-			var sidebarHeight = windowHeight - headerHeight - toolBarHeight;
-			$("#MSideBar").css("top", headerHeight + toolBarHeight);
-			$("#MSideBar").css("height", sidebarHeight);
-		},
-		leftShow : function() {
-			this.scale();
+			var sidebarMenuTop = headerHeight + toolBarHeight;
 
-			$("#MSideBarContainer").animate({
-				minWidth : 352
-			}, speedNorm);
-
-			$("#MSideBar").animate({
-				left : 0
-			}, speedNorm);
-
-			$(".MIconArrowRight").hide();
-		},
-		leftHide : function() {
-			$("#MSideBarContainer").animate({
-				minWidth : 0
-			}, speedNorm);
-
-			$("#MSideBar").animate({
-				left : -360
-			}, speedNorm);
-
-			$(".MIconArrowRight").show();
-		},
-		rightShow : function() {
-			this.scale();
-
-			$("#MSideBarContainer").animate({
-				minWidth : 352
-			}, speedNorm);
-
-			$("#MSideBar").animate({
-				right : 0
-			}, speedNorm);
-
-			$(".MIconArrowLeft").hide();
-		},
-		rightHide : function() {
-			$("#MSideBarContainer").animate({
-				minWidth : 0
-			}, speedNorm);
-
-			$("#MSideBar").animate({
-				right : -360
-			}, speedNorm);
-
-			$(".MIconArrowLeft").show();
-		},
-		triggerIndicatorInit : function() {
-			if ($('#MSideBarTriggerLeft').length != 0 && $('#MSideBarTriggerLeftIndicator').length == 0) {
-				$("#MSideBarTriggerLeft").append('<div id="MSideBarTriggerLeftIndicator"></div>');
-			}
-
-			if ($('#MSideBarTriggerRight').length != 0 && $('#MSideBarTriggerRightIndicator').length == 0) {
-				$("#MSideBarTriggerRight").append('<div id="MSideBarTriggerRightIndicator"></div>');
-			}
-		},
-		triggerProximity : function(event) {
-			this.triggerIndicatorInit();
-
-			var mouseX = event.pageX;
-			var windowWidth = $(window).width();
-
-			//Distace away that the indicator should show, in px
-			var indicationDistanceStart = 150;
-
-			//Left
-			if (document.getElementById("MSideBarTriggerLeftIndicator")) {
-				var indicatorWidth = $("#MSideBarTriggerLeftIndicator").width();
-
-				if (mouseX < indicationDistanceStart && mouseX != 0) {
-					var percentAwayDecimal = mouseX / indicationDistanceStart;
-					var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-					$("#MSideBarTriggerLeftIndicator").css("left", indicatorCSSLeft);
-				} else {
-					$("#MSideBarTriggerLeftIndicator").css("left", -indicatorWidth);
-				}
-
-			}
-
-			//Right
-			if (document.getElementById("MSideBarTriggerRightIndicator")) {
-				var indicatorWidth = $("#MSideBarTriggerRightIndicator").width();
-
-				if (mouseX > windowWidth - indicationDistanceStart && mouseX != windowWidth) {
-					var percentAwayDecimal = (windowWidth - mouseX) / indicationDistanceStart;
-					var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-					$("#MSideBarTriggerRightIndicator").css("right", indicatorCSSLeft);
-				} else {
-					$("#MSideBarTriggerRightIndicator").css("right", -indicatorWidth);
-				}
-
-			}
-		},
-		menuPlaceholderHeight : function() {
-			if (document.getElementById("MSideBarMenuFixed")) {
-				/*Placeholder height*/
-				var sidebar_menu_fixed_height = $("#MSideBarMenuFixed").height();
-				$("#MSideBarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
-			}
-		},
-		menuTop : function() {
-			if (document.getElementById("MSideBarMenuFixed")) {
-				/*Top Position*/
-				var headerHeight = $("#MHeader").height();
-				var toolBarHeight = $("#MToolBar").height();
-
-				if (isNaN(headerHeight)) {
-					headerHeight = 0;
-				};
-
-				if (isNaN(toolBarHeight)) {
-					toolBarHeight = 0;
-				};
-
-				var sidebarMenuTop = headerHeight + toolBarHeight;
-
-				$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
-			}
-		},
-		selectAll : function(selector) {
-			// Set a deault parameter
-			selector = typeof selector !== 'undefined' ? selector : '';
-
-			$('#MSideBar li input[type=checkbox]:visible').each(function() {
-				$(this).attr('checked', 'checked');
-				MSideBar.updateUI();
-			});
-		},
-		deselectAll : function(selector) {
-			// Set a deault parameter
-			selector = typeof selector !== 'undefined' ? selector : '';
-
-			$('#MSideBar li input[type=checkbox]').each(function() {
-				$(this).removeAttr('checked');
-				MSideBar.updateUI();
-			});
-		},
-		updateUI : function() {
-			$('#MSideBar li input[type=checkbox]').each(function() {
-				// Set the default state
-				if ($(this).is(':checked')) {
-					$(this).closest('li').addClass('active');
-				} else {
-					$(this).closest('li').removeClass('active');
-				}
-			});
+			$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
 		}
 	};
 
-	window.MSideBar = MSideBar;
+	MSideBar.selectAll = function(selector) {
+		// Set a deault parameter
+		selector = typeof selector !== 'undefined' ? selector : '';
+
+		$('#MSideBar li input[type=checkbox]:visible').each(function() {
+			$(this).attr('checked', 'checked');
+			MSideBar.updateUI();
+		});
+	};
+
+	MSideBar.deselectAll = function(selector) {
+		// Set a deault parameter
+		selector = typeof selector !== 'undefined' ? selector : '';
+
+		$('#MSideBar li input[type=checkbox]').each(function() {
+			$(this).removeAttr('checked');
+			MSideBar.updateUI();
+		});
+	};
+
+	MSideBar.updateUI = function() {
+		$('#MSideBar li input[type=checkbox]').each(function() {
+			// Set the default state
+			if ($(this).is(':checked')) {
+				$(this).closest('li').addClass('active');
+			} else {
+				$(this).closest('li').removeClass('active');
+			}
+		});
+	}
+
+	return MSideBar;
 
 })();
 
@@ -627,7 +658,6 @@ $(document).ready(function() {
 
 	//Tracking it with live so I can add new items and they still work
 	$('#MSideBar li input[type=checkbox]').live('click', function() {
-		console.log
 		MSideBar.updateUI();
 	});
 });
@@ -666,25 +696,39 @@ var MSlider = (function() {
 
 	};
 
+	MSlider.prototype.setID = function() {
+
+	};
+
 })();
 var MSystemMessage = (function() {
 
 	function MSystemMessage() {
+		_idString = '';
 		_message = 'System Message';
 	};
 
+	// Methods
 	MSystemMessage.prototype.toHTML = function() {
-		return '<div class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _message + '</span></div>';
+		return '<div ' + _idString + ' class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _message + '</span></div>';
 	};
 
-	MSystemMessage.prototype.setMessage = function(value) {
+	// Getters / Setters
+	MSystemMessage.prototype.setID = function(value) {
 		if ( typeof value == 'string') {
-			if (value != '' && value != null) {
-				_message = value;
+			_idString = 'id=' + value;
+		}
+	};
+
+	MSystemMessage.prototype.setText = function(value) {
+		if ( typeof value == 'string') {
+			if (value != "" && value != null) {
+				_text = value;
 			}
 		}
 	};
 
+	// Static Methods
 	MSystemMessage.containerPostion = function() {
 		var headerHeight = $("#MHeader").height();
 		var toolbarHeight = $("#MToolBar").height();
@@ -698,7 +742,7 @@ var MSystemMessage = (function() {
 		}
 
 		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
-	}
+	};
 
 	return MSystemMessage;
 
@@ -747,6 +791,10 @@ $(document).ready(function() {
 		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
 	}
 	$("#MSystemMessageContainer").fadeIn(speedSlow);
+
+	$('.MSystemMessage .MIconClose').live('click', function() {
+		$(this).parent().remove();
+	});
 });
 
 $(window).load(function() {
@@ -1735,24 +1783,28 @@ $(document).ready(function() {
 		gravity : "E",
 		delayIn : speedSlow
 	});
-}); (function() {
+}); var MToolBar = (function() {
 
-	var MToolBar = {
-		position : function() {
-			if (!document.getElementById("MHeader") && !document.getElementById("MHeaderPlaceholder")) {
-				$("#MToolBar").css("top", "0px");
-			}
-			this.placeholderScale();
-		},
-		placeholderScale : function() {
-			if (!document.getElementById("MToolBar")) {
-				var toolbarHeight = $("#MToolBar").height();
-				$("#MToolBarPlaceholder").height(toolbarHeight);
-			}
+	function MToolBar() {
+
+	};
+
+	MToolBar.position = function() {
+		if ($("MHeader").length != 0 && $("MHeaderPlaceholder").length != 0) {
+			$("#MToolBar").css("top", "0px");
 		}
-	}
+		this.placeholderScale();
+	};
 
-	window.MToolBar = MToolBar;
+	MToolBar.placeholderScale = function() {
+		console.log("something");
+		if ($("MToolBar") != 0) {
+			var toolbarHeight = $("#MToolBar").height();
+			$("#MToolBarPlaceholder").height(toolbarHeight);
+		}
+	};
+
+	return MToolBar;
 
 })();
 

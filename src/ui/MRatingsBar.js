@@ -1,19 +1,26 @@
 var MRatingsBar = (function() {
 
 	function MRatingsBar() {
+		_idString = '';
 		_percent = 0;
 	};
 
 	// Methods
 	MRatingsBar.prototype.toHTML = function() {
-		return '<div class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div>';
+		return '<div class="MRatingsBar"><div ' + _idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div></div>';
+	};
+
+	// Static Methods
+	MRatingsBar.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
 	};
 
 	MRatingsBar.prototype.setPercent = function(value) {
-		if ( typeof _percent == 'number') {
-			if (_percent > 0 && _percent < 100) {
-				_percent = value;
-			}
+		value = parseInt(value);
+		if (value > 0 && value < 100) {
+			_percent = value;
 		}
 	};
 
@@ -64,6 +71,6 @@ $(document).ready(function() {
 
 		// Replace with the Mogul progress bar
 		// Might need to fix this by creating a new object
-		$(this).replaceWith('<div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div>');
+		$(this).replaceWith('<div class="MRatingsBar"><div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div></div>');
 	});
 });

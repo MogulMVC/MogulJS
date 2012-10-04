@@ -1,16 +1,23 @@
 var MButton = (function() {
 
 	function MButton() {
+		_idString = '';
 		_color = '';
-		_label = 'Button';
+		_text = 'Button';
 	};
 
 	// Methods
 	MButton.prototype.toHTML = function() {
-		return '<button class="MButton' + _color + '">' + _label + '</button>';
+		return '<button ' + _idString + ' class="MButton' + _color + '">' + _text + '</button>';
 	};
 
 	// Setters / Getters
+	MButton.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
+	};
+
 	MButton.prototype.setColor = function(value) {
 		if ( typeof value == 'string') {
 			value.toUpperCase();
@@ -20,10 +27,10 @@ var MButton = (function() {
 		}
 	};
 
-	MButton.prototype.setLabel = function(value) {
+	MButton.prototype.setText = function(value) {
 		if ( typeof value == 'string') {
 			if (value != "" && value != null) {
-				_label = value;
+				_text = value;
 			}
 		}
 	};

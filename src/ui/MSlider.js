@@ -8,4 +8,8 @@ var MSlider = (function() {
 
 	};
 
+	MSlider.prototype.setID = function() {
+
+	};
+
 })();
