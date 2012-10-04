@@ -66,6 +66,12 @@ var rounded_large = '2em';$(window).load(function() {
 	//$(".MHoverMessage").addTouch();
 
 });
+/*
+ * 
+ * A Work In Progess
+ * 
+ */
+
 (function() {
 
 	var MDraggableManager = {
@@ -102,6 +108,7 @@ var rounded_large = '2em';$(window).load(function() {
 	window.MDraggableManager = MDraggableManager;
 
 })();
+// Class
 var MButton = (function() {
 
 	function MButton() {
@@ -143,11 +150,13 @@ var MButton = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$('input[type="file"]').addClass('MButtonUploadInput');
 	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
 	$('.MButtonUpload').append('<span>Select File</span>');
 });
+// Class
 var MInputText = (function() {
 
 	function MInputText() {
@@ -167,6 +176,7 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
+// Class
 var MListItem = (function() {
 
 	function MListItem() {
@@ -221,7 +231,7 @@ var MListItem = (function() {
 
 })();
 
-// Setup checked when the page loads
+// Bootstrapper
 $(document).ready(function() {
 	// Set the default state
 	MListItem.updateUI();
@@ -232,12 +242,14 @@ $(document).ready(function() {
 		MListItem.updateUI();
 	});
 });
+// Bootstrapper
 $(window).load(function() {
 	// Fade in all images
 	$("#MMainWindow img").animate({
 		opacity : 1
 	}, speedSlow);
 });
+// Class
 var MNote = (function() {
 
 	function MNote() {
@@ -269,6 +281,7 @@ var MNote = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$('.MNote').each(function() {
 		var rotation = MMath.random(-8, 8);
@@ -280,6 +293,7 @@ $(document).ready(function() {
 		})
 	});
 });
+// Class
 var MPopup = (function() {
 
 	function MPopup() {
@@ -318,11 +332,13 @@ var MPopup = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$('.MPopup .MIconClose').live('click', function() {
 		$(this).closest('.MPopupContainer').hide();
 	});
 });
+// Class
 var MProgressBar = (function() {
 
 	function MProgressBar() {
@@ -363,6 +379,7 @@ var MProgressBar = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$("progress").each(function() {
 		// Get default settings to reapply later
@@ -384,6 +401,7 @@ $(document).ready(function() {
 		$(this).replaceWith('<div ' + idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
 	});
 });
+// Class
 var MRatingsBar = (function() {
 
 	function MRatingsBar() {
@@ -439,6 +457,7 @@ var MRatingsBar = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$("meter").each(function() {
 		// Get default settings to reapply later
@@ -460,6 +479,7 @@ $(document).ready(function() {
 		$(this).replaceWith('<div class="MRatingsBar"><div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div></div>');
 	});
 });
+// Class
 var MSideBar = (function() {
 
 	function MSideBar() {
@@ -650,7 +670,7 @@ var MSideBar = (function() {
 
 })();
 
-// Setup checked when the page loads
+// Bootstrapper
 $(document).ready(function() {
 	// Set the default state
 	MSideBar.updateUI();
@@ -685,6 +705,7 @@ $(window).resize(function() {
 $(document).mousemove(function(event) {
 	MSideBar.triggerProximity(event);
 });
+// Class
 var MSlider = (function() {
 
 	function MSlider() {
@@ -700,6 +721,8 @@ var MSlider = (function() {
 	};
 
 })();
+
+// Class
 var MSystemMessageContainer = (function(){
 	
 	function MSystemMessageContainer(){
@@ -756,6 +779,7 @@ var MSystemMessage = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	//Add a message container if one doesnt exist
 	if ($('#MSystemMessageContainer').length == 0) {
@@ -1424,7 +1448,7 @@ $(window).resize(function() {
 
 })(jQuery);
 
-//Setup the default MTabWidget
+// Bootstrapper
 $(document).ready(function() {
 	$('.MTabWidget').MTab();
 }); /*
@@ -1713,7 +1737,7 @@ $(document).ready(function() {
 
 })(jQuery);
 
-//Setup the default MTip
+// Bootstrapper
 $(document).ready(function() {
 	$("[MTip=n],[MTip=N]").MTip({
 		gravity : "N",
@@ -1754,7 +1778,8 @@ $(document).ready(function() {
 		gravity : "E",
 		delayIn : speedSlow
 	});
-}); var MToolBar = (function() {
+}); // Class
+var MToolBar = (function() {
 
 	function MToolBar() {
 
@@ -1777,7 +1802,7 @@ $(document).ready(function() {
 	return MToolBar;
 
 })();
-
+// Bootstrapper
 $(window).load(function() {
 	MToolBar.position();
 });
