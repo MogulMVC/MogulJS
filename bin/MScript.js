@@ -160,7 +160,6 @@ $(document).ready(function() {
 var MInputText = (function() {
 
 	function MInputText() {
-
 	};
 
 	// Static Methods
@@ -177,6 +176,47 @@ var MInputText = (function() {
 
 })();
 // Class
+var MList = (function() {
+
+	function MList() {
+	};
+
+	// Static Methods
+	MList.selectAll = function(selector) {
+		// Set a deault parameter
+		selector = typeof selector !== 'undefined' ? selector : '';
+
+		$(selector + ' .MListItem input[type=checkbox]:visible').each(function() {
+			$(this).attr('checked', 'checked');
+			MList.updateUI();
+		});
+	};
+
+	MList.deselectAll = function(selector) {
+		// Set a deault parameter
+		selector = typeof selector !== 'undefined' ? selector : '';
+
+		$(selector + ' .MListItem input[type=checkbox]').each(function() {
+			$(this).removeAttr('checked');
+			MList.updateUI();
+		});
+	};
+
+	MList.updateUI = function() {
+		$('.MListItem input[type=checkbox]').each(function() {
+			// Set the default state
+			if ($(this).is(':checked')) {
+				$(this).closest('.MListItem').addClass('active');
+			} else {
+				$(this).closest('.MListItem').removeClass('active');
+			}
+		});
+	};
+
+	return MList;
+
+})();
+
 var MListItem = (function() {
 
 	function MListItem() {
@@ -195,38 +235,6 @@ var MListItem = (function() {
 		}
 	};
 
-	// Static Methods
-	MListItem.selectAll = function(selector) {
-		// Set a deault parameter
-		selector = typeof selector !== 'undefined' ? selector : '';
-
-		$(selector + ' .MListItem input[type=checkbox]:visible').each(function() {
-			$(this).attr('checked', 'checked');
-			MList.updateUI();
-		});
-	};
-
-	MListItem.deselectAll = function(selector) {
-		// Set a deault parameter
-		selector = typeof selector !== 'undefined' ? selector : '';
-
-		$(selector + ' .MListItem input[type=checkbox]').each(function() {
-			$(this).removeAttr('checked');
-			MList.updateUI();
-		});
-	};
-
-	MListItem.updateUI = function() {
-		$('.MListItem input[type=checkbox]').each(function() {
-			// Set the default state
-			if ($(this).is(':checked')) {
-				$(this).closest('.MListItem').addClass('active');
-			} else {
-				$(this).closest('.MListItem').removeClass('active');
-			}
-		});
-	};
-
 	return MListItem;
 
 })();
@@ -234,12 +242,12 @@ var MListItem = (function() {
 // Bootstrapper
 $(document).ready(function() {
 	// Set the default state
-	MListItem.updateUI();
+	MList.updateUI();
 
 	$('.MListItem input[type=checkbox]').live('change', function() {
 		// Add a change event listener
 		// A label can change the state of the checkbox so I am using change instead of click
-		MListItem.updateUI();
+		MList.updateUI();
 	});
 });
 // Bootstrapper
@@ -485,7 +493,6 @@ $(document).ready(function() {
 var MSideBar = (function() {
 
 	function MSideBar() {
-
 	};
 
 	MSideBar.scale = function() {
@@ -711,7 +718,6 @@ $(document).mousemove(function(event) {
 var MSlider = (function() {
 
 	function MSlider() {
-
 	};
 
 	MSlider.prototype.toHTML = function() {
@@ -731,8 +737,6 @@ var MSystemMessageContainer = (function() {
 	};
 
 	MSystemMessageContainer.position = function() {
-
-		var windowHeight = $(window).height();
 		var headerHeight = $("#MHeader").height();
 		var toolBarHeight = $("#MToolBar").height();
 
@@ -745,15 +749,6 @@ var MSystemMessageContainer = (function() {
 		}
 
 		$("#MSystemMessageContainer").css("top", headerHeight + toolBarHeight);
-
-		var maxHeight = windowHeight - headerHeight - toolBarHeight;
-		var currentHeight = $("#MSystemMessageContainer").height();
-
-		if (currentHeight > maxHeight) {
-			$("#MSystemMessageContainer").height(maxHeight);
-		}else{
-			$("#MSystemMessageContainer").height('auto');
-		}
 	};
 
 	return MSystemMessageContainer;
@@ -806,14 +801,6 @@ $(document).ready(function() {
 
 $(window).load(function() {
 	MSystemMessageContainer.position();
-
-	$("#MSystemMessageContainer").mouseenter(function() {
-		$(this).css("overflow-y", "auto");
-	});
-
-	$("#MSystemMessageContainer").mouseleave(function() {
-		$(this).css("overflow-y", "hidden");
-	});
 });
 
 $(window).resize(function() {
@@ -1802,7 +1789,6 @@ $(document).ready(function() {
 var MToolBar = (function() {
 
 	function MToolBar() {
-
 	};
 
 	MToolBar.position = function() {
