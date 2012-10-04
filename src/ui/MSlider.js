@@ -1,3 +1,4 @@
+// Class
 var MSlider = (function() {
 
 	function MSlider() {
@@ -13,3 +14,4 @@ var MSlider = (function() {
 	};
 
 })();
+

@@ -1,3 +1,4 @@
+// Class
 var MToolBar = (function() {
 
 	function MToolBar() {
@@ -12,7 +13,6 @@ var MToolBar = (function() {
 	};
 
 	MToolBar.placeholderScale = function() {
-		console.log("something");
 		if ($("MToolBar") != 0) {
 			var toolbarHeight = $("#MToolBar").height();
 			$("#MToolBarPlaceholder").height(toolbarHeight);
@@ -22,7 +22,7 @@ var MToolBar = (function() {
 	return MToolBar;
 
 })();
-
+// Bootstrapper
 $(window).load(function() {
 	MToolBar.position();
 });

@@ -284,7 +284,7 @@
 
 })(jQuery);
 
-//Setup the default MTip
+// Bootstrapper
 $(document).ready(function() {
 	$("[MTip=n],[MTip=N]").MTip({
 		gravity : "N",

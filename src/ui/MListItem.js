@@ -1,3 +1,4 @@
+// Class
 var MListItem = (function() {
 
 	function MListItem() {
@@ -6,7 +7,6 @@ var MListItem = (function() {
 
 	// Methods
 	MListItem.prototype.toHTML = function() {
-		console.log("sdsadasdasdas");
 		return '<li ' + _idString + ' class="MListItem"></li>';
 	};
 
@@ -53,7 +53,7 @@ var MListItem = (function() {
 
 })();
 
-// Setup checked when the page loads
+// Bootstrapper
 $(document).ready(function() {
 	// Set the default state
 	MListItem.updateUI();

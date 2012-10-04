@@ -1,3 +1,4 @@
+// Class
 var MPopup = (function() {
 
 	function MPopup() {
@@ -36,6 +37,7 @@ var MPopup = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$('.MPopup .MIconClose').live('click', function() {
 		$(this).closest('.MPopupContainer').hide();

@@ -1,3 +1,4 @@
+// Class
 var MProgressBar = (function() {
 
 	function MProgressBar() {
@@ -38,6 +39,7 @@ var MProgressBar = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$("progress").each(function() {
 		// Get default settings to reapply later

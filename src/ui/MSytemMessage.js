@@ -1,3 +1,29 @@
+// Class
+var MSystemMessageContainer = (function(){
+	
+	function MSystemMessageContainer(){
+	};
+	
+	MSystemMessageContainer.position = function() {
+		console.log("running")
+		var headerHeight = $("#MHeader").height();
+		var toolbarHeight = $("#MToolBar").height();
+
+		if (isNaN(headerHeight)) {
+			headerHeight = 0;
+		}
+
+		if (isNaN(toolbarHeight)) {
+			toolbarHeight = 0;
+		}
+
+		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
+	};
+	
+	return MSystemMessageContainer;
+	
+})();
+
 var MSystemMessage = (function() {
 
 	function MSystemMessage() {
@@ -25,69 +51,17 @@ var MSystemMessage = (function() {
 		}
 	};
 
-	// Static Methods
-	MSystemMessage.containerPostion = function() {
-		var headerHeight = $("#MHeader").height();
-		var toolbarHeight = $("#MToolBar").height();
-
-		if (isNaN(headerHeight)) {
-			headerHeight = 0;
-		}
-
-		if (isNaN(toolbarHeight)) {
-			toolbarHeight = 0;
-		}
-
-		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
-	};
-
 	return MSystemMessage;
 
 })();
 
-(function() {
-	// var MSystemMessage = {
-	// init : function(message) {
-	// var systemMessage = '<div class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + message + '</span></div>';
-	// $("#MSystemMessageContainer").append(systemMessage);
-	//
-	// // Click close
-	// $('.MSystemMessage:last-child .MIconClose').click(function() {
-	// $(this).closest('.MSystemMessage').remove();
-	// });
-	//
-	// // Fade out
-	// $('.MSystemMessage:last-child').delay(5000).animate({
-	// opacity : 0
-	// }).slideUp(speedSlow, function() {//slide up
-	// $(this).remove();
-	// });
-	// },
-	// containerPostion : function() {
-	// var headerHeight = $("#MHeader").height();
-	// var toolbarHeight = $("#MToolBar").height();
-	//
-	// if (isNaN(headerHeight)) {
-	// headerHeight = 0;
-	// }
-	//
-	// if (isNaN(toolbarHeight)) {
-	// toolbarHeight = 0;
-	// }
-	//
-	// $("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
-	// }
-	// }
-	//
-	// window.MSystemMessage = MSystemMessage;
-	//
-})();
-
+// Bootstrapper
 $(document).ready(function() {
+	//Add a message container if one doesnt exist
 	if ($('#MSystemMessageContainer').length == 0) {
+		console.log("fired");
 		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
 	}
-	$("#MSystemMessageContainer").fadeIn(speedSlow);
 
 	$('.MSystemMessage .MIconClose').live('click', function() {
 		$(this).parent().remove();
@@ -95,9 +69,9 @@ $(document).ready(function() {
 });
 
 $(window).load(function() {
-	MSystemMessage.containerPostion();
+	MSystemMessageContainer.position();
 });
 
 $(window).resize(function() {
-	MSystemMessage.containerPostion();
+	MSystemMessageContainer.position();
 });

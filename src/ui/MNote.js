@@ -1,3 +1,4 @@
+// Class
 var MNote = (function() {
 
 	function MNote() {
@@ -29,6 +30,7 @@ var MNote = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$('.MNote').each(function() {
 		var rotation = MMath.random(-8, 8);

@@ -1,3 +1,9 @@
+/*
+ * 
+ * A Work In Progess
+ * 
+ */
+
 (function() {
 
 	var MDraggableManager = {

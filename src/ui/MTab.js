@@ -647,7 +647,7 @@
 
 })(jQuery);
 
-//Setup the default MTabWidget
+// Bootstrapper
 $(document).ready(function() {
 	$('.MTabWidget').MTab();
 }); 

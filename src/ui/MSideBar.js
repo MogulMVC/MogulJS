@@ -1,3 +1,4 @@
+// Class
 var MSideBar = (function() {
 
 	function MSideBar() {
@@ -188,7 +189,7 @@ var MSideBar = (function() {
 
 })();
 
-// Setup checked when the page loads
+// Bootstrapper
 $(document).ready(function() {
 	// Set the default state
 	MSideBar.updateUI();

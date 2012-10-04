@@ -1,3 +1,4 @@
+// Class
 var MRatingsBar = (function() {
 
 	function MRatingsBar() {
@@ -53,6 +54,7 @@ var MRatingsBar = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$("meter").each(function() {
 		// Get default settings to reapply later

@@ -1,3 +1,4 @@
+// Class
 var MButton = (function() {
 
 	function MButton() {
@@ -39,6 +40,7 @@ var MButton = (function() {
 
 })();
 
+// Bootstrapper
 $(document).ready(function() {
 	$('input[type="file"]').addClass('MButtonUploadInput');
 	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
