@@ -1,33 +1,50 @@
-(function() {
+var MRatingsBar = (function() {
 
-	var MRatingsBar = {
-		setPercent : function(selector, value) {
-			// If a value number is set
-			if (!isNaN(value) && value > 0) {
-				// Set the correct display
-				$(selector).removeClass('MRatingsBarWarning');
-				$(selector).addClass('MRatingsBarBG');
-				$(selector + ' .MRatingsBarFG').show();
+	function MRatingsBar() {
+		_percent = 0;
+	};
 
-				// Set the width
-				$(selector + ' .MRatingsBarFG').css('width', value + '%');
+	// Methods
+	MRatingsBar.prototype.toHTML = function() {
+		return '<div class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div>';
+	};
+
+	MRatingsBar.prototype.setPercent = function(value) {
+		if ( typeof _percent == 'number') {
+			if (_percent > 0 && _percent < 100) {
+				_percent = value;
 			}
-			// If a value number is not set
-			else {
-				$(selector).removeClass('MRatingsBarBG');
-				$(selector).addClass('MRatingsBarWarning');
-				$(selector + ' .MRatingsBarFG').hide();
-			}
-		},
-		getPercent : function(selector) {
-			// ???
-			$(selector + ' .MRatingsBar').val();
 		}
-	}
+	};
 
-	window.MRatingsBar = MRatingsBar;
+	// Static Methods
+	MRatingsBar.setPercent = function(selector, value) {
+		// If a value number is set
+		if (!isNaN(value) && value > 0) {
+			// Set the correct display
+			$(selector).removeClass('MRatingsBarWarning');
+			$(selector).addClass('MRatingsBarBG');
+			$(selector + ' .MRatingsBarFG').show();
 
-})(window);
+			// Set the width
+			$(selector + ' .MRatingsBarFG').css('width', value + '%');
+		}
+		// If a value number is not set
+		else {
+			$(selector).removeClass('MRatingsBarBG');
+			$(selector).addClass('MRatingsBarWarning');
+			$(selector + ' .MRatingsBarFG').hide();
+		}
+	};
+
+	MRatingsBar.getPercent = function(selector) {
+		// ???
+		$(selector + ' .MRatingsBar').val();
+	};
+
+	return MRatingsBar;
+
+})();
 
 $(document).ready(function() {
 	$("meter").each(function() {
@@ -46,6 +63,7 @@ $(document).ready(function() {
 		}
 
 		// Replace with the Mogul progress bar
+		// Might need to fix this by creating a new object
 		$(this).replaceWith('<div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div>');
 	});
 });

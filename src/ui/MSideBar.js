@@ -46,7 +46,6 @@
 			$(".MIconArrowRight").show();
 		},
 		rightShow : function() {
-
 			this.scale();
 
 			$("#MSideBarContainer").animate({
@@ -142,15 +141,6 @@
 				$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
 			}
 		},
-		/*fadeIn : function() {
-			var i = 0;
-			$('#MSideBar li').each(function() {
-				$(this).delay(i).animate({
-					opacity : 1
-				}, speedNorm);
-				i = i + 50;
-			});
-		},*/
 		selectAll : function(selector) {
 			// Set a deault parameter
 			selector = typeof selector !== 'undefined' ? selector : '';
@@ -170,7 +160,6 @@
 			});
 		},
 		updateUI : function() {
-			console.log('MSideBar updateUI');
 			$('#MSideBar li input[type=checkbox]').each(function() {
 				// Set the default state
 				if ($(this).is(':checked')) {
@@ -196,10 +185,6 @@ $(document).ready(function() {
 		console.log
 		MSideBar.updateUI();
 	});
-	
-	$(document).live('click', function(){
-		console.log('something');
-	});
 });
 
 $(window).load(function() {
@@ -215,7 +200,7 @@ $(window).load(function() {
 	$("#MSideBar").mouseleave(function() {
 		$("#MSideBar").css("overflow-y", "hidden");
 	});
-	
+
 	//MSideBar.fadeIn();
 });
 

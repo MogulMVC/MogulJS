@@ -1,20 +1,36 @@
-//Accepts a width and height. If height isn't set it will be automatic.
-//Also can have a modal background.
+var MPopup = (function() {
 
-(function() {
+	function MPopup() {
+		_width = 400;
+		_height = 300;
+		_title = 'Popup';
+		_content = 'null';
+	};
 
-	var MPopup = {
-		setup : function(selector, width, height) {
-			
-		},
-		setWidth : function(value) {
+	// Methods
+	MPopup.prototype.toHTML = function() {
+		var widthOffset = -1 * (_width / 2);
+		return '<div class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p>' + _content + '</div>';
+	};
 
-		},
-		setHeight : function(value) {
+	// Setters / Getters
+	MPopup.prototype.setWidth = function(value) {
+		_width = value;
+	};
 
-		}
-	}
+	MPopup.prototype.setHeight = function(value) {
+		_height = value;
+	};
 
-	window.MPopup = MPopup;
+	MPopup.prototype.setTitle = function(value) {
+		_title = value;
+	};
+
+	MPopup.prototype.setContent = function(value) {
+		_content = value;
+	};
+	
+	return MPopup;
 
 })();
+

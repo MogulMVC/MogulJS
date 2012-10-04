@@ -102,68 +102,136 @@ var rounded_large = '2em';$(window).load(function() {
 	window.MDraggableManager = MDraggableManager;
 
 })();
+var MButton = (function() {
+
+	function MButton() {
+		_color = '';
+		_label = 'Button';
+	};
+
+	// Methods
+	MButton.prototype.toHTML = function() {
+		return '<button class="MButton' + _color + '">' + _label + '</button>';
+	};
+
+	// Setters / Getters
+	MButton.prototype.setColor = function(value) {
+		if ( typeof value == 'string') {
+			value.toUpperCase();
+			if (value == "" || value == null || value == "R" || value == "O" || value == "Y" || value == "G" || value == "B" || value == "V") {
+				_color = value;
+			}
+		}
+	};
+
+	MButton.prototype.setLabel = function(value) {
+		if ( typeof value == 'string') {
+			if (value != "" && value != null) {
+				_label = value;
+			}
+		}
+	};
+
+	return MButton;
+
+})();
+
 $(document).ready(function() {
 	$('input[type="file"]').addClass('MButtonUploadInput');
 	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
 	$('.MButtonUpload').append('<span>Select File</span>');
-});(function() {
+});
+var MInputText = (function() {
 
-	MInputText = {
-		passWordToggle : function passwordToggle(id) {
-			var element = document.getElementById(id);
-			if (element.type == "password") {
-				element.type = "text";
-			} else {
-				element.type = "password";
+	function MInputText() {
+		_type = 'text';
+		_placeholder = '';
+	};
+
+	// Methods
+	MInputText.prototype.toHTML = function() {
+		return '<input type="' + _type + '" placeholder="' + _placeholder + '" />'
+	};
+
+	// Setters / Getters
+	MInputText.prototype.setType = function(value) {
+		if ( typeof value == 'string') {
+			if (value != '' && value != null) {
+				_type = value;
 			}
-		}
-	}
-
-	window.MInputText = MInputText;
-
-})();(function() {
-
-	var MList = {
-		/*fadeIn : function() {
-			var i = 0;
-			$('.MListItem').each(function() {
-				$(this).delay(i).animate({
-					opacity : 1
-				}, speedNorm);
-				i = i + 50;
-			});
-		},*/
-		selectAll : function(selector) {
-			// Set a deault parameter
-			selector = typeof selector !== 'undefined' ? selector : '';
-
-			$(selector + ' .MListItem input[type=checkbox]:visible').each(function() {
-				$(this).attr('checked', 'checked');
-				MList.updateUI();
-			});
-		},
-		deselectAll : function(selector) {
-			// Set a deault parameter
-			selector = typeof selector !== 'undefined' ? selector : '';
-
-			$(selector + ' .MListItem input[type=checkbox]').each(function() {
-				$(this).removeAttr('checked');
-				MList.updateUI();
-			});
-		},
-		updateUI : function() {
-			$('.MListItem input[type=checkbox]').each(function(index) {
-				// Set the default state
-				if ($(this).is(':checked')) {
-					$(this).closest('.MListItem').addClass('active');
-				} else {
-					$(this).closest('.MListItem').removeClass('active');
-				}
-			});
 		}
 	};
 
-	window.MList = MList;
+	MInputText.prototype.setPlaceholder = function(value) {
+		if ( typeof value == 'string') {
+			if (value != '' && value != null) {
+				_placeholder = value;
+			}
+		}
+	};
+	
+	// Static Methods
+	MInputText.passWordToggle = function(id) {
+		var element = document.getElementById(id);
+		if (element.type == "password") {
+			element.type = "text";
+		} else {
+			element.type = "password";
+		}
+	};
+
+	return MInputText;
+
+})();
+var MList = (function() {
+
+	function MList() {
+		_content = '';
+	};
+
+	// Methods
+	MList.prototype.toHTML = function() {
+		return '<li class="MListItem">' + _content + '</li>';
+	};
+
+	// Setters / Getters
+	MList.prototype.setContent = function(value) {
+		_content = value;
+	};
+
+	// Static Methods
+	MList.selectAll = function(selector) {
+		// Set a deault parameter
+		selector = typeof selector !== 'undefined' ? selector : '';
+
+		$(selector + ' .MListItem input[type=checkbox]:visible').each(function() {
+			$(this).attr('checked', 'checked');
+			MList.updateUI();
+		});
+	};
+
+	MList.deselectAll = function(selector) {
+		// Set a deault parameter
+		selector = typeof selector !== 'undefined' ? selector : '';
+
+		$(selector + ' .MListItem input[type=checkbox]').each(function() {
+			$(this).removeAttr('checked');
+			MList.updateUI();
+		});
+	};
+
+	MList.updateUI = function() {
+		$('.MListItem input[type=checkbox]').each(function(index) {
+			// Set the default state
+			if ($(this).is(':checked')) {
+				$(this).closest('.MListItem').addClass('active');
+			} else {
+				$(this).closest('.MListItem').removeClass('active');
+			}
+		});
+	};
+
+	return MList;
 
 })();
 
@@ -180,16 +248,32 @@ $(document).ready(function() {
 		});
 	});
 });
-
-$(window).load(function() {
-	//MList.fadeIn();
-});
 $(window).load(function() {
 	// Fade in all images
 	$("#MMainWindow img").animate({
 		opacity : 1
 	}, speedSlow);
-}); $(document).ready(function() {
+}); var MNote = (function() {
+
+	function MNote() {
+		_content = "Note";
+	};
+
+	// Methods
+	MNote.prototype.toHTML = function() {
+		return '<span class="MNote">' + _content + '</span>';
+	};
+
+	// Setters / Getters
+	MNote.prototype.setContent = function(value) {
+		_content = value;
+	};
+	
+	return MNote;
+
+})();
+
+$(document).ready(function() {
 	$('.MNote').each(function() {
 		var rotation = MMath.random(-8, 8);
 		$(this).css({
@@ -200,40 +284,72 @@ $(window).load(function() {
 		})
 	});
 });
-//Accepts a width and height. If height isn't set it will be automatic.
-//Also can have a modal background.
+var MPopup = (function() {
 
-(function() {
+	function MPopup() {
+		_width = 400;
+		_height = 300;
+		_title = 'Popup';
+		_content = 'null';
+	};
 
-	var MPopup = {
-		setup : function(selector, width, height) {
-			
-		},
-		setWidth : function(value) {
+	// Methods
+	MPopup.prototype.toHTML = function() {
+		var widthOffset = -1 * (_width / 2);
+		return '<div class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p>' + _content + '</div>';
+	};
 
-		},
-		setHeight : function(value) {
+	// Setters / Getters
+	MPopup.prototype.setWidth = function(value) {
+		_width = value;
+	};
 
-		}
-	}
+	MPopup.prototype.setHeight = function(value) {
+		_height = value;
+	};
 
-	window.MPopup = MPopup;
+	MPopup.prototype.setTitle = function(value) {
+		_title = value;
+	};
+
+	MPopup.prototype.setContent = function(value) {
+		_content = value;
+	};
+	
+	return MPopup;
 
 })();
-(function() {
 
-	var MProgressBar = {
-		setPercent : function(selector, value) {
-			$(selector + ' .MProgressBarFG').css('width', value + '%');
-			$(selector + ' .MProgressBarIndicator').html(value + '%');
-		},
-		getPercent : function(selector) {
-			// ???
-			$(selector + ' .MProgressBarIndicator').val();
+var MProgressBar = (function() {
+
+	function MProgressBar() {
+		_percent = 0;
+	};
+
+	// Methods
+	MProgressBar.prototype.toHTML = function() {
+		return '<div class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + _percent + '%"><span class="MProgressBarIndicator">' + _percent + '%</span></div></div></div>';
+	};
+
+	MProgressBar.prototype.setPercent = function(value) {
+		value = parseInt(value);
+		if (value >= 0 && value <= 100) {
+			_percent = value;
 		}
-	}
+	};
 
-	window.MProgressBar = MProgressBar;
+	// Static Methods
+	MProgressBar.setPercent = function(selector, value) {
+		$(selector + ' .MProgressBarFG').css('width', value + '%');
+		$(selector + ' .MProgressBarIndicator').html(value + '%');
+	};
+
+	MProgressBar.getPercent = function(selector) {
+		// ???
+		$(selector + ' .MProgressBarIndicator').val();
+	};
+
+	return MProgressBar;
 
 })();
 
@@ -254,39 +370,57 @@ $(document).ready(function() {
 		}
 
 		// Replace with the Mogul progress bar
+		// Might need to fix this by creating a new object
 		$(this).replaceWith('<div ' + idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
 	});
 });
-(function() {
+var MRatingsBar = (function() {
 
-	var MRatingsBar = {
-		setPercent : function(selector, value) {
-			// If a value number is set
-			if (!isNaN(value) && value > 0) {
-				// Set the correct display
-				$(selector).removeClass('MRatingsBarWarning');
-				$(selector).addClass('MRatingsBarBG');
-				$(selector + ' .MRatingsBarFG').show();
+	function MRatingsBar() {
+		_percent = 0;
+	};
 
-				// Set the width
-				$(selector + ' .MRatingsBarFG').css('width', value + '%');
+	// Methods
+	MRatingsBar.prototype.toHTML = function() {
+		return '<div class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div>';
+	};
+
+	MRatingsBar.prototype.setPercent = function(value) {
+		if ( typeof _percent == 'number') {
+			if (_percent > 0 && _percent < 100) {
+				_percent = value;
 			}
-			// If a value number is not set
-			else {
-				$(selector).removeClass('MRatingsBarBG');
-				$(selector).addClass('MRatingsBarWarning');
-				$(selector + ' .MRatingsBarFG').hide();
-			}
-		},
-		getPercent : function(selector) {
-			// ???
-			$(selector + ' .MRatingsBar').val();
 		}
-	}
+	};
 
-	window.MRatingsBar = MRatingsBar;
+	// Static Methods
+	MRatingsBar.setPercent = function(selector, value) {
+		// If a value number is set
+		if (!isNaN(value) && value > 0) {
+			// Set the correct display
+			$(selector).removeClass('MRatingsBarWarning');
+			$(selector).addClass('MRatingsBarBG');
+			$(selector + ' .MRatingsBarFG').show();
 
-})(window);
+			// Set the width
+			$(selector + ' .MRatingsBarFG').css('width', value + '%');
+		}
+		// If a value number is not set
+		else {
+			$(selector).removeClass('MRatingsBarBG');
+			$(selector).addClass('MRatingsBarWarning');
+			$(selector + ' .MRatingsBarFG').hide();
+		}
+	};
+
+	MRatingsBar.getPercent = function(selector) {
+		// ???
+		$(selector + ' .MRatingsBar').val();
+	};
+
+	return MRatingsBar;
+
+})();
 
 $(document).ready(function() {
 	$("meter").each(function() {
@@ -305,6 +439,7 @@ $(document).ready(function() {
 		}
 
 		// Replace with the Mogul progress bar
+		// Might need to fix this by creating a new object
 		$(this).replaceWith('<div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div>');
 	});
 });
@@ -356,7 +491,6 @@ $(document).ready(function() {
 			$(".MIconArrowRight").show();
 		},
 		rightShow : function() {
-
 			this.scale();
 
 			$("#MSideBarContainer").animate({
@@ -452,15 +586,6 @@ $(document).ready(function() {
 				$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
 			}
 		},
-		/*fadeIn : function() {
-			var i = 0;
-			$('#MSideBar li').each(function() {
-				$(this).delay(i).animate({
-					opacity : 1
-				}, speedNorm);
-				i = i + 50;
-			});
-		},*/
 		selectAll : function(selector) {
 			// Set a deault parameter
 			selector = typeof selector !== 'undefined' ? selector : '';
@@ -480,7 +605,6 @@ $(document).ready(function() {
 			});
 		},
 		updateUI : function() {
-			console.log('MSideBar updateUI');
 			$('#MSideBar li input[type=checkbox]').each(function() {
 				// Set the default state
 				if ($(this).is(':checked')) {
@@ -506,10 +630,6 @@ $(document).ready(function() {
 		console.log
 		MSideBar.updateUI();
 	});
-	
-	$(document).live('click', function(){
-		console.log('something');
-	});
 });
 
 $(window).load(function() {
@@ -525,7 +645,7 @@ $(window).load(function() {
 	$("#MSideBar").mouseleave(function() {
 		$("#MSideBar").css("overflow-y", "hidden");
 	});
-	
+
 	//MSideBar.fadeIn();
 });
 
@@ -536,52 +656,96 @@ $(window).resize(function() {
 $(document).mousemove(function(event) {
 	MSideBar.triggerProximity(event);
 });
-(function() {
+var MSlider = (function() {
 
-	var MSlider = {
-		
-	}
-	
-})(); (function() {
+	function MSlider() {
 
-	var MSystemMessage = {
-		init : function(message) {
-			var systemMessage = '<div class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + message + '</span></div>';
-			$("#MSystemMessageContainer").append(systemMessage);
+	};
 
-			// Click close
-			$('.MSystemMessage:last-child .MIconClose').click(function() {
-				$(this).closest('.MSystemMessage').remove();
-			});
+	MSlider.prototype.toHTML = function() {
 
-			// Fade out
-			$('.MSystemMessage:last-child').delay(5000).animate({
-				opacity : 0
-			}).slideUp(speedSlow, function() {//slide up
-				$(this).remove();
-			});
-		},
-		containerPostion : function() {
-			var headerHeight = $("#MHeader").height();
-			var toolbarHeight = $("#MToolBar").height();
+	};
 
-			if (isNaN(headerHeight)) {
-				headerHeight = 0;
+})();
+var MSystemMessage = (function() {
+
+	function MSystemMessage() {
+		_message = 'System Message';
+	};
+
+	MSystemMessage.prototype.toHTML = function() {
+		return '<div class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _message + '</span></div>';
+	};
+
+	MSystemMessage.prototype.setMessage = function(value) {
+		if ( typeof value == 'string') {
+			if (value != '' && value != null) {
+				_message = value;
 			}
-
-			if (isNaN(toolbarHeight)) {
-				toolbarHeight = 0;
-			}
-
-			$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
 		}
+	};
+
+	MSystemMessage.containerPostion = function() {
+		var headerHeight = $("#MHeader").height();
+		var toolbarHeight = $("#MToolBar").height();
+
+		if (isNaN(headerHeight)) {
+			headerHeight = 0;
+		}
+
+		if (isNaN(toolbarHeight)) {
+			toolbarHeight = 0;
+		}
+
+		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
 	}
 
-	window.MSystemMessage = MSystemMessage;
+	return MSystemMessage;
 
 })();
 
+(function() {
+	// var MSystemMessage = {
+	// init : function(message) {
+	// var systemMessage = '<div class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + message + '</span></div>';
+	// $("#MSystemMessageContainer").append(systemMessage);
+	//
+	// // Click close
+	// $('.MSystemMessage:last-child .MIconClose').click(function() {
+	// $(this).closest('.MSystemMessage').remove();
+	// });
+	//
+	// // Fade out
+	// $('.MSystemMessage:last-child').delay(5000).animate({
+	// opacity : 0
+	// }).slideUp(speedSlow, function() {//slide up
+	// $(this).remove();
+	// });
+	// },
+	// containerPostion : function() {
+	// var headerHeight = $("#MHeader").height();
+	// var toolbarHeight = $("#MToolBar").height();
+	//
+	// if (isNaN(headerHeight)) {
+	// headerHeight = 0;
+	// }
+	//
+	// if (isNaN(toolbarHeight)) {
+	// toolbarHeight = 0;
+	// }
+	//
+	// $("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
+	// }
+	// }
+	//
+	// window.MSystemMessage = MSystemMessage;
+	//
+})();
+
 $(document).ready(function() {
+	if ($('#MSystemMessageContainer').length == 0) {
+		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
+	}
 	$("#MSystemMessageContainer").fadeIn(speedSlow);
 });
 
@@ -1598,7 +1762,8 @@ $(window).load(function() {
 
 $(window).resize(function() {
 	MToolBar.position();
-}); (function() {
+});
+(function() {
 
 	var MColor = {
 		fadeHex : function(hex, hex2, ratio) {

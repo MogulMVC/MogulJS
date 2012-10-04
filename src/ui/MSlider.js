@@ -1,7 +1,11 @@
-(function() {
+var MSlider = (function() {
 
-	var MSlider = {
-		
-	}
-	
-})(); 
+	function MSlider() {
+
+	};
+
+	MSlider.prototype.toHTML = function() {
+
+	};
+
+})();

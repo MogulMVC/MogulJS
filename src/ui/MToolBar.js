@@ -25,4 +25,4 @@ $(window).load(function() {
 
 $(window).resize(function() {
 	MToolBar.position();
-}); 
+});
