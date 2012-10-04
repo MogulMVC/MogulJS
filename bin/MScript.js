@@ -259,7 +259,9 @@ var MNote = (function() {
 
 	// Methods
 	MNote.prototype.toHTML = function() {
-		return '<span ' + _idString + ' class="MNote">' + _text + '</span>';
+		var rotation = MMath.random(-8, 8);
+		var rotationCss = 'style="-moz-transform: rotate(' + rotation + 'deg); -ms-transform: rotate(' + rotation + 'deg); -o-transform: rotate(' + rotation + 'deg); -webkit-transform: rotate(' + rotation + 'deg)"';
+		return '<span ' + _idString + ' class="MNote" ' + rotationCss + '>' + _text + '</span>';
 	};
 
 	// Setters / Getters
@@ -688,11 +690,11 @@ $(window).load(function() {
 	MSideBar.menuTop();
 
 	$("#MSideBar").mouseenter(function() {
-		$("#MSideBar").css("overflow-y", "auto");
+		$(this).css("overflow-y", "auto");
 	});
 
 	$("#MSideBar").mouseleave(function() {
-		$("#MSideBar").css("overflow-y", "hidden");
+		$(this).css("overflow-y", "hidden");
 	});
 
 	//MSideBar.fadeIn();
@@ -723,41 +725,51 @@ var MSlider = (function() {
 })();
 
 // Class
-var MSystemMessageContainer = (function(){
-	
-	function MSystemMessageContainer(){
+var MSystemMessageContainer = (function() {
+
+	function MSystemMessageContainer() {
 	};
-	
+
 	MSystemMessageContainer.position = function() {
-		console.log("running")
+
+		var windowHeight = $(window).height();
 		var headerHeight = $("#MHeader").height();
-		var toolbarHeight = $("#MToolBar").height();
+		var toolBarHeight = $("#MToolBar").height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
 		}
 
-		if (isNaN(toolbarHeight)) {
-			toolbarHeight = 0;
+		if (isNaN(toolBarHeight)) {
+			toolBarHeight = 0;
 		}
 
-		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
+		$("#MSystemMessageContainer").css("top", headerHeight + toolBarHeight);
+
+		var maxHeight = windowHeight - headerHeight - toolBarHeight;
+		var currentHeight = $("#MSystemMessageContainer").height();
+
+		if (currentHeight > maxHeight) {
+			$("#MSystemMessageContainer").height(maxHeight);
+		}else{
+			$("#MSystemMessageContainer").height('auto');
+		}
 	};
-	
+
 	return MSystemMessageContainer;
-	
+
 })();
 
 var MSystemMessage = (function() {
 
 	function MSystemMessage() {
 		_idString = '';
-		_message = 'System Message';
+		_text = 'System Message';
 	};
 
 	// Methods
 	MSystemMessage.prototype.toHTML = function() {
-		return '<div ' + _idString + ' class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _message + '</span></div>';
+		return '<div ' + _idString + ' class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _text + '</span></div>';
 	};
 
 	// Getters / Setters
@@ -794,6 +806,14 @@ $(document).ready(function() {
 
 $(window).load(function() {
 	MSystemMessageContainer.position();
+
+	$("#MSystemMessageContainer").mouseenter(function() {
+		$(this).css("overflow-y", "auto");
+	});
+
+	$("#MSystemMessageContainer").mouseleave(function() {
+		$(this).css("overflow-y", "hidden");
+	});
 });
 
 $(window).resize(function() {

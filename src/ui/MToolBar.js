@@ -2,7 +2,6 @@
 var MToolBar = (function() {
 
 	function MToolBar() {
-
 	};
 
 	MToolBar.position = function() {

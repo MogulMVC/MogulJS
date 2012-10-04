@@ -2,7 +2,6 @@
 var MSideBar = (function() {
 
 	function MSideBar() {
-
 	};
 
 	MSideBar.scale = function() {
@@ -207,11 +206,11 @@ $(window).load(function() {
 	MSideBar.menuTop();
 
 	$("#MSideBar").mouseenter(function() {
-		$("#MSideBar").css("overflow-y", "auto");
+		$(this).css("overflow-y", "auto");
 	});
 
 	$("#MSideBar").mouseleave(function() {
-		$("#MSideBar").css("overflow-y", "hidden");
+		$(this).css("overflow-y", "hidden");
 	});
 
 	//MSideBar.fadeIn();

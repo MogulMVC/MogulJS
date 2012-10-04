@@ -1,39 +1,38 @@
 // Class
-var MSystemMessageContainer = (function(){
-	
-	function MSystemMessageContainer(){
+var MSystemMessageContainer = (function() {
+
+	function MSystemMessageContainer() {
 	};
-	
+
 	MSystemMessageContainer.position = function() {
-		console.log("running")
 		var headerHeight = $("#MHeader").height();
-		var toolbarHeight = $("#MToolBar").height();
+		var toolBarHeight = $("#MToolBar").height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
 		}
 
-		if (isNaN(toolbarHeight)) {
-			toolbarHeight = 0;
+		if (isNaN(toolBarHeight)) {
+			toolBarHeight = 0;
 		}
 
-		$("#MSystemMessageContainer").css("top", headerHeight + toolbarHeight);
+		$("#MSystemMessageContainer").css("top", headerHeight + toolBarHeight);
 	};
-	
+
 	return MSystemMessageContainer;
-	
+
 })();
 
 var MSystemMessage = (function() {
 
 	function MSystemMessage() {
 		_idString = '';
-		_message = 'System Message';
+		_text = 'System Message';
 	};
 
 	// Methods
 	MSystemMessage.prototype.toHTML = function() {
-		return '<div ' + _idString + ' class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _message + '</span></div>';
+		return '<div ' + _idString + ' class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _text + '</span></div>';
 	};
 
 	// Getters / Setters

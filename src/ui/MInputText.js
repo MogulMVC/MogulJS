@@ -2,7 +2,6 @@
 var MInputText = (function() {
 
 	function MInputText() {
-
 	};
 
 	// Static Methods
