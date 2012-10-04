@@ -293,7 +293,7 @@ var MPopup = (function() {
 	// Methods
 	MPopup.prototype.toHTML = function() {
 		var widthOffset = -1 * (_width / 2);
-		return '<div ' + _idString + ' class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p></div>';
+		return '<div class="MPopupContainer"><div ' + _idString + ' class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p></div><div class="MModalBGBlack"></div></div>';
 	};
 
 	// Setters / Getters
@@ -321,7 +321,7 @@ var MPopup = (function() {
 
 $(document).ready(function() {
 	$('.MPopup .MIconClose').live('click', function() {
-		$(this).parent().hide();
+		$(this).closest('.MPopupContainer').hide();
 	});
 });
 var MProgressBar = (function() {
