@@ -1,4 +1,3 @@
-// Class
 var MInputText = (function() {
 
 	function MInputText() {

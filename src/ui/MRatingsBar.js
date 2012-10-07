@@ -1,4 +1,3 @@
-// Class
 var MRatingsBar = (function() {
 
 	function MRatingsBar() {
@@ -53,26 +52,3 @@ var MRatingsBar = (function() {
 	return MRatingsBar;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	$("meter").each(function() {
-		// Get default settings to reapply later
-		var currentId = $(this).attr('id');
-		var currentPercent = $(this).attr('value');
-
-		var idString = '';
-		if (currentId !== undefined) {
-			idString = 'id=' + currentId;
-		}
-
-		var percentString = '';
-		if (currentPercent !== undefined) {
-			percentString = currentPercent + '%';
-		}
-
-		// Replace with the Mogul progress bar
-		// Might need to fix this by creating a new object
-		$(this).replaceWith('<div class="MRatingsBar"><div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div></div>');
-	});
-});

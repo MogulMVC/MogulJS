@@ -66,49 +66,178 @@ var rounded_large = '2em';$(window).load(function() {
 	//$(".MHoverMessage").addTouch();
 
 });
-/*
- * 
- * A Work In Progess
- * 
- */
+$(document).ready(function() {
+	$('input[type="file"]').addClass('MButtonUploadInput');
+	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
+	$('.MButtonUpload').append('<span>Select File</span>');
+});$(document).ready(function() {
+	// Set the default state
+	MList.updateUI();
 
-(function() {
+	$('.MListItem input[type=checkbox]').live('change', function() {
+		// Add a change event listener
+		// A label can change the state of the checkbox so I am using change instead of click
+		MList.updateUI();
+	});
+});$(window).load(function() {
+	// Fade in all images
+	$("#MMainWindow img").animate({
+		opacity : 1
+	}, speedSlow);
+});
+$(document).ready(function() {
+	$('.MNote').each(function() {
+		var rotation = MMath.random(-8, 8);
+		$(this).css({
+			'-webkit-transform' : 'rotate(' + rotation + 'deg)',
+			'-moz-transform' : 'rotate(' + rotation + 'deg)',
+			'-o-transform' : 'rotate(' + rotation + 'deg)',
+			'-ms-transform' : 'rotate(' + rotation + 'deg)'
+		})
+	});
+});$(document).ready(function() {
+	$('.MPopup .MIconClose').live('click', function() {
+		$(this).closest('.MPopupContainer').hide();
+	});
+});
+$(document).ready(function() {
+	$("progress").each(function() {
+		// Get default settings to reapply later
+		var currentId = $(this).attr('id');
+		var currentPercent = $(this).attr('value');
 
-	var MDraggableManager = {
-
-		setup : function(selector) {
-
-			var drag = false;
-			var item = selector;
-
-			$(item).mousedown(function() {
-				drag = true;
-			});
-
-			$(window).mouseup(function() {
-				drag = false;
-			});
-
-			$(window).mousemove(function(event) {
-				if (drag) {
-
-					console.log(event.pageX);
-
-					$(item).css({
-						position : "absolute",
-						left : event.pageX,
-						top : event.pageY
-					});
-				}
-			});
-
+		var idString = '';
+		if (currentId !== undefined) {
+			idString = 'id=' + currentId;
 		}
+
+		var percentString = '';
+		if (currentPercent !== undefined) {
+			percentString = currentPercent + '%';
+		}
+
+		// Replace with the Mogul progress bar
+		$(this).replaceWith('<div ' + idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
+	});
+});$(document).ready(function() {
+	$("meter").each(function() {
+		// Get default settings to reapply later
+		var currentId = $(this).attr('id');
+		var currentPercent = $(this).attr('value');
+
+		var idString = '';
+		if (currentId !== undefined) {
+			idString = 'id=' + currentId;
+		}
+
+		var percentString = '';
+		if (currentPercent !== undefined) {
+			percentString = currentPercent + '%';
+		}
+
+		// Replace with the Mogul progress bar
+		$(this).replaceWith('<div class="MRatingsBar"><div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div></div>');
+	});
+});$(document).ready(function() {
+	// Set the default state
+	MSideBar.updateUI();
+
+	//Tracking it with live so I can add new items and they still work
+	$('#MSideBar li input[type=checkbox]').live('click', function() {
+		MSideBar.updateUI();
+	});
+});
+
+$(window).load(function() {
+	MSideBar.scale();
+
+	MSideBar.menuPlaceholderHeight();
+	MSideBar.menuTop();
+
+	$("#MSideBar").mouseenter(function() {
+		$(this).css("overflow-y", "auto");
+	});
+
+	$("#MSideBar").mouseleave(function() {
+		$(this).css("overflow-y", "hidden");
+	});
+
+	//MSideBar.fadeIn();
+});
+
+$(window).resize(function() {
+	MSideBar.scale();
+});
+
+$(document).mousemove(function(event) {
+	MSideBar.triggerProximity(event);
+});$(document).ready(function() {
+	//Add a message container if one doesnt exist
+	if ($('#MSystemMessageContainer').length == 0) {
+		console.log("fired");
+		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
 	}
 
-	window.MDraggableManager = MDraggableManager;
+	$('.MSystemMessage .MIconClose').live('click', function() {
+		$(this).parent().remove();
+	});
+});
 
-})();
-// Class
+$(window).load(function() {
+	MSystemMessageContainer.position();
+});
+
+$(window).resize(function() {
+	MSystemMessageContainer.position();
+});$(document).ready(function() {
+	$('.MTabWidget').MTab();
+}); $(document).ready(function() {
+	$("[MTip=n],[MTip=N]").MTip({
+		gravity : "N",
+		delayIn : speedSlow
+	});
+
+	$("[MTip=nw], [MTip=NW]").MTip({
+		gravity : "NW",
+		delayIn : speedSlow
+	});
+
+	$("[MTip=ne], [MTip=NE]").MTip({
+		gravity : "NE",
+		delayIn : speedSlow
+	});
+
+	$("[MTip=s], [MTip=S]").MTip({
+		gravity : "S",
+		delayIn : speedSlow
+	});
+
+	$("[MTip=sw], [MTip=SW]").MTip({
+		gravity : "SW",
+		delayIn : speedSlow
+	});
+
+	$("[MTip=se], [MTip=SE]").MTip({
+		gravity : "SE",
+		delayIn : speedSlow
+	});
+
+	$("[MTip=w], [MTip=W]").MTip({
+		gravity : "W",
+		delayIn : speedSlow
+	});
+
+	$("[MTip=e], [MTip=E]").MTip({
+		gravity : "E",
+		delayIn : speedSlow
+	});
+}); $(window).load(function() {
+	MToolBar.position();
+});
+
+$(window).resize(function() {
+	MToolBar.position();
+});
 var MButton = (function() {
 
 	function MButton() {
@@ -149,14 +278,6 @@ var MButton = (function() {
 	return MButton;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	$('input[type="file"]').addClass('MButtonUploadInput');
-	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
-	$('.MButtonUpload').append('<span>Select File</span>');
-});
-// Class
 var MInputText = (function() {
 
 	function MInputText() {
@@ -175,7 +296,27 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
-// Class
+var MListItem = (function() {
+
+	function MListItem() {
+		_idString = '';
+	};
+
+	// Methods
+	MListItem.prototype.toHTML = function() {
+		return '<li ' + _idString + ' class="MListItem"></li>';
+	};
+
+	// Setters / Getters
+	MListItem.prototype.setID = function(value) {
+		if ( typeof value == 'string') {
+			_idString = 'id=' + value;
+		}
+	};
+
+	return MListItem;
+
+})();
 var MList = (function() {
 
 	function MList() {
@@ -215,50 +356,7 @@ var MList = (function() {
 
 	return MList;
 
-})();
-
-var MListItem = (function() {
-
-	function MListItem() {
-		_idString = '';
-	};
-
-	// Methods
-	MListItem.prototype.toHTML = function() {
-		return '<li ' + _idString + ' class="MListItem"></li>';
-	};
-
-	// Setters / Getters
-	MListItem.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
-		}
-	};
-
-	return MListItem;
-
-})();
-
-// Bootstrapper
-$(document).ready(function() {
-	// Set the default state
-	MList.updateUI();
-
-	$('.MListItem input[type=checkbox]').live('change', function() {
-		// Add a change event listener
-		// A label can change the state of the checkbox so I am using change instead of click
-		MList.updateUI();
-	});
-});
-// Bootstrapper
-$(window).load(function() {
-	// Fade in all images
-	$("#MMainWindow img").animate({
-		opacity : 1
-	}, speedSlow);
-});
-// Class
-var MNote = (function() {
+})();var MNote = (function() {
 
 	function MNote() {
 		_idString = '';
@@ -290,20 +388,6 @@ var MNote = (function() {
 	return MNote;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	$('.MNote').each(function() {
-		var rotation = MMath.random(-8, 8);
-		$(this).css({
-			'-webkit-transform' : 'rotate(' + rotation + 'deg)',
-			'-moz-transform' : 'rotate(' + rotation + 'deg)',
-			'-o-transform' : 'rotate(' + rotation + 'deg)',
-			'-ms-transform' : 'rotate(' + rotation + 'deg)'
-		})
-	});
-});
-// Class
 var MPopup = (function() {
 
 	function MPopup() {
@@ -341,14 +425,6 @@ var MPopup = (function() {
 	return MPopup;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	$('.MPopup .MIconClose').live('click', function() {
-		$(this).closest('.MPopupContainer').hide();
-	});
-});
-// Class
 var MProgressBar = (function() {
 
 	function MProgressBar() {
@@ -388,30 +464,6 @@ var MProgressBar = (function() {
 	return MProgressBar;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	$("progress").each(function() {
-		// Get default settings to reapply later
-		var currentId = $(this).attr('id');
-		var currentPercent = $(this).attr('value');
-
-		var idString = '';
-		if (currentId !== undefined) {
-			idString = 'id=' + currentId;
-		}
-
-		var percentString = '';
-		if (currentPercent !== undefined) {
-			percentString = currentPercent + '%';
-		}
-
-		// Replace with the Mogul progress bar
-		// Might need to fix this by creating a new object
-		$(this).replaceWith('<div ' + idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
-	});
-});
-// Class
 var MRatingsBar = (function() {
 
 	function MRatingsBar() {
@@ -466,30 +518,6 @@ var MRatingsBar = (function() {
 	return MRatingsBar;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	$("meter").each(function() {
-		// Get default settings to reapply later
-		var currentId = $(this).attr('id');
-		var currentPercent = $(this).attr('value');
-
-		var idString = '';
-		if (currentId !== undefined) {
-			idString = 'id=' + currentId;
-		}
-
-		var percentString = '';
-		if (currentPercent !== undefined) {
-			percentString = currentPercent + '%';
-		}
-
-		// Replace with the Mogul progress bar
-		// Might need to fix this by creating a new object
-		$(this).replaceWith('<div class="MRatingsBar"><div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div></div>');
-	});
-});
-// Class
 var MSideBar = (function() {
 
 	function MSideBar() {
@@ -678,43 +706,6 @@ var MSideBar = (function() {
 	return MSideBar;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	// Set the default state
-	MSideBar.updateUI();
-
-	//Tracking it with live so I can add new items and they still work
-	$('#MSideBar li input[type=checkbox]').live('click', function() {
-		MSideBar.updateUI();
-	});
-});
-
-$(window).load(function() {
-	MSideBar.scale();
-
-	MSideBar.menuPlaceholderHeight();
-	MSideBar.menuTop();
-
-	$("#MSideBar").mouseenter(function() {
-		$(this).css("overflow-y", "auto");
-	});
-
-	$("#MSideBar").mouseleave(function() {
-		$(this).css("overflow-y", "hidden");
-	});
-
-	//MSideBar.fadeIn();
-});
-
-$(window).resize(function() {
-	MSideBar.scale();
-});
-
-$(document).mousemove(function(event) {
-	MSideBar.triggerProximity(event);
-});
-// Class
 var MSlider = (function() {
 
 	function MSlider() {
@@ -730,7 +721,6 @@ var MSlider = (function() {
 
 })();
 
-// Class
 var MSystemMessageContainer = (function() {
 
 	function MSystemMessageContainer() {
@@ -785,30 +775,9 @@ var MSystemMessage = (function() {
 	return MSystemMessage;
 
 })();
-
-// Bootstrapper
-$(document).ready(function() {
-	//Add a message container if one doesnt exist
-	if ($('#MSystemMessageContainer').length == 0) {
-		console.log("fired");
-		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
-	}
-
-	$('.MSystemMessage .MIconClose').live('click', function() {
-		$(this).parent().remove();
-	});
-});
-
-$(window).load(function() {
-	MSystemMessageContainer.position();
-});
-
-$(window).resize(function() {
-	MSystemMessageContainer.position();
-});
 /*
- * Forked from jQuery EasyTabs
- *
+ *	Forked from jQuery EasyTabs
+ *	http://os.alfajango.com/easytabs/
  */
 (function($) {
 
@@ -1454,13 +1423,9 @@ $(window).resize(function() {
 	};
 
 })(jQuery);
-
-// Bootstrapper
-$(document).ready(function() {
-	$('.MTabWidget').MTab();
-}); /*
- * Forked from jQuery tipsy
- *
+/*
+ *	Forked from jQuery tipsy
+ *	http://onehackoranother.com/projects/jquery/tipsy/
  */
 (function($) {
 
@@ -1743,49 +1708,7 @@ $(document).ready(function() {
 	};
 
 })(jQuery);
-
-// Bootstrapper
-$(document).ready(function() {
-	$("[MTip=n],[MTip=N]").MTip({
-		gravity : "N",
-		delayIn : speedSlow
-	});
-
-	$("[MTip=nw], [MTip=NW]").MTip({
-		gravity : "NW",
-		delayIn : speedSlow
-	});
-
-	$("[MTip=ne], [MTip=NE]").MTip({
-		gravity : "NE",
-		delayIn : speedSlow
-	});
-
-	$("[MTip=s], [MTip=S]").MTip({
-		gravity : "S",
-		delayIn : speedSlow
-	});
-
-	$("[MTip=sw], [MTip=SW]").MTip({
-		gravity : "SW",
-		delayIn : speedSlow
-	});
-
-	$("[MTip=se], [MTip=SE]").MTip({
-		gravity : "SE",
-		delayIn : speedSlow
-	});
-
-	$("[MTip=w], [MTip=W]").MTip({
-		gravity : "W",
-		delayIn : speedSlow
-	});
-
-	$("[MTip=e], [MTip=E]").MTip({
-		gravity : "E",
-		delayIn : speedSlow
-	});
-}); // Class
+// Class
 var MToolBar = (function() {
 
 	function MToolBar() {
@@ -1808,14 +1731,6 @@ var MToolBar = (function() {
 	return MToolBar;
 
 })();
-// Bootstrapper
-$(window).load(function() {
-	MToolBar.position();
-});
-
-$(window).resize(function() {
-	MToolBar.position();
-});
 (function() {
 
 	var MColor = {

@@ -1,4 +1,3 @@
-// Bootstrapper
 $(window).load(function() {
 	// Fade in all images
 	$("#MMainWindow img").animate({

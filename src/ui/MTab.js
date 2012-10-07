@@ -1,6 +1,6 @@
 /*
- * Forked from jQuery EasyTabs
- *
+ *	Forked from jQuery EasyTabs
+ *	http://os.alfajango.com/easytabs/
  */
 (function($) {
 
@@ -646,8 +646,3 @@
 	};
 
 })(jQuery);
-
-// Bootstrapper
-$(document).ready(function() {
-	$('.MTabWidget').MTab();
-}); 
