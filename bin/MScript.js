@@ -164,7 +164,6 @@ $(document).mousemove(function(event) {
 });$(document).ready(function() {
 	//Add a message container if one doesnt exist
 	if ($('#MSystemMessageContainer').length == 0) {
-		console.log("fired");
 		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
 	}
 
@@ -179,7 +178,7 @@ $(window).load(function() {
 
 $(window).resize(function() {
 	MSystemMessageContainer.position();
-});$(document).ready(function() {
+}); $(document).ready(function() {
 	$('.MTabWidget').MTab();
 }); $(document).ready(function() {
 	$("[MTip=n],[MTip=N]").MTip({
