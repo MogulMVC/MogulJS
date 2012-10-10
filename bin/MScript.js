@@ -153,16 +153,6 @@ $(window).load(function() {
 
 	MSideBar.menuPlaceholderHeight();
 	MSideBar.menuTop();
-
-	$("#MSideBar").mouseenter(function() {
-		$(this).css("overflow-y", "auto");
-	});
-
-	$("#MSideBar").mouseleave(function() {
-		$(this).css("overflow-y", "hidden");
-	});
-
-	//MSideBar.fadeIn();
 });
 
 $(window).resize(function() {
