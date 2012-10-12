@@ -1,40 +1,40 @@
 $(document).ready(function() {
-	$("[MTip=n],[MTip=N]").MTip({
+	$("[data-mtip=n], [data-mtip=N], [data-mtip=b], [data-mtip=B]").MTip({
 		gravity : "N",
 		delayIn : speedSlow
 	});
 
-	$("[MTip=nw], [MTip=NW]").MTip({
+	$("[data-mtip=nw], [data-mtip=NW]").MTip({
 		gravity : "NW",
 		delayIn : speedSlow
 	});
 
-	$("[MTip=ne], [MTip=NE]").MTip({
+	$("[data-mtip=ne], [data-mtip=NE]").MTip({
 		gravity : "NE",
 		delayIn : speedSlow
 	});
 
-	$("[MTip=s], [MTip=S]").MTip({
+	$("[data-mtip=s], [data-mtip=S], [data-mtip=t], [data-mtip=T]").MTip({
 		gravity : "S",
 		delayIn : speedSlow
 	});
 
-	$("[MTip=sw], [MTip=SW]").MTip({
+	$("[data-mtip=sw], [data-mtip=SW]").MTip({
 		gravity : "SW",
 		delayIn : speedSlow
 	});
 
-	$("[MTip=se], [MTip=SE]").MTip({
+	$("[data-mtip=se], [data-mtip=SE]").MTip({
 		gravity : "SE",
 		delayIn : speedSlow
 	});
 
-	$("[MTip=w], [MTip=W]").MTip({
+	$("[data-mtip=w], [data-mtip=W], [data-mtip=r], [data-mtip=R]").MTip({
 		gravity : "W",
 		delayIn : speedSlow
 	});
 
-	$("[MTip=e], [MTip=E]").MTip({
+	$("[data-mtip=e], [data-mtip=E], [data-mtip=l], [data-mtip=L]").MTip({
 		gravity : "E",
 		delayIn : speedSlow
 	});
