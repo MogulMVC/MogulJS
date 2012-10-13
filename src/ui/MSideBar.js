@@ -1,6 +1,7 @@
 var MSideBar = (function() {
 
 	function MSideBar() {
+		// I don't want a sidebar constructor because it's a singleton class
 	};
 
 	MSideBar.scale = function() {

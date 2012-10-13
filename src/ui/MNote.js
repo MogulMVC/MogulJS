@@ -1,30 +1,26 @@
 var MNote = (function() {
 
-	function MNote() {
-		_idString = '';
-		_text = 'Note';
-	};
+	function MNote(label) {
 
-	// Methods
-	MNote.prototype.toHTML = function() {
+		if (label == null || label == '') {
+			label = 'Note';
+		}
+
+		var uiElement = document.createElement('span');
+
 		var rotation = MMath.random(-8, 8);
-		var rotationCss = 'style="-moz-transform: rotate(' + rotation + 'deg); -ms-transform: rotate(' + rotation + 'deg); -o-transform: rotate(' + rotation + 'deg); -webkit-transform: rotate(' + rotation + 'deg)"';
-		return '<span ' + _idString + ' class="MNote" ' + rotationCss + '>' + _text + '</span>';
-	};
+		var rotationCss = 'rotate(' + rotation + 'deg)';
 
-	// Setters / Getters
-	MNote.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
-		}
-	};
+		$(uiElement).addClass('MNote').css({
+			'-webkit-transform' : rotationCss,
+			'-moz-transform' : rotationCss,
+			'-ms-transform' : rotationCss,
+			'-o-transform' : rotationCss,
+			'transform' : rotationCss
+		}).html(label);
 
-	MNote.prototype.setText = function(value) {
-		if ( typeof value == 'string') {
-			if (value != "" && value != null) {
-				_text = value;
-			}
-		}
+		return uiElement;
+
 	};
 
 	return MNote;

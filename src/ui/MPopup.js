@@ -1,37 +1,40 @@
 var MPopup = (function() {
 
-	function MPopup() {
-		_idString = '';
-		_width = 400;
-		_height = 300;
-		_title = 'Popup';
-	};
-
-	// Methods
-	MPopup.prototype.toHTML = function() {
-		var widthOffset = -1 * (_width / 2);
-		return '<div class="MPopupContainer"><div ' + _idString + ' class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p></div><div class="MModalBGBlack"></div></div>';
-	};
-
-	// Setters / Getters
-	MPopup.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+	function MPopup(width, height, title) {
+		
+		if(width == null || width == ''){
+			width = 400;
 		}
-	};
+		
+		if(height == null || height == ''){
+			height = 300;
+		}
+		
+		if(title == null || title == ''){
+			title = 'Popup';
+		}
+		
+		// Container
+		var uiElement = document.createElement('div');
+		
+		var marginLeft = -1 * width / 2;
+		
+		// Contents
+		var uiContents = '\
+		<div class="MPopup" style="margin-left:' + marginLeft + 'px;width:' + width + 'px">\
+			<span class="MIconClose"></span>\
+			<p class="MWidgetTitle">' + title + '</p>\
+		</div>\
+		<div class="MModalBGBlack"></div>';
+		
+		// Put it together
+		$(uiElement).addClass('MPopupContainer').append(uiContents);
+		
+		return uiElement;
 
-	MPopup.prototype.setWidth = function(value) {
-		_width = value;
-	};
-
-	MPopup.prototype.setHeight = function(value) {
-		_height = value;
-	};
-
-	MPopup.prototype.setTitle = function(value) {
-		_title = value;
 	};
 
 	return MPopup;
 
 })();
+

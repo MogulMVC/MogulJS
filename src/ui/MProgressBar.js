@@ -1,27 +1,28 @@
 var MProgressBar = (function() {
 
-	function MProgressBar() {
-		_idString = '';
-		_percent = 0;
-	};
+	function MProgressBar(percent) {
 
-	// Methods
-	MProgressBar.prototype.toHTML = function() {
-		return '<div ' + _idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + _percent + '%"><span class="MProgressBarIndicator">' + _percent + '%</span></div></div></div>';
-	};
-
-	// Static Methods
-	MProgressBar.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+		percent = parseInt(percent);
+		if (isNaN(percent) || percent <= 0 || percent >= 100) {
+			percent = 0;
 		}
-	};
 
-	MProgressBar.prototype.setPercent = function(value) {
-		value = parseInt(value);
-		if (value >= 0 && value <= 100) {
-			_percent = value;
-		}
+		// Container
+		var uiElement = document.createElement('div');
+
+		// Contents
+		var uiContents = '\
+		<div class="MProgressBarBG">\
+			<div class="MProgressBarFG" style="width:' + percent + '%">\
+				<span class="MProgressBarIndicator">' + percent + '%</span>\
+			</div>\
+		</div>';
+
+		// Put it together
+		$(uiElement).addClass('MProgressBar').append(uiContents);
+		
+		return uiElement;
+
 	};
 
 	MProgressBar.setPercent = function(selector, value) {

@@ -227,49 +227,38 @@ $(window).resize(function() {
 $(window).resize(function() {
 	MToolBar.position();
 });
-var MButton = (function() {
-
-	function MButton() {
-		_idString = '';
-		_color = '';
-		_text = 'Button';
-	};
-
-	// Methods
-	MButton.prototype.toHTML = function() {
-		return '<button ' + _idString + ' class="MButton' + _color + '">' + _text + '</button>';
-	};
-
-	// Setters / Getters
-	MButton.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+var MButton = (function(){
+	
+	function MButton(label){
+		
+		if(label == null || label == ''){
+			label = 'Button';
 		}
+		
+		var uiElement = document.createElement('button');
+		$(uiElement).addClass('MButton').html(label);
+		
+		return uiElement;
+		
 	};
-
-	MButton.prototype.setColor = function(value) {
-		if ( typeof value == 'string') {
-			value.toUpperCase();
-			if (value == "" || value == null || value == "R" || value == "O" || value == "Y" || value == "G" || value == "B" || value == "V") {
-				_color = value;
-			}
-		}
-	};
-
-	MButton.prototype.setText = function(value) {
-		if ( typeof value == 'string') {
-			if (value != "" && value != null) {
-				_text = value;
-			}
-		}
-	};
-
+	
 	return MButton;
-
+	
 })();
 var MInputText = (function() {
 
-	function MInputText() {
+	function MInputText(label) {
+		
+		if(label == null || label == ''){
+			label = '';
+		}
+		
+		var uiElement = document.createElement('input');
+		uiElement.type = 'text';
+		$(uiElement).html(label);
+		
+		return uiElement;
+		
 	};
 
 	// Static Methods
@@ -288,19 +277,12 @@ var MInputText = (function() {
 var MListItem = (function() {
 
 	function MListItem() {
-		_idString = '';
-	};
-
-	// Methods
-	MListItem.prototype.toHTML = function() {
-		return '<li ' + _idString + ' class="MListItem"></li>';
-	};
-
-	// Setters / Getters
-	MListItem.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
-		}
+		
+		var uiElement = document.createElement('li');
+		$(uiElement).addClass('MListItem');
+		
+		return uiElement;
+		
 	};
 
 	return MListItem;
@@ -309,6 +291,12 @@ var MListItem = (function() {
 var MList = (function() {
 
 	function MList() {
+		
+		var uiElement = document.createElement('ul');
+		$(uiElement).addClass('MList');
+		
+		return uiElement;
+		
 	};
 
 	// Static Methods
@@ -347,31 +335,27 @@ var MList = (function() {
 
 })();var MNote = (function() {
 
-	function MNote() {
-		_idString = '';
-		_text = 'Note';
-	};
+	function MNote(label) {
 
-	// Methods
-	MNote.prototype.toHTML = function() {
+		if (label == null || label == '') {
+			label = 'Note';
+		}
+
+		var uiElement = document.createElement('span');
+
 		var rotation = MMath.random(-8, 8);
-		var rotationCss = 'style="-moz-transform: rotate(' + rotation + 'deg); -ms-transform: rotate(' + rotation + 'deg); -o-transform: rotate(' + rotation + 'deg); -webkit-transform: rotate(' + rotation + 'deg)"';
-		return '<span ' + _idString + ' class="MNote" ' + rotationCss + '>' + _text + '</span>';
-	};
+		var rotationCss = 'rotate(' + rotation + 'deg)';
 
-	// Setters / Getters
-	MNote.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
-		}
-	};
+		$(uiElement).addClass('MNote').css({
+			'-webkit-transform' : rotationCss,
+			'-moz-transform' : rotationCss,
+			'-ms-transform' : rotationCss,
+			'-o-transform' : rotationCss,
+			'transform' : rotationCss
+		}).html(label);
 
-	MNote.prototype.setText = function(value) {
-		if ( typeof value == 'string') {
-			if (value != "" && value != null) {
-				_text = value;
-			}
-		}
+		return uiElement;
+
 	};
 
 	return MNote;
@@ -379,65 +363,69 @@ var MList = (function() {
 })();
 var MPopup = (function() {
 
-	function MPopup() {
-		_idString = '';
-		_width = 400;
-		_height = 300;
-		_title = 'Popup';
-	};
-
-	// Methods
-	MPopup.prototype.toHTML = function() {
-		var widthOffset = -1 * (_width / 2);
-		return '<div class="MPopupContainer"><div ' + _idString + ' class="MPopup" style="margin-left:' + widthOffset + 'px;width:' + _width + 'px"><span class="MIconClose"></span><p class="MWidgetTitle">' + _title + '</p></div><div class="MModalBGBlack"></div></div>';
-	};
-
-	// Setters / Getters
-	MPopup.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+	function MPopup(width, height, title) {
+		
+		if(width == null || width == ''){
+			width = 400;
 		}
-	};
+		
+		if(height == null || height == ''){
+			height = 300;
+		}
+		
+		if(title == null || title == ''){
+			title = 'Popup';
+		}
+		
+		// Container
+		var uiElement = document.createElement('div');
+		
+		var marginLeft = -1 * width / 2;
+		
+		// Contents
+		var uiContents = '\
+		<div class="MPopup" style="margin-left:' + marginLeft + 'px;width:' + width + 'px">\
+			<span class="MIconClose"></span>\
+			<p class="MWidgetTitle">' + title + '</p>\
+		</div>\
+		<div class="MModalBGBlack"></div>';
+		
+		// Put it together
+		$(uiElement).addClass('MPopupContainer').append(uiContents);
+		
+		return uiElement;
 
-	MPopup.prototype.setWidth = function(value) {
-		_width = value;
-	};
-
-	MPopup.prototype.setHeight = function(value) {
-		_height = value;
-	};
-
-	MPopup.prototype.setTitle = function(value) {
-		_title = value;
 	};
 
 	return MPopup;
 
 })();
+
 var MProgressBar = (function() {
 
-	function MProgressBar() {
-		_idString = '';
-		_percent = 0;
-	};
+	function MProgressBar(percent) {
 
-	// Methods
-	MProgressBar.prototype.toHTML = function() {
-		return '<div ' + _idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + _percent + '%"><span class="MProgressBarIndicator">' + _percent + '%</span></div></div></div>';
-	};
-
-	// Static Methods
-	MProgressBar.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+		percent = parseInt(percent);
+		if (isNaN(percent) || percent <= 0 || percent >= 100) {
+			percent = 0;
 		}
-	};
 
-	MProgressBar.prototype.setPercent = function(value) {
-		value = parseInt(value);
-		if (value >= 0 && value <= 100) {
-			_percent = value;
-		}
+		// Container
+		var uiElement = document.createElement('div');
+
+		// Contents
+		var uiContents = '\
+		<div class="MProgressBarBG">\
+			<div class="MProgressBarFG" style="width:' + percent + '%">\
+				<span class="MProgressBarIndicator">' + percent + '%</span>\
+			</div>\
+		</div>';
+
+		// Put it together
+		$(uiElement).addClass('MProgressBar').append(uiContents);
+		
+		return uiElement;
+
 	};
 
 	MProgressBar.setPercent = function(selector, value) {
@@ -455,28 +443,27 @@ var MProgressBar = (function() {
 })();
 var MRatingsBar = (function() {
 
-	function MRatingsBar() {
-		_idString = '';
-		_percent = 0;
-	};
+	function MRatingsBar(percent) {
 
-	// Methods
-	MRatingsBar.prototype.toHTML = function() {
-		return '<div class="MRatingsBar"><div ' + _idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div></div>';
-	};
-
-	// Static Methods
-	MRatingsBar.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+		percent = parseInt(percent);
+		if (isNaN(percent) || percent <= 0 || percent >= 100) {
+			percent = 0;
 		}
-	};
+		
+		// Container
+		var uiElement = document.createElement('div');
 
-	MRatingsBar.prototype.setPercent = function(value) {
-		value = parseInt(value);
-		if (value > 0 && value < 100) {
-			_percent = value;
-		}
+		// Contents
+		var uiContents = '\
+		<div class="MRatingsBarBG">\
+			<div class="MRatingsBarFG" style="width:' + percent + '%"></div>\
+		</div>';
+
+		// Put it together
+		$(uiElement).addClass('MRatingsBar').append(uiContents);
+		
+		return uiElement;
+			
 	};
 
 	// Static Methods
@@ -510,6 +497,7 @@ var MRatingsBar = (function() {
 var MSideBar = (function() {
 
 	function MSideBar() {
+		// I don't want a sidebar constructor because it's a singleton class
 	};
 
 	MSideBar.scale = function() {
@@ -700,19 +688,12 @@ var MSlider = (function() {
 	function MSlider() {
 	};
 
-	MSlider.prototype.toHTML = function() {
-
-	};
-
-	MSlider.prototype.setID = function() {
-
-	};
-
 })();
 
 var MSystemMessageContainer = (function() {
 
 	function MSystemMessageContainer() {
+		// I don't want a message container constructor because it's a singleton class
 	};
 
 	MSystemMessageContainer.position = function() {
@@ -736,29 +717,24 @@ var MSystemMessageContainer = (function() {
 
 var MSystemMessage = (function() {
 
-	function MSystemMessage() {
-		_idString = '';
-		_text = 'System Message';
-	};
-
-	// Methods
-	MSystemMessage.prototype.toHTML = function() {
-		return '<div ' + _idString + ' class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _text + '</span></div>';
-	};
-
-	// Getters / Setters
-	MSystemMessage.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+	function MSystemMessage(label) {
+		
+		if(label == null || label == ''){
+			label = 'System Message';
 		}
-	};
-
-	MSystemMessage.prototype.setText = function(value) {
-		if ( typeof value == 'string') {
-			if (value != "" && value != null) {
-				_text = value;
-			}
-		}
+		
+		// Container
+		var uiElement = document.createElement('div');
+		
+		// Contents
+		var uiContent = '\
+		<span class="MIconClose"/></span>\
+		<span class="bold">' + label + '</span>';
+		
+		// Put it together
+		$(uiElement).addClass('MSystemMessage').append(uiContent);
+		
+		return uiElement;
 	};
 
 	return MSystemMessage;
@@ -1701,6 +1677,7 @@ var MSystemMessage = (function() {
 var MToolBar = (function() {
 
 	function MToolBar() {
+		// I don't want a toolbar constructor because it's a singleton class
 	};
 
 	MToolBar.position = function() {

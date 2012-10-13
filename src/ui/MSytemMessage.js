@@ -1,6 +1,7 @@
 var MSystemMessageContainer = (function() {
 
 	function MSystemMessageContainer() {
+		// I don't want a message container constructor because it's a singleton class
 	};
 
 	MSystemMessageContainer.position = function() {
@@ -24,29 +25,24 @@ var MSystemMessageContainer = (function() {
 
 var MSystemMessage = (function() {
 
-	function MSystemMessage() {
-		_idString = '';
-		_text = 'System Message';
-	};
-
-	// Methods
-	MSystemMessage.prototype.toHTML = function() {
-		return '<div ' + _idString + ' class="MSystemMessage"><span class="MIconClose"/></span><span class="bold">' + _text + '</span></div>';
-	};
-
-	// Getters / Setters
-	MSystemMessage.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+	function MSystemMessage(label) {
+		
+		if(label == null || label == ''){
+			label = 'System Message';
 		}
-	};
-
-	MSystemMessage.prototype.setText = function(value) {
-		if ( typeof value == 'string') {
-			if (value != "" && value != null) {
-				_text = value;
-			}
-		}
+		
+		// Container
+		var uiElement = document.createElement('div');
+		
+		// Contents
+		var uiContent = '\
+		<span class="MIconClose"/></span>\
+		<span class="bold">' + label + '</span>';
+		
+		// Put it together
+		$(uiElement).addClass('MSystemMessage').append(uiContent);
+		
+		return uiElement;
 	};
 
 	return MSystemMessage;

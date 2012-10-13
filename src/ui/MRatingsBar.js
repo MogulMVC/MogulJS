@@ -1,27 +1,26 @@
 var MRatingsBar = (function() {
 
-	function MRatingsBar() {
-		_idString = '';
-		_percent = 0;
-	};
+	function MRatingsBar(percent) {
 
-	// Methods
-	MRatingsBar.prototype.toHTML = function() {
-		return '<div class="MRatingsBar"><div ' + _idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + _percent + '%"></div></div></div>';
-	};
-
-	// Static Methods
-	MRatingsBar.prototype.setID = function(value) {
-		if ( typeof value == 'string') {
-			_idString = 'id=' + value;
+		percent = parseInt(percent);
+		if (isNaN(percent) || percent <= 0 || percent >= 100) {
+			percent = 0;
 		}
-	};
+		
+		// Container
+		var uiElement = document.createElement('div');
 
-	MRatingsBar.prototype.setPercent = function(value) {
-		value = parseInt(value);
-		if (value > 0 && value < 100) {
-			_percent = value;
-		}
+		// Contents
+		var uiContents = '\
+		<div class="MRatingsBarBG">\
+			<div class="MRatingsBarFG" style="width:' + percent + '%"></div>\
+		</div>';
+
+		// Put it together
+		$(uiElement).addClass('MRatingsBar').append(uiContents);
+		
+		return uiElement;
+			
 	};
 
 	// Static Methods

@@ -1,6 +1,12 @@
 var MList = (function() {
 
 	function MList() {
+		
+		var uiElement = document.createElement('ul');
+		$(uiElement).addClass('MList');
+		
+		return uiElement;
+		
 	};
 
 	// Static Methods

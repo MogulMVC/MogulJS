@@ -1,6 +1,17 @@
 var MInputText = (function() {
 
-	function MInputText() {
+	function MInputText(label) {
+		
+		if(label == null || label == ''){
+			label = '';
+		}
+		
+		var uiElement = document.createElement('input');
+		uiElement.type = 'text';
+		$(uiElement).html(label);
+		
+		return uiElement;
+		
 	};
 
 	// Static Methods
