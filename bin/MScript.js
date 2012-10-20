@@ -1864,10 +1864,10 @@ var MToolBar = (function() {
 			}
 
 			if (search == "") {
-				$('[searchable=true]').show();
+				$('[data-searchable=true]').show();
 			} else {
-				$('[searchable=true]').hide();
-				$('[searchable=true]:Contains(' + search + ')').show();
+				$('[data-searchable=true]').hide();
+				$('[data-searchable=true]:Contains(' + search + ')').show();
 			}
 		}
 	}
