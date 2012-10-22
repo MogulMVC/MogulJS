@@ -31,7 +31,7 @@ var MList = (function() {
 	};
 
 	MList.updateUI = function() {
-		$('.MListItem input[type=checkbox]').each(function() {
+		$('.MListItem input[type=checkbox], .MListItem input[type=radio]').each(function() {
 			// Set the default state
 			if ($(this).is(':checked')) {
 				$(this).closest('.MListItem').addClass('active');
