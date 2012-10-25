@@ -1681,7 +1681,7 @@ var MToolBar = (function() {
 	};
 
 	MToolBar.position = function() {
-		if ($("MHeader").length != 0 && $("MHeaderPlaceholder").length != 0) {
+		if ($("MHeader").length == 0 && $("MHeaderPlaceholder").length == 0) {
 			$("#MToolBar").css("top", "0px");
 		}
 		this.placeholderScale();
