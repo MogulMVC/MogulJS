@@ -143,7 +143,7 @@ $(document).ready(function() {
 	MSideBar.updateUI();
 
 	//Tracking it with live so I can add new items and they still work
-	$('#MSideBar li input[type=checkbox]').live('click', function() {
+	$('#MSideBar li input[type=checkbox], #MSideBar li input[type=radio]').live('click', function() {
 		MSideBar.updateUI();
 	});
 });
@@ -670,7 +670,7 @@ var MSideBar = (function() {
 	};
 
 	MSideBar.updateUI = function() {
-		$('#MSideBar li input[type=checkbox]').each(function() {
+		$('#MSideBar li input[type=checkbox], #MSideBar li input[type=radio]').each(function() {
 			// Set the default state
 			if ($(this).is(':checked')) {
 				$(this).closest('li').addClass('active');
