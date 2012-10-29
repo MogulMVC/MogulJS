@@ -255,7 +255,7 @@ var MInputText = (function() {
 		
 		var uiElement = document.createElement('input');
 		uiElement.type = 'text';
-		$(uiElement).html(label);
+		$(uiElement).attr('placeholder', label);
 		
 		return uiElement;
 		
@@ -1755,25 +1755,25 @@ var MToolBar = (function() {
 			var current = {
 				width : element.width() + 'px',
 				height : element.height() + 'px'
-			}
+			};
 
-			var final = {
+			var complete = {
 				width : this.style.width,
 				height : this.style.height
-			}
+			};
 
 			element.html(html);
 
 			var next = {
 				width : element.width() + 'px',
 				height : element.height() + 'px'
-			}
+			};
 
 			element.css(current).animate(next, speed, function() {
-				element.css(final);
+				element.css(complete);
 				if ($.isFunction(callback)) {
 					callback();
-				}
+				};
 			});
 
 		});
@@ -1961,12 +1961,11 @@ var MToolBar = (function() {
 
 	var MURL = {
 		current : function() {
-			return
-			var currentURL = window.location.protocol + '://' + window.location.host + '/' + window.location.pathname;
+			return currentURL = window.location.protocol + '://' + window.location.host + '/' + window.location.pathname;
 		},
 		segment : function(segement) {
 			var pathArray = window.location.pathname.split('/');
-			var secondLevelLocation = pathArray[segement];
+			return secondLevelLocation = pathArray[segement];
 		},
 		reset : function() {
 			var answer = confirm("All your changes will be disgarded.\nAre you sure you want to reset?");

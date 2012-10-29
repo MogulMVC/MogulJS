@@ -8,7 +8,7 @@ var MInputText = (function() {
 		
 		var uiElement = document.createElement('input');
 		uiElement.type = 'text';
-		$(uiElement).html(label);
+		$(uiElement).attr('placeholder', label);
 		
 		return uiElement;
 		

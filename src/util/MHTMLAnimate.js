@@ -9,25 +9,25 @@
 			var current = {
 				width : element.width() + 'px',
 				height : element.height() + 'px'
-			}
+			};
 
-			var final = {
+			var complete = {
 				width : this.style.width,
 				height : this.style.height
-			}
+			};
 
 			element.html(html);
 
 			var next = {
 				width : element.width() + 'px',
 				height : element.height() + 'px'
-			}
+			};
 
 			element.css(current).animate(next, speed, function() {
-				element.css(final);
+				element.css(complete);
 				if ($.isFunction(callback)) {
 					callback();
-				}
+				};
 			});
 
 		});
