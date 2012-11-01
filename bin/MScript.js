@@ -274,20 +274,6 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
-var MListItem = (function() {
-
-	function MListItem() {
-		
-		var uiElement = document.createElement('li');
-		$(uiElement).addClass('MListItem');
-		
-		return uiElement;
-		
-	};
-
-	return MListItem;
-
-})();
 var MList = (function() {
 
 	function MList() {
@@ -333,7 +319,21 @@ var MList = (function() {
 
 	return MList;
 
-})();var MNote = (function() {
+})();var MListItem = (function() {
+
+	function MListItem() {
+		
+		var uiElement = document.createElement('li');
+		$(uiElement).addClass('MListItem');
+		
+		return uiElement;
+		
+	};
+
+	return MListItem;
+
+})();
+var MNote = (function() {
 
 	function MNote(label) {
 
@@ -1982,7 +1982,7 @@ var MToolBar = (function() {
 })();
 (function() {
 
-	var MValidator = {
+	var MValidate = {
 
 		email : function(email) {
 			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -1990,6 +1990,6 @@ var MToolBar = (function() {
 		}
 	};
 	
-	window.MValidator = MValidator;
+	window.MValidate = MValidate;
 
 })();
