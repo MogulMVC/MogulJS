@@ -49,24 +49,7 @@ var outline_down = mono_2;
 		
 //Visual
 var rounded = '3px'; //Same size as CSS
-var rounded_large = '2em';$(window).load(function() {
-
-	// Fade in the stage image
-	$("#MStageImage").delay(speedNorm).animate({
-		opacity : 1
-	}, speedSlow);
-
-	// Draggable
-	//$(".MPopupContainer").draggable();
-	//$(".MHoverForm").draggable();
-	//$(".MHoverMessage").draggable();
-
-	//$(".MPopupContainer").addTouch();
-	//$(".MHoverForm").addTouch();
-	//$(".MHoverMessage").addTouch();
-
-});
-$(document).ready(function() {
+var rounded_large = '2em';$(document).ready(function() {
 	$('input[type="file"]').addClass('MButtonUploadInput');
 	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
 	$('.MButtonUpload').append('<span>Select File</span>');
@@ -161,7 +144,15 @@ $(window).resize(function() {
 
 $(document).mousemove(function(event) {
 	MSideBar.triggerProximity(event);
-});$(document).ready(function() {
+});$(window).load(function() {
+
+	// Fade in the stage image
+	$("#MStageImage").delay(speedNorm).animate({
+		opacity : 1
+	}, speedSlow);
+
+});
+$(document).ready(function() {
 	//Add a message container if one doesnt exist
 	if ($('#MSystemMessageContainer').length == 0) {
 		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
@@ -683,13 +674,6 @@ var MSideBar = (function() {
 	return MSideBar;
 
 })();
-var MSlider = (function() {
-
-	function MSlider() {
-	};
-
-})();
-
 var MSystemMessageContainer = (function() {
 
 	function MSystemMessageContainer() {
@@ -718,22 +702,22 @@ var MSystemMessageContainer = (function() {
 var MSystemMessage = (function() {
 
 	function MSystemMessage(label) {
-		
-		if(label == null || label == ''){
+
+		if (label == null || label == '') {
 			label = 'System Message';
 		}
-		
+
 		// Container
 		var uiElement = document.createElement('div');
-		
+
 		// Contents
 		var uiContent = '\
 		<span class="MIconClose"/></span>\
-		<span class="bold">' + label + '</span>';
-		
+		<span class="MTextBold">' + label + '</span>';
+
 		// Put it together
 		$(uiElement).addClass('MSystemMessage').append(uiContent);
-		
+
 		return uiElement;
 	};
 
@@ -1673,7 +1657,6 @@ var MSystemMessage = (function() {
 	};
 
 })(jQuery);
-// Class
 var MToolBar = (function() {
 
 	function MToolBar() {

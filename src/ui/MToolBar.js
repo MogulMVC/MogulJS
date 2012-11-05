@@ -1,4 +1,3 @@
-// Class
 var MToolBar = (function() {
 
 	function MToolBar() {

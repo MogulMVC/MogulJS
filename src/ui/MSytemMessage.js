@@ -26,22 +26,22 @@ var MSystemMessageContainer = (function() {
 var MSystemMessage = (function() {
 
 	function MSystemMessage(label) {
-		
-		if(label == null || label == ''){
+
+		if (label == null || label == '') {
 			label = 'System Message';
 		}
-		
+
 		// Container
 		var uiElement = document.createElement('div');
-		
+
 		// Contents
 		var uiContent = '\
 		<span class="MIconClose"/></span>\
-		<span class="bold">' + label + '</span>';
-		
+		<span class="MTextBold">' + label + '</span>';
+
 		// Put it together
 		$(uiElement).addClass('MSystemMessage').append(uiContent);
-		
+
 		return uiElement;
 	};
 
