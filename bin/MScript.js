@@ -265,6 +265,20 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
+var MListItem = (function() {
+
+	function MListItem() {
+		
+		var uiElement = document.createElement('li');
+		$(uiElement).addClass('MListItem');
+		
+		return uiElement;
+		
+	};
+
+	return MListItem;
+
+})();
 var MList = (function() {
 
 	function MList() {
@@ -310,21 +324,7 @@ var MList = (function() {
 
 	return MList;
 
-})();var MListItem = (function() {
-
-	function MListItem() {
-		
-		var uiElement = document.createElement('li');
-		$(uiElement).addClass('MListItem');
-		
-		return uiElement;
-		
-	};
-
-	return MListItem;
-
-})();
-var MNote = (function() {
+})();var MNote = (function() {
 
 	function MNote(label) {
 
@@ -640,20 +640,14 @@ var MSideBar = (function() {
 		}
 	};
 
-	MSideBar.selectAll = function(selector) {
-		// Set a deault parameter
-		selector = typeof selector !== 'undefined' ? selector : '';
-
+	MSideBar.selectAll = function() {
 		$('#MSideBar li input[type=checkbox]:visible').each(function() {
 			$(this).attr('checked', 'checked');
 			MSideBar.updateUI();
 		});
 	};
 
-	MSideBar.deselectAll = function(selector) {
-		// Set a deault parameter
-		selector = typeof selector !== 'undefined' ? selector : '';
-
+	MSideBar.deselectAll = function() {
 		$('#MSideBar li input[type=checkbox]').each(function() {
 			$(this).removeAttr('checked');
 			MSideBar.updateUI();
