@@ -12,7 +12,7 @@
 
 			return (this.r << 16 | this.g << 8 | this.b);
 		}
-	}
+	};
 
 	window.MColor = MColor;
 

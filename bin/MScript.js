@@ -1694,7 +1694,7 @@ var MToolBar = (function() {
 
 			return (this.r << 16 | this.g << 8 | this.b);
 		}
-	}
+	};
 
 	window.MColor = MColor;
 
@@ -1707,7 +1707,7 @@ var MToolBar = (function() {
 			today.setTime(today.getTime());
 			if (expires) {
 				expires = expires * 1000 * 60 * 60 * 24;
-			}
+			};
 			var expires_date = new Date(today.getTime() + (expires));
 			document.cookie = name + " = " + escape(value) + ((expires ) ? ";expires = " + expires_date.toGMTString() : "" ) + ((path ) ? ";path = " + path : "" ) + ((domain ) ? ";domain = " + domain : "" ) + ((secure ) ? ";secure" : "" );
 		},
@@ -1719,10 +1719,10 @@ var MToolBar = (function() {
 				x = x.replace(/^\s+|\s+$/g, "");
 				if (x == name) {
 					return unescape(y);
-				}
-			}
+				};
+			};
 		}
-	}
+	};
 
 	window.MCookie = MCookie;
 
@@ -1781,7 +1781,7 @@ var MToolBar = (function() {
 			cssNode.rel = 'stylesheet';
 			headID.appendChild(cssNode);
 		}
-	}
+	};
 
 	window.MLoad = MLoad;
 
@@ -1799,20 +1799,20 @@ var MToolBar = (function() {
 			// ensure both arrays of points are the same size
 			if (n != y.length) {
 				return ['Error'];
-			}
+			};
 
 			// calculate sums
 			var x_sum = 0;
 
 			for (var i = 0; i < x.length; i++) {
 				x_sum += x[i];
-			}
+			};
 
 			var y_sum = 0;
 
 			for (var i = 0; i < y.length; i++) {
 				y_sum += y[i];
-			}
+			};
 
 			var xx_sum = 0;
 			var xy_sum = 0;
@@ -1820,7 +1820,7 @@ var MToolBar = (function() {
 			for (var i = 0; i < n; i++) {
 				xy_sum += (x[i] * y[i]);
 				xx_sum += (x[i] * x[i]);
-			}
+			};
 
 			// calculate slope
 			var m = ((n * xy_sum) - (x_sum * y_sum)) / ((n * xx_sum) - (x_sum * x_sum));
@@ -1831,7 +1831,7 @@ var MToolBar = (function() {
 			// return result
 			return [m, b];
 		}
-	}
+	};
 
 	window.MMath = MMath;
 
@@ -1853,10 +1853,26 @@ var MToolBar = (function() {
 				$('[data-searchable=true]:Contains(' + search + ')').show();
 			}
 		}
-	}
+	};
 
 	window.MQuery = MQuery;
 
+})();
+(function(){
+	
+	var MString = {
+		escapeHtml : function(unsafe) {
+	  		return unsafe
+				.replace(/&/g, "&amp;")
+				.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/"/g, "&quot;")
+				.replace(/'/g, "&#039;");
+		}
+	};
+	
+	window.MString = MString;
+	
 })();
 (function() {
 
@@ -1879,7 +1895,7 @@ var MToolBar = (function() {
 		k2f : function(value) {
 			return ((value - 273) * 1.8) + 32;
 		}
-	}
+	};
 
 	window.MTemperature = MTemperature;
 
@@ -1900,42 +1916,42 @@ var MToolBar = (function() {
 
 			if (hours < 10) {
 				hours_pad = "0";
-			}
+			};
 
 			//Minutes
 			var minutes_pad = '';
 
 			if (minutes < 10) {
 				minutes_pad = "0";
-			}
+			};
 
 			//Seconds
 			var seconds_pad = '';
 
 			if (seconds < 10) {
 				seconds_pad = "0";
-			}
+			};
 
 			//Output
 			//If there are hours
 			if (hours >= 0) {
 				hms = hours_pad + hours + ":" + minutes_pad + minutes + ":" + seconds_pad + seconds;
-			}
+			};
 
 			//If there are no hours but there are mins
 			if (hours <= 0 && minutes > 0) {
 				hms = minutes_pad + minutes + ":" + seconds_pad + seconds;
-			}
+			};
 
 			//If there are no hours and no minutes
 			//This will display 00 if there are 0 seconds
 			if (hours <= 0 && minutes <= 0) {
 				hms = seconds_pad + seconds;
-			}
+			};
 
 			return hms;
 		}
-	}
+	};
 
 	window.MTime = MTime;
 
@@ -1958,7 +1974,7 @@ var MToolBar = (function() {
 				return true
 			};
 		}
-	}
+	};
 
 	window.MURL = MURL;
 
@@ -1966,7 +1982,6 @@ var MToolBar = (function() {
 (function() {
 
 	var MValidate = {
-
 		email : function(email) {
 			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 			return reg.test(email);

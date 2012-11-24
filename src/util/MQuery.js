@@ -15,7 +15,7 @@
 				$('[data-searchable=true]:Contains(' + search + ')').show();
 			}
 		}
-	}
+	};
 
 	window.MQuery = MQuery;
 

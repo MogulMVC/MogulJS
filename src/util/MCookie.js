@@ -6,7 +6,7 @@
 			today.setTime(today.getTime());
 			if (expires) {
 				expires = expires * 1000 * 60 * 60 * 24;
-			}
+			};
 			var expires_date = new Date(today.getTime() + (expires));
 			document.cookie = name + " = " + escape(value) + ((expires ) ? ";expires = " + expires_date.toGMTString() : "" ) + ((path ) ? ";path = " + path : "" ) + ((domain ) ? ";domain = " + domain : "" ) + ((secure ) ? ";secure" : "" );
 		},
@@ -18,10 +18,10 @@
 				x = x.replace(/^\s+|\s+$/g, "");
 				if (x == name) {
 					return unescape(y);
-				}
-			}
+				};
+			};
 		}
-	}
+	};
 
 	window.MCookie = MCookie;
 

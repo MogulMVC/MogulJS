@@ -16,7 +16,7 @@
 				return true
 			};
 		}
-	}
+	};
 
 	window.MURL = MURL;
 

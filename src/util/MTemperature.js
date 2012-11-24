@@ -19,7 +19,7 @@
 		k2f : function(value) {
 			return ((value - 273) * 1.8) + 32;
 		}
-	}
+	};
 
 	window.MTemperature = MTemperature;
 

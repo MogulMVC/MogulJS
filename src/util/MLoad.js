@@ -15,7 +15,7 @@
 			cssNode.rel = 'stylesheet';
 			headID.appendChild(cssNode);
 		}
-	}
+	};
 
 	window.MLoad = MLoad;
 
