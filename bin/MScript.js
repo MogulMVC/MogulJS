@@ -105,6 +105,16 @@ $(document).ready(function() {
 		$(this).replaceWith('<div ' + idString + ' class="MProgressBar"><div class="MProgressBarBG"><div class="MProgressBarFG" style="width:' + percentString + '"><span class="MProgressBarIndicator">' + percentString + '</span></div></div></div>');
 	});
 });$(document).ready(function() {
+	
+	// I am calling this MSearch but putting
+	// it inside of MQuery because there may
+	// be other query function
+	
+	$('#MSearch').keyup(function() {
+		MQuery.search(this.value);
+	});
+
+}); $(document).ready(function() {
 	$("meter").each(function() {
 		// Get default settings to reapply later
 		var currentId = $(this).attr('id');
