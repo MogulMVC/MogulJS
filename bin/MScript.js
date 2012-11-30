@@ -527,8 +527,10 @@ var MSideBar = (function() {
 	MSideBar.leftShow = function() {
 		this.scale();
 
+		var sideBarWidth = $('#MSideBar').outerWidth();
+
 		$("#MSideBarContainer").animate({
-			minWidth : 352
+			minWidth : sideBarWidth
 		}, speedNorm);
 
 		$("#MSideBar").animate({
@@ -552,9 +554,11 @@ var MSideBar = (function() {
 
 	MSideBar.rightShow = function() {
 		this.scale();
+		
+		var sideBarWidth = $('#MSideBar').outerWidth();
 
 		$("#MSideBarContainer").animate({
-			minWidth : 352
+			minWidth : sideBarWidth
 		}, speedNorm);
 
 		$("#MSideBar").animate({

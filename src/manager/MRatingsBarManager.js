@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("meter").each(function() {
+	$('meter').each(function() {
 		// Get default settings to reapply later
 		var currentId = $(this).attr('id');
 		var currentPercent = $(this).attr('value');

@@ -13,32 +13,32 @@
 			var hours_pad = '';
 
 			if (hours < 10) {
-				hours_pad = "0";
+				hours_pad = '0';
 			};
 
 			//Minutes
 			var minutes_pad = '';
 
 			if (minutes < 10) {
-				minutes_pad = "0";
+				minutes_pad = '0';
 			};
 
 			//Seconds
 			var seconds_pad = '';
 
 			if (seconds < 10) {
-				seconds_pad = "0";
+				seconds_pad = '0';
 			};
 
 			//Output
 			//If there are hours
 			if (hours >= 0) {
-				hms = hours_pad + hours + ":" + minutes_pad + minutes + ":" + seconds_pad + seconds;
+				hms = hours_pad + hours + ':' + minutes_pad + minutes + ':' + seconds_pad + seconds;
 			};
 
 			//If there are no hours but there are mins
 			if (hours <= 0 && minutes > 0) {
-				hms = minutes_pad + minutes + ":" + seconds_pad + seconds;
+				hms = minutes_pad + minutes + ':' + seconds_pad + seconds;
 			};
 
 			//If there are no hours and no minutes

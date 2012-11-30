@@ -17,10 +17,10 @@ var MInputText = (function() {
 	// Static Methods
 	MInputText.passWordToggle = function(id) {
 		var element = document.getElementById(id);
-		if (element.type == "password") {
-			element.type = "text";
+		if (element.type == 'password') {
+			element.type = 'text';
 		} else {
-			element.type = "password";
+			element.type = 'password';
 		}
 	};
 

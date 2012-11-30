@@ -6,15 +6,15 @@ var MToolBar = (function() {
 
 	MToolBar.position = function() {
 		if (!document.getElementById('MHeader') && !document.getElementById('MHeaderPlaceholder')) {
-			$("#MToolBar").css("top", "0px");
+			$('#MToolBar').css('top', '0px');
 		}
 		this.placeholderScale();
 	};
 
 	MToolBar.placeholderScale = function() {
-		if ($("MToolBar") != 0) {
-			var toolbarHeight = $("#MToolBar").height();
-			$("#MToolBarPlaceholder").height(toolbarHeight);
+		if ($('MToolBar') != 0) {
+			var toolbarHeight = $('#MToolBar').height();
+			$('#MToolBarPlaceholder').height(toolbarHeight);
 		}
 	};
 

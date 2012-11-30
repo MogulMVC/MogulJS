@@ -9,8 +9,8 @@ var MSideBar = (function() {
 		this.menuTop();
 
 		var windowHeight = $(window).height();
-		var headerHeight = $("#MHeader").height();
-		var toolBarHeight = $("#MToolBar").height();
+		var headerHeight = $('#MHeader').height();
+		var toolBarHeight = $('#MToolBar').height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
@@ -21,69 +21,73 @@ var MSideBar = (function() {
 		}
 
 		var sidebarHeight = windowHeight - headerHeight - toolBarHeight;
-		$("#MSideBar").css("top", headerHeight + toolBarHeight);
-		$("#MSideBar").css("height", sidebarHeight);
+		$('#MSideBar').css('top', headerHeight + toolBarHeight);
+		$('#MSideBar').css('height', sidebarHeight);
 	};
 
 	MSideBar.leftShow = function() {
 		this.scale();
 
-		$("#MSideBarContainer").animate({
-			minWidth : 352
+		var sideBarWidth = $('#MSideBar').outerWidth();
+
+		$('#MSideBarContainer').animate({
+			minWidth : sideBarWidth
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			left : 0
 		}, speedNorm);
 
-		$(".MIconArrowRight").hide();
+		$('.MIconArrowRight').hide();
 	};
 
 	MSideBar.leftHide = function() {
-		$("#MSideBarContainer").animate({
+		$('#MSideBarContainer').animate({
 			minWidth : 0
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			left : -360
 		}, speedNorm);
 
-		$(".MIconArrowRight").show();
+		$('.MIconArrowRight').show();
 	};
 
 	MSideBar.rightShow = function() {
 		this.scale();
+		
+		var sideBarWidth = $('#MSideBar').outerWidth();
 
-		$("#MSideBarContainer").animate({
-			minWidth : 352
+		$('#MSideBarContainer').animate({
+			minWidth : sideBarWidth
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			right : 0
 		}, speedNorm);
 
-		$(".MIconArrowLeft").hide();
+		$('.MIconArrowLeft').hide();
 	};
 
 	MSideBar.rightHide = function() {
-		$("#MSideBarContainer").animate({
+		$('#MSideBarContainer').animate({
 			minWidth : 0
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			right : -360
 		}, speedNorm);
 
-		$(".MIconArrowLeft").show();
+		$('.MIconArrowLeft').show();
 	};
 
 	MSideBar.triggerIndicatorInit = function() {
 		if ($('#MSideBarTriggerLeft').length != 0 && $('#MSideBarTriggerLeftIndicator').length == 0) {
-			$("#MSideBarTriggerLeft").append('<div id="MSideBarTriggerLeftIndicator"></div>');
+			$('#MSideBarTriggerLeft').append('<div id='MSideBarTriggerLeftIndicator'></div>');
 		}
 
 		if ($('#MSideBarTriggerRight').length != 0 && $('#MSideBarTriggerRightIndicator').length == 0) {
-			$("#MSideBarTriggerRight").append('<div id="MSideBarTriggerRightIndicator"></div>');
+			$('#MSideBarTriggerRight').append('<div id='MSideBarTriggerRightIndicator'></div>');
 		}
 	};
 
@@ -97,47 +101,47 @@ var MSideBar = (function() {
 		var indicationDistanceStart = 150;
 
 		//Left
-		if (document.getElementById("MSideBarTriggerLeftIndicator")) {
-			var indicatorWidth = $("#MSideBarTriggerLeftIndicator").width();
+		if (document.getElementById('MSideBarTriggerLeftIndicator')) {
+			var indicatorWidth = $('#MSideBarTriggerLeftIndicator').width();
 
 			if (mouseX < indicationDistanceStart && mouseX != 0) {
 				var percentAwayDecimal = mouseX / indicationDistanceStart;
 				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-				$("#MSideBarTriggerLeftIndicator").css("left", indicatorCSSLeft);
+				$('#MSideBarTriggerLeftIndicator').css('left', indicatorCSSLeft);
 			} else {
-				$("#MSideBarTriggerLeftIndicator").css("left", -indicatorWidth);
+				$('#MSideBarTriggerLeftIndicator').css('left', -indicatorWidth);
 			}
 
 		}
 
 		//Right
-		if (document.getElementById("MSideBarTriggerRightIndicator")) {
-			var indicatorWidth = $("#MSideBarTriggerRightIndicator").width();
+		if (document.getElementById('MSideBarTriggerRightIndicator')) {
+			var indicatorWidth = $('#MSideBarTriggerRightIndicator').width();
 
 			if (mouseX > windowWidth - indicationDistanceStart && mouseX != windowWidth) {
 				var percentAwayDecimal = (windowWidth - mouseX) / indicationDistanceStart;
 				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-				$("#MSideBarTriggerRightIndicator").css("right", indicatorCSSLeft);
+				$('#MSideBarTriggerRightIndicator').css('right', indicatorCSSLeft);
 			} else {
-				$("#MSideBarTriggerRightIndicator").css("right", -indicatorWidth);
+				$('#MSideBarTriggerRightIndicator').css('right', -indicatorWidth);
 			}
 
 		}
 	};
 
 	MSideBar.menuPlaceholderHeight = function() {
-		if (document.getElementById("MSideBarMenuFixed")) {
+		if (document.getElementById('MSideBarMenuFixed')) {
 			/*Placeholder height*/
-			var sidebar_menu_fixed_height = $("#MSideBarMenuFixed").height();
-			$("#MSideBarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
+			var sidebar_menu_fixed_height = $('#MSideBarMenuFixed').height();
+			$('#MSideBarMenuFixedPlaceholder').height(sidebar_menu_fixed_height);
 		}
 	};
 
 	MSideBar.menuTop = function() {
-		if (document.getElementById("MSideBarMenuFixed")) {
+		if (document.getElementById('MSideBarMenuFixed')) {
 			/*Top Position*/
-			var headerHeight = $("#MHeader").height();
-			var toolBarHeight = $("#MToolBar").height();
+			var headerHeight = $('#MHeader').height();
+			var toolBarHeight = $('#MToolBar').height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
@@ -149,7 +153,7 @@ var MSideBar = (function() {
 
 			var sidebarMenuTop = headerHeight + toolBarHeight;
 
-			$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
+			$('#MSideBarMenuFixed').css('top', sidebarMenuTop);
 		}
 	};
 

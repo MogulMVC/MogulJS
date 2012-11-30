@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("progress").each(function() {
+	$('progress').each(function() {
 		// Get default settings to reapply later
 		var currentId = $(this).attr('id');
 		var currentPercent = $(this).attr('value');

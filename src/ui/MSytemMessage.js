@@ -5,8 +5,8 @@ var MSystemMessageContainer = (function() {
 	};
 
 	MSystemMessageContainer.position = function() {
-		var headerHeight = $("#MHeader").height();
-		var toolBarHeight = $("#MToolBar").height();
+		var headerHeight = $('#MHeader').height();
+		var toolBarHeight = $('#MToolBar').height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
@@ -16,7 +16,7 @@ var MSystemMessageContainer = (function() {
 			toolBarHeight = 0;
 		}
 
-		$("#MSystemMessageContainer").css("top", headerHeight + toolBarHeight);
+		$('#MSystemMessageContainer').css('top', headerHeight + toolBarHeight);
 	};
 
 	return MSystemMessageContainer;
@@ -36,8 +36,8 @@ var MSystemMessage = (function() {
 
 		// Contents
 		var uiContent = '\
-		<span class="MIconClose"/></span>\
-		<span class="MTextBold">' + label + '</span>';
+		<span class='MIconClose'/></span>\
+		<span class='MTextBold'>' + label + '</span>';
 
 		// Put it together
 		$(uiElement).addClass('MSystemMessage').append(uiContent);
