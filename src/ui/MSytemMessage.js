@@ -36,8 +36,8 @@ var MSystemMessage = (function() {
 
 		// Contents
 		var uiContent = '\
-		<span class='MIconClose'/></span>\
-		<span class='MTextBold'>' + label + '</span>';
+		<span class="MIconClose"/></span>\
+		<span class="MTextBold">' + label + '</span>';
 
 		// Put it together
 		$(uiElement).addClass('MSystemMessage').append(uiContent);

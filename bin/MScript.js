@@ -64,7 +64,7 @@ var rounded_large = '2em';$(document).ready(function() {
 	});
 });$(window).load(function() {
 	// Fade in all images
-	$("#MMainWindow img").animate({
+	$('#MMainWindow img').animate({
 		opacity : 1
 	}, speedSlow);
 });
@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 });
 $(document).ready(function() {
-	$("progress").each(function() {
+	$('progress').each(function() {
 		// Get default settings to reapply later
 		var currentId = $(this).attr('id');
 		var currentPercent = $(this).attr('value');
@@ -115,7 +115,7 @@ $(document).ready(function() {
 	});
 
 }); $(document).ready(function() {
-	$("meter").each(function() {
+	$('meter').each(function() {
 		// Get default settings to reapply later
 		var currentId = $(this).attr('id');
 		var currentPercent = $(this).attr('value');
@@ -159,7 +159,7 @@ $(document).mousemove(function(event) {
 });$(window).load(function() {
 
 	// Fade in the stage image
-	$("#MStageImage").delay(speedNorm).animate({
+	$('#MStageImage').delay(speedNorm).animate({
 		opacity : 1
 	}, speedSlow);
 
@@ -184,43 +184,43 @@ $(window).resize(function() {
 }); $(document).ready(function() {
 	$('.MTabWidget').MTab();
 }); $(document).ready(function() {
-	$("[data-mtip=n], [data-mtip=N], [data-mtip=b], [data-mtip=B]").MTip({
-		gravity : "N",
+	$('[data-mtip=n], [data-mtip=N], [data-mtip=b], [data-mtip=B]').MTip({
+		gravity : 'N',
 		delayIn : speedSlow
 	});
 
-	$("[data-mtip=nw], [data-mtip=NW]").MTip({
-		gravity : "NW",
+	$('[data-mtip=nw], [data-mtip=NW]').MTip({
+		gravity : 'NW',
 		delayIn : speedSlow
 	});
 
-	$("[data-mtip=ne], [data-mtip=NE]").MTip({
-		gravity : "NE",
+	$('[data-mtip=ne], [data-mtip=NE]').MTip({
+		gravity : 'NE',
 		delayIn : speedSlow
 	});
 
-	$("[data-mtip=s], [data-mtip=S], [data-mtip=t], [data-mtip=T]").MTip({
-		gravity : "S",
+	$('[data-mtip=s], [data-mtip=S], [data-mtip=t], [data-mtip=T]').MTip({
+		gravity : 'S',
 		delayIn : speedSlow
 	});
 
-	$("[data-mtip=sw], [data-mtip=SW]").MTip({
-		gravity : "SW",
+	$('[data-mtip=sw], [data-mtip=SW]').MTip({
+		gravity : 'SW',
 		delayIn : speedSlow
 	});
 
-	$("[data-mtip=se], [data-mtip=SE]").MTip({
-		gravity : "SE",
+	$('[data-mtip=se], [data-mtip=SE]').MTip({
+		gravity : 'SE',
 		delayIn : speedSlow
 	});
 
-	$("[data-mtip=w], [data-mtip=W], [data-mtip=r], [data-mtip=R]").MTip({
-		gravity : "W",
+	$('[data-mtip=w], [data-mtip=W], [data-mtip=r], [data-mtip=R]').MTip({
+		gravity : 'W',
 		delayIn : speedSlow
 	});
 
-	$("[data-mtip=e], [data-mtip=E], [data-mtip=l], [data-mtip=L]").MTip({
-		gravity : "E",
+	$('[data-mtip=e], [data-mtip=E], [data-mtip=l], [data-mtip=L]').MTip({
+		gravity : 'E',
 		delayIn : speedSlow
 	});
 }); $(window).load(function() {
@@ -267,10 +267,10 @@ var MInputText = (function() {
 	// Static Methods
 	MInputText.passWordToggle = function(id) {
 		var element = document.getElementById(id);
-		if (element.type == "password") {
-			element.type = "text";
+		if (element.type == 'password') {
+			element.type = 'text';
 		} else {
-			element.type = "password";
+			element.type = 'password';
 		}
 	};
 
@@ -508,8 +508,8 @@ var MSideBar = (function() {
 		this.menuTop();
 
 		var windowHeight = $(window).height();
-		var headerHeight = $("#MHeader").height();
-		var toolBarHeight = $("#MToolBar").height();
+		var headerHeight = $('#MHeader').height();
+		var toolBarHeight = $('#MToolBar').height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
@@ -520,8 +520,8 @@ var MSideBar = (function() {
 		}
 
 		var sidebarHeight = windowHeight - headerHeight - toolBarHeight;
-		$("#MSideBar").css("top", headerHeight + toolBarHeight);
-		$("#MSideBar").css("height", sidebarHeight);
+		$('#MSideBar').css('top', headerHeight + toolBarHeight);
+		$('#MSideBar').css('height', sidebarHeight);
 	};
 
 	MSideBar.leftShow = function() {
@@ -529,27 +529,27 @@ var MSideBar = (function() {
 
 		var sideBarWidth = $('#MSideBar').outerWidth();
 
-		$("#MSideBarContainer").animate({
+		$('#MSideBarContainer').animate({
 			minWidth : sideBarWidth
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			left : 0
 		}, speedNorm);
 
-		$(".MIconArrowRight").hide();
+		$('.MIconArrowRight').hide();
 	};
 
 	MSideBar.leftHide = function() {
-		$("#MSideBarContainer").animate({
+		$('#MSideBarContainer').animate({
 			minWidth : 0
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			left : -360
 		}, speedNorm);
 
-		$(".MIconArrowRight").show();
+		$('.MIconArrowRight').show();
 	};
 
 	MSideBar.rightShow = function() {
@@ -557,36 +557,36 @@ var MSideBar = (function() {
 		
 		var sideBarWidth = $('#MSideBar').outerWidth();
 
-		$("#MSideBarContainer").animate({
+		$('#MSideBarContainer').animate({
 			minWidth : sideBarWidth
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			right : 0
 		}, speedNorm);
 
-		$(".MIconArrowLeft").hide();
+		$('.MIconArrowLeft').hide();
 	};
 
 	MSideBar.rightHide = function() {
-		$("#MSideBarContainer").animate({
+		$('#MSideBarContainer').animate({
 			minWidth : 0
 		}, speedNorm);
 
-		$("#MSideBar").animate({
+		$('#MSideBar').animate({
 			right : -360
 		}, speedNorm);
 
-		$(".MIconArrowLeft").show();
+		$('.MIconArrowLeft').show();
 	};
 
 	MSideBar.triggerIndicatorInit = function() {
 		if ($('#MSideBarTriggerLeft').length != 0 && $('#MSideBarTriggerLeftIndicator').length == 0) {
-			$("#MSideBarTriggerLeft").append('<div id="MSideBarTriggerLeftIndicator"></div>');
+			$('#MSideBarTriggerLeft').append('<div id="MSideBarTriggerLeftIndicator"></div>');
 		}
 
 		if ($('#MSideBarTriggerRight').length != 0 && $('#MSideBarTriggerRightIndicator').length == 0) {
-			$("#MSideBarTriggerRight").append('<div id="MSideBarTriggerRightIndicator"></div>');
+			$('#MSideBarTriggerRight').append('<div id="MSideBarTriggerRightIndicator"></div>');
 		}
 	};
 
@@ -600,47 +600,47 @@ var MSideBar = (function() {
 		var indicationDistanceStart = 150;
 
 		//Left
-		if (document.getElementById("MSideBarTriggerLeftIndicator")) {
-			var indicatorWidth = $("#MSideBarTriggerLeftIndicator").width();
+		if (document.getElementById('MSideBarTriggerLeftIndicator')) {
+			var indicatorWidth = $('#MSideBarTriggerLeftIndicator').width();
 
 			if (mouseX < indicationDistanceStart && mouseX != 0) {
 				var percentAwayDecimal = mouseX / indicationDistanceStart;
 				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-				$("#MSideBarTriggerLeftIndicator").css("left", indicatorCSSLeft);
+				$('#MSideBarTriggerLeftIndicator').css('left', indicatorCSSLeft);
 			} else {
-				$("#MSideBarTriggerLeftIndicator").css("left", -indicatorWidth);
+				$('#MSideBarTriggerLeftIndicator').css('left', -indicatorWidth);
 			}
 
 		}
 
 		//Right
-		if (document.getElementById("MSideBarTriggerRightIndicator")) {
-			var indicatorWidth = $("#MSideBarTriggerRightIndicator").width();
+		if (document.getElementById('MSideBarTriggerRightIndicator')) {
+			var indicatorWidth = $('#MSideBarTriggerRightIndicator').width();
 
 			if (mouseX > windowWidth - indicationDistanceStart && mouseX != windowWidth) {
 				var percentAwayDecimal = (windowWidth - mouseX) / indicationDistanceStart;
 				var indicatorCSSLeft = -(percentAwayDecimal * indicatorWidth);
-				$("#MSideBarTriggerRightIndicator").css("right", indicatorCSSLeft);
+				$('#MSideBarTriggerRightIndicator').css('right', indicatorCSSLeft);
 			} else {
-				$("#MSideBarTriggerRightIndicator").css("right", -indicatorWidth);
+				$('#MSideBarTriggerRightIndicator').css('right', -indicatorWidth);
 			}
 
 		}
 	};
 
 	MSideBar.menuPlaceholderHeight = function() {
-		if (document.getElementById("MSideBarMenuFixed")) {
+		if (document.getElementById('MSideBarMenuFixed')) {
 			/*Placeholder height*/
-			var sidebar_menu_fixed_height = $("#MSideBarMenuFixed").height();
-			$("#MSideBarMenuFixedPlaceholder").height(sidebar_menu_fixed_height);
+			var sidebar_menu_fixed_height = $('#MSideBarMenuFixed').height();
+			$('#MSideBarMenuFixedPlaceholder').height(sidebar_menu_fixed_height);
 		}
 	};
 
 	MSideBar.menuTop = function() {
-		if (document.getElementById("MSideBarMenuFixed")) {
+		if (document.getElementById('MSideBarMenuFixed')) {
 			/*Top Position*/
-			var headerHeight = $("#MHeader").height();
-			var toolBarHeight = $("#MToolBar").height();
+			var headerHeight = $('#MHeader').height();
+			var toolBarHeight = $('#MToolBar').height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
@@ -652,7 +652,7 @@ var MSideBar = (function() {
 
 			var sidebarMenuTop = headerHeight + toolBarHeight;
 
-			$("#MSideBarMenuFixed").css("top", sidebarMenuTop);
+			$('#MSideBarMenuFixed').css('top', sidebarMenuTop);
 		}
 	};
 
@@ -691,8 +691,8 @@ var MSystemMessageContainer = (function() {
 	};
 
 	MSystemMessageContainer.position = function() {
-		var headerHeight = $("#MHeader").height();
-		var toolBarHeight = $("#MToolBar").height();
+		var headerHeight = $('#MHeader').height();
+		var toolBarHeight = $('#MToolBar').height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
@@ -702,7 +702,7 @@ var MSystemMessageContainer = (function() {
 			toolBarHeight = 0;
 		}
 
-		$("#MSystemMessageContainer").css("top", headerHeight + toolBarHeight);
+		$('#MSystemMessageContainer').css('top', headerHeight + toolBarHeight);
 	};
 
 	return MSystemMessageContainer;
@@ -1675,15 +1675,15 @@ var MToolBar = (function() {
 
 	MToolBar.position = function() {
 		if (!document.getElementById('MHeader') && !document.getElementById('MHeaderPlaceholder')) {
-			$("#MToolBar").css("top", "0px");
+			$('#MToolBar').css('top', '0px');
 		}
 		this.placeholderScale();
 	};
 
 	MToolBar.placeholderScale = function() {
-		if ($("MToolBar") != 0) {
-			var toolbarHeight = $("#MToolBar").height();
-			$("#MToolBarPlaceholder").height(toolbarHeight);
+		if ($('MToolBar') != 0) {
+			var toolbarHeight = $('#MToolBar').height();
+			$('#MToolBarPlaceholder').height(toolbarHeight);
 		}
 	};
 
@@ -1925,32 +1925,32 @@ var MToolBar = (function() {
 			var hours_pad = '';
 
 			if (hours < 10) {
-				hours_pad = "0";
+				hours_pad = '0';
 			};
 
 			//Minutes
 			var minutes_pad = '';
 
 			if (minutes < 10) {
-				minutes_pad = "0";
+				minutes_pad = '0';
 			};
 
 			//Seconds
 			var seconds_pad = '';
 
 			if (seconds < 10) {
-				seconds_pad = "0";
+				seconds_pad = '0';
 			};
 
 			//Output
 			//If there are hours
 			if (hours >= 0) {
-				hms = hours_pad + hours + ":" + minutes_pad + minutes + ":" + seconds_pad + seconds;
+				hms = hours_pad + hours + ':' + minutes_pad + minutes + ':' + seconds_pad + seconds;
 			};
 
 			//If there are no hours but there are mins
 			if (hours <= 0 && minutes > 0) {
-				hms = minutes_pad + minutes + ":" + seconds_pad + seconds;
+				hms = minutes_pad + minutes + ':' + seconds_pad + seconds;
 			};
 
 			//If there are no hours and no minutes
@@ -1977,7 +1977,7 @@ var MToolBar = (function() {
 			return secondLevelLocation = pathArray[segement];
 		},
 		reset : function() {
-			var answer = confirm("All your changes will be disgarded.\nAre you sure you want to reset?");
+			var answer = confirm('All your changes will be disgarded.\nAre you sure you want to reset?');
 
 			if (answer) {
 				location.reload(true);

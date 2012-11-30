@@ -83,11 +83,11 @@ var MSideBar = (function() {
 
 	MSideBar.triggerIndicatorInit = function() {
 		if ($('#MSideBarTriggerLeft').length != 0 && $('#MSideBarTriggerLeftIndicator').length == 0) {
-			$('#MSideBarTriggerLeft').append('<div id='MSideBarTriggerLeftIndicator'></div>');
+			$('#MSideBarTriggerLeft').append('<div id="MSideBarTriggerLeftIndicator"></div>');
 		}
 
 		if ($('#MSideBarTriggerRight').length != 0 && $('#MSideBarTriggerRightIndicator').length == 0) {
-			$('#MSideBarTriggerRight').append('<div id='MSideBarTriggerRightIndicator'></div>');
+			$('#MSideBarTriggerRight').append('<div id="MSideBarTriggerRightIndicator"></div>');
 		}
 	};
 
