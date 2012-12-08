@@ -54,6 +54,16 @@ var rounded_large = '2em';$(document).ready(function() {
 	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
 	$('.MButtonUpload').append('<span>Select File</span>');
 });$(document).ready(function() {
+	$('.MDropdown li:has(ul)').bind('mouseenter', function(e) {
+		$(this).children('ul').show()
+		return false;
+	});
+
+	$('.MDropdown li:has(ul)').bind('mouseleave', function(e) {
+		$(this).children('ul').hide()
+		return false;
+	});
+}); $(document).ready(function() {
 	// Set the default state
 	MList.updateUI();
 
