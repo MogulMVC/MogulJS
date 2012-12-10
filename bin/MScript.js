@@ -93,6 +93,12 @@ $(document).ready(function() {
 	$('.MPopup .MIconClose').live('click', function() {
 		$(this).closest('.MPopupContainer').hide();
 	});
+	
+	$(document).keyup(function(e) {
+		if(e.keyCode == 27){
+			$('.MPopupContainer').hide();
+		};
+	});
 
 });
 $(document).ready(function() {
@@ -287,6 +293,20 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
+var MListItem = (function() {
+
+	function MListItem() {
+		
+		var uiElement = document.createElement('li');
+		$(uiElement).addClass('MListItem');
+		
+		return uiElement;
+		
+	};
+
+	return MListItem;
+
+})();
 var MList = (function() {
 
 	function MList() {
@@ -332,21 +352,7 @@ var MList = (function() {
 
 	return MList;
 
-})();var MListItem = (function() {
-
-	function MListItem() {
-		
-		var uiElement = document.createElement('li');
-		$(uiElement).addClass('MListItem');
-		
-		return uiElement;
-		
-	};
-
-	return MListItem;
-
-})();
-var MNote = (function() {
+})();var MNote = (function() {
 
 	function MNote(label) {
 
