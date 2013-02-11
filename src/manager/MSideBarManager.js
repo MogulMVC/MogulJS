@@ -3,7 +3,7 @@ $(document).ready(function() {
 	MSideBar.updateUI();
 
 	//Tracking it with live so I can add new items and they still work
-	$('#MSideBar li input[type=checkbox], #MSideBar li input[type=radio]').live('click', function() {
+	$(document).on('click', '#MSideBar li input[type=checkbox], #MSideBar li input[type=radio]', function() {
 		MSideBar.updateUI();
 	});
 });

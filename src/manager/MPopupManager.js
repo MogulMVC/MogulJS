@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('.MPopup .MIconClose').live('click', function() {
+	$(document).on('click', '.MPopup .MIconClose', function() {
 		$(this).closest('.MPopupContainer').hide();
 	});
 	

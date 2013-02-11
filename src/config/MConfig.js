@@ -1,3 +1,5 @@
+var version = "130211";
+
 //Speed
 var speedFast = 125;
 var speedNorm = 250;

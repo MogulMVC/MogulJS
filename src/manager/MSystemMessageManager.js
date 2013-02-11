@@ -4,7 +4,7 @@ $(document).ready(function() {
 		$('#MMainWindow').append('<div id="MSystemMessageContainer"></div>');
 	}
 
-	$('.MSystemMessage .MIconClose').live('click', function() {
+	$(document).on('click', '.MSystemMessage .MIconClose', function() {
 		$(this).parent().remove();
 	});
 });
@@ -15,4 +15,4 @@ $(window).load(function() {
 
 $(window).resize(function() {
 	MSystemMessageContainer.position();
-}); 
+});
