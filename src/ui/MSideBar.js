@@ -140,8 +140,8 @@ var MSideBar = (function() {
 	MSideBar.menuTop = function() {
 		if (document.getElementById('MSideBarMenuFixed')) {
 			/*Top Position*/
-			var headerHeight = $('#MHeader').height();
-			var toolBarHeight = $('#MToolBar').height();
+			var headerHeight = $('#MHeaderPlaceholder').height();
+			var toolBarHeight = $('#MToolBarPlaceholder').height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;

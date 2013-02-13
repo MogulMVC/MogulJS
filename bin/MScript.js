@@ -4,7 +4,7 @@
  * recommended jQuery version 1.9.0
  */
 
-var version = "130211";
+var version = "130213";
 
 //Speed
 var speedFast = 125;
@@ -661,8 +661,8 @@ var MSideBar = (function() {
 	MSideBar.menuTop = function() {
 		if (document.getElementById('MSideBarMenuFixed')) {
 			/*Top Position*/
-			var headerHeight = $('#MHeader').height();
-			var toolBarHeight = $('#MToolBar').height();
+			var headerHeight = $('#MHeaderPlaceholder').height();
+			var toolBarHeight = $('#MToolBarPlaceholder').height();
 
 			if (isNaN(headerHeight)) {
 				headerHeight = 0;
