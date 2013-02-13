@@ -55,7 +55,7 @@ var MSideBar = (function() {
 
 	MSideBar.rightShow = function() {
 		this.scale();
-		
+
 		var sideBarWidth = $('#MSideBar').outerWidth();
 
 		$('#MSideBarContainer').animate({
