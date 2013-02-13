@@ -530,8 +530,8 @@ var MSideBar = (function() {
 		this.menuTop();
 
 		var windowHeight = $(window).height();
-		var headerHeight = $('#MHeader').height();
-		var toolBarHeight = $('#MToolBar').height();
+		var headerHeight = $('#MHeaderPlaceholder').height();
+		var toolBarHeight = $('#MToolBarPlaceholder').height();
 
 		if (isNaN(headerHeight)) {
 			headerHeight = 0;
@@ -576,7 +576,7 @@ var MSideBar = (function() {
 
 	MSideBar.rightShow = function() {
 		this.scale();
-		
+
 		var sideBarWidth = $('#MSideBar').outerWidth();
 
 		$('#MSideBarContainer').animate({
