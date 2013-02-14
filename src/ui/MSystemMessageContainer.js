@@ -31,7 +31,7 @@ var MSystemMessageContainer = (function() {
 			fadeSpeed = 0;
 		}
 
-		$('#MSystemMessageContainer').append(message);
+		$('#MSystemMessageContainer').append(MSystemMessage);
 		$('.MSystemMessage').last().delay(fadeDelay).fadeOut(fadeSpeed, function() {
 			$(this).remove()
 		});
