@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
 	$('[data-mtip=n], [data-mtip=N], [data-mtip=b], [data-mtip=B]').MTip({
 		gravity : 'N',
 		delayIn : speedSlow
@@ -38,4 +39,5 @@ $(document).ready(function() {
 		gravity : 'E',
 		delayIn : speedSlow
 	});
+	
 }); 

@@ -2,21 +2,14 @@ var MNote = (function() {
 
 	function MNote(label) {
 
-		if (label == null || label == '') {
+		if (label == '' || label == null) {
 			label = 'Note';
 		}
 
 		var uiElement = document.createElement('span');
 
-		var rotation = MMath.random(-8, 8);
-		var rotationCss = 'rotate(' + rotation + 'deg)';
-
 		$(uiElement).addClass('MNote').css({
-			'-webkit-transform' : rotationCss,
-			'-moz-transform' : rotationCss,
-			'-ms-transform' : rotationCss,
-			'-o-transform' : rotationCss,
-			'transform' : rotationCss
+			'transform' : MMath.random(-8, 8)
 		}).html(label);
 
 		return uiElement;

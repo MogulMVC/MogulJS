@@ -1,11 +1,11 @@
 $(document).ready(function() {
-	$('.MDropdown li:has(ul)').bind('mouseenter', function(e) {
-		$(this).children('ul').show()
-		return false;
+
+	$(document).on('mouseenter', '.MDropdown li:has(ul)', function() {
+		$(this).children('ul').show();
 	});
 
-	$('.MDropdown li:has(ul)').bind('mouseleave', function(e) {
-		$(this).children('ul').hide()
-		return false;
+	$(document).on('mouseleave', '.MDropdown li:has(ul)', function() {
+		$(this).children('ul').hide();
 	});
-}); 
+
+});

@@ -1,5 +1,7 @@
 $(document).ready(function() {
+	
 	$('meter').each(function() {
+		
 		// Get default settings to reapply later
 		var currentId = $(this).attr('id');
 		var currentPercent = $(this).attr('value');
@@ -16,5 +18,7 @@ $(document).ready(function() {
 
 		// Replace with the Mogul progress bar
 		$(this).replaceWith('<div class="MRatingsBar"><div ' + idString + ' class="MRatingsBarBG"><div class="MRatingsBarFG" style="width:' + percentString + '"></div></div></div>');
+	
 	});
+	
 });
