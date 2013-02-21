@@ -4,7 +4,7 @@
  * recommended jQuery version 1.9.0
  */
 
-var version = "130214";
+var version = "130220";
 
 //Speed
 var speedFast = 125;
