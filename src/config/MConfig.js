@@ -1,6 +1,6 @@
 /* 
  * MScript.js by Alan James
- * version 130214
+ * version 130220
  * recommended jQuery version 1.9.0
  */
 
