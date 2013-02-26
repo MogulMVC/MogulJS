@@ -1,10 +1,18 @@
 /* 
  * MScript.js by Alan James
+<<<<<<< HEAD
  * version 130226
  * recommended jQuery version 1.9.0
  */
 
 var version = "130226";
+=======
+ * version 130214
+ * recommended jQuery version 1.9.0
+ */
+
+var version = "130220";
+>>>>>>> 85d02d5dbcdfed64fead02dfa5febe65b772d2f0
 
 //Speed
 var speedFast = 125;
@@ -323,20 +331,6 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
-var MListItem = (function() {
-
-	function MListItem() {
-		
-		var uiElement = document.createElement('li');
-		$(uiElement).addClass('MListItem');
-		
-		return uiElement;
-		
-	};
-
-	return MListItem;
-
-})();
 var MList = (function() {
 
 	function MList() {
@@ -382,7 +376,21 @@ var MList = (function() {
 
 	return MList;
 
-})();var MNote = (function() {
+})();var MListItem = (function() {
+
+	function MListItem() {
+		
+		var uiElement = document.createElement('li');
+		$(uiElement).addClass('MListItem');
+		
+		return uiElement;
+		
+	};
+
+	return MListItem;
+
+})();
+var MNote = (function() {
 
 	function MNote(label) {
 
@@ -1942,8 +1950,8 @@ var MToolBar = (function() {
 	window.MQuery = MQuery;
 
 })();
-(function(){
-	
+(function() {
+
 	var MString = {
 		escapeHtml : function(unsafe) {
 	  		return unsafe
@@ -1952,11 +1960,16 @@ var MToolBar = (function() {
 				.replace(/>/g, "&gt;")
 				.replace(/"/g, "&quot;")
 				.replace(/'/g, "&#039;");
+		},
+		firstToUpperCase : function(str) {
+			str += '';
+			var f = str.charAt(0).toUpperCase();
+			return f + str.substr(1);
 		}
 	};
-	
+
 	window.MString = MString;
-	
+
 })();
 (function() {
 

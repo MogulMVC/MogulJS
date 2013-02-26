@@ -1,10 +1,18 @@
 /* 
  * MScript.js by Alan James
+<<<<<<< HEAD
  * version 130226
  * recommended jQuery version 1.9.0
  */
 
 var version = "130226";
+=======
+ * version 130220
+ * recommended jQuery version 1.9.0
+ */
+
+var version = "130220";
+>>>>>>> 85d02d5dbcdfed64fead02dfa5febe65b772d2f0
 
 //Speed
 var speedFast = 125;
