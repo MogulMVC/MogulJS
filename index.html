@@ -9,7 +9,7 @@
 
 		<title>Mogul JS</title>
 
-		<link href="../Mogul CSS/bin/MStyle.css" type="text/css" rel="stylesheet" />
+		<link href="http://mogulmvc.com/framework/lib/css/core/MStyle.css?1360576605" type="text/css" rel="stylesheet" />
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 		<script src="bin/MScript.js"></script>
@@ -18,16 +18,37 @@
 
 	<body>
 
-		<form action="/action_button_upload_action" target="button_upload_frame_left" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="data"/>
-			<input type="file" name="file" onchange="upload()"/>
-			<input type="reset" />
-		</form>
+		<br />
 
-		<script>
+		<input type="text" id="state" placeholder="State" />
 
-		</script>
+		<p id="valid"></p>
 
 	</body>
+
+	<script>
+		$('#state').keyup(function() {
+			
+			$('#valid').show();
+			
+			var state = $('#state').val();
+
+			if (MValidate.state(state)) {
+				$('#valid').html("It's Valid").css({
+					'color' : '#0a0a0a'
+				}).removeClass('MTextBold');
+
+			} else {
+				$('#valid').html("It's Not Valid").css({
+					'color' : '#960000'
+				}).addClass('MTextBold');
+			}
+
+			if (state == "") {
+				$('#valid').hide();
+			}
+
+		});
+	</script>
 
 </html>

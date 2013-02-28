@@ -75,6 +75,17 @@ var rounded_large = '2em';$(document).ready(function() {
 
 });
 $(document).ready(function() {
+
+	$(document).keydown(function(e) {
+		MKeyboard.keys[e.keyCode] = 1;
+	});
+
+	$(document).keyup(function(e) {
+		MKeyboard.keys[e.keyCode] = 0;
+	});
+	
+});
+$(document).ready(function() {
 	
 	// Set the default state
 	MList.updateUI();
@@ -1832,6 +1843,19 @@ var MToolBar = (function() {
 	};
 
 })(jQuery);
+(function() {
+
+	var MKeyboard = {
+		keys : []
+	};
+
+	for (var i = 0; i < 100; i++) {
+		MKeyboard.keys[i] = 0;
+	}
+
+	window.MKeyboard = MKeyboard;
+
+})();
 (function() {
 
 	var MLoad = {
