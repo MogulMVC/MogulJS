@@ -1,10 +1,10 @@
 /* 
  * MScript.js by Alan James
- * version 130228
+ * version 130326
  * recommended jQuery version 1.9.0
  */
 
-var version = "130228";
+var version = "130326";
 
 //Speed
 var speedFast = 125;
@@ -1930,14 +1930,13 @@ var MToolBar = (function() {
 })();
 (function() {
 
-	var MQuery = {
-		search : function(search) {
+	var MSearchable = {
+		show : function(search) {
 
 			// Creates the Contains function which is case insensitive
 			$.expr[':'].Contains = function(x, y, z) {
 				return $(x).text().toUpperCase().indexOf(z[3].toUpperCase()) >= 0;
 			}
-			
 			if (search == "") {
 				$('[data-searchable=true]').show();
 			} else {
@@ -1946,13 +1945,12 @@ var MToolBar = (function() {
 			}
 
 		},
-		searchInside : function(search, container) {
+		showInside : function(search, container) {
 
 			// Creates the Contains function which is case insensitive
 			$.expr[':'].Contains = function(x, y, z) {
 				return $(x).text().toUpperCase().indexOf(z[3].toUpperCase()) >= 0;
 			}
-			
 			if (search == "") {
 				$(container).closest('[data-searchable=true]').show();
 			} else {
@@ -1960,10 +1958,38 @@ var MToolBar = (function() {
 				$(container + ':Contains(' + search + ')').closest('[data-searchable=true]').show();
 			}
 
+		},
+		hide : function(search, container) {
+
+			// Creates the Contains function which is case insensitive
+			$.expr[':'].Contains = function(x, y, z) {
+				return $(x).text().toUpperCase().indexOf(z[3].toUpperCase()) >= 0;
+			}
+
+			$(container).closest('[data-searchable=true]').show();
+
+			if (search != "") {
+				$('[data-searchable=true]:Contains(' + search + ')').hide();
+			}
+
+		},
+		hideInside : function(search, container) {
+
+			// Creates the Contains function which is case insensitive
+			$.expr[':'].Contains = function(x, y, z) {
+				return $(x).text().toUpperCase().indexOf(z[3].toUpperCase()) >= 0;
+			}
+
+			$(container).closest('[data-searchable=true]').show();
+
+			if (search != "") {
+				$(container + ':Contains(' + search + ')').closest('[data-searchable=true]').hide();
+			}
+
 		}
 	};
 
-	window.MQuery = MQuery;
+	window.MSearchable = MSearchable;
 
 })();
 (function() {
