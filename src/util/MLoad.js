@@ -1,13 +1,32 @@
 (function() {
 
 	var MLoad = {
-		js : function(url) {
+
+		jsFramework : function(file) {
+
+		},
+		jsApplication : function(file) {
+
+		},
+		jsCache : function(file) {
+
+		},
+		jsExternal : function(url) {
 			var headID = document.getElementsByTagName('head')[0];
 			var scriptNode = document.createElement('script');
 			scriptNode.src = url;
 			headID.appendChild(scriptNode);
 		},
-		css : function(url) {
+		cssFramework : function(file) {
+
+		},
+		cssApplication : function(file) {
+
+		},
+		cssCache : function(file) {
+
+		},
+		cssExternal : function(url) {
 			var headID = document.getElementsByTagName('head')[0];
 			var cssNode = document.createElement('link');
 			cssNode.href = url;

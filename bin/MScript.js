@@ -1,10 +1,10 @@
 /* 
  * MScript.js by Alan James
- * version 130326
+ * version 130416
  * recommended jQuery version 1.9.0
  */
 
-var version = "130326";
+var version = "130416";
 
 //Speed
 var speedFast = 125;
@@ -1763,15 +1763,15 @@ var MToolBar = (function() {
 
 	var MColor = {
 		fadeHex : function(hex, hex2, ratio) {
-			this.r = hex >> 16;
-			this.g = hex >> 8 & 0xFF;
-			this.b = hex & 0xFF;
+			var r = hex >> 16;
+			var g = hex >> 8 & 0xFF;
+			var b = hex & 0xFF;
 
-			this.r += ((hex2 >> 16) - this.r) * ratio;
-			this.g += ((hex2 >> 8 & 0xFF) - this.g) * ratio;
-			this.b += ((hex2 & 0xFF) - this.b) * ratio;
+			r += ((hex2 >> 16) - r) * ratio;
+			g += ((hex2 >> 8 & 0xFF) - g) * ratio;
+			b += ((hex2 & 0xFF) - b) * ratio;
 
-			return (this.r << 16 | this.g << 8 | this.b);
+			return (r << 16 | g << 8 | b);
 		}
 	};
 
@@ -1806,66 +1806,35 @@ var MToolBar = (function() {
 	window.MCookie = MCookie;
 
 })();
-(function($) {
-
-	$.fn.MHTMLAnimate = function(html, speed, callback) {
-
-		return this.each(function() {
-
-			var element = $(this);
-
-			var current = {
-				width : element.width() + 'px',
-				height : element.height() + 'px'
-			};
-
-			var complete = {
-				width : this.style.width,
-				height : this.style.height
-			};
-
-			element.html(html);
-
-			var next = {
-				width : element.width() + 'px',
-				height : element.height() + 'px'
-			};
-
-			element.css(current).animate(next, speed, function() {
-				element.css(complete);
-				if ($.isFunction(callback)) {
-					callback();
-				};
-			});
-
-		});
-
-	};
-
-})(jQuery);
-(function() {
-
-	var MKeyboard = {
-		keys : []
-	};
-
-	for (var i = 0; i < 100; i++) {
-		MKeyboard.keys[i] = 0;
-	}
-
-	window.MKeyboard = MKeyboard;
-
-})();
 (function() {
 
 	var MLoad = {
-		js : function(url) {
+
+		jsFramework : function(file) {
+
+		},
+		jsApplication : function(file) {
+
+		},
+		jsCache : function(file) {
+
+		},
+		jsExternal : function(url) {
 			var headID = document.getElementsByTagName('head')[0];
 			var scriptNode = document.createElement('script');
 			scriptNode.src = url;
 			headID.appendChild(scriptNode);
 		},
-		css : function(url) {
+		cssFramework : function(file) {
+
+		},
+		cssApplication : function(file) {
+
+		},
+		cssCache : function(file) {
+
+		},
+		cssExternal : function(url) {
 			var headID = document.getElementsByTagName('head')[0];
 			var cssNode = document.createElement('link');
 			cssNode.href = url;
@@ -1995,6 +1964,18 @@ var MToolBar = (function() {
 (function() {
 
 	var MString = {
+		random : function(length) {
+
+		},
+		subBefore : function(string, character) {
+
+		},
+		urlLink : function(string, noFollow) {
+
+		},
+		urlTitle : function(string, seperator) {
+
+		},
 		escapeHtml : function(unsafe) {
 	  		return unsafe
 				.replace(/&/g, "&amp;")
@@ -2097,12 +2078,54 @@ var MToolBar = (function() {
 })();
 (function() {
 
+	var MType = {
+		string2Boolean : function(value) {
+
+			// Check if it's a string of true or false
+			if (value === 'true' || value === 'TRUE') {
+				return true;
+			}
+
+			if (value === '1') {
+				return true;
+			}
+
+			return false;
+
+		}
+	};
+
+	window.MType = MType;
+
+})();
+(function() {
+
 	var MURL = {
+		protocal : function() {
+			return location.protocol;
+		},
+
+		subdomain : function() {
+			var url = document.domain.split(',');
+
+			var subdomain = uri[uri.length - 3];
+			return subdomain;
+		},
+		domain : function() {
+			var url = document.domain.split(',');
+
+			var ext = uri[uri.length - 1];
+			var domain = uri[uri.length - 2];
+			return domain + '.' + ext;
+		},
+		base : function() {
+			return location.protocol + '://' + document.domain;
+		},
 		current : function() {
-			return currentURL = window.location.protocol + '://' + window.location.host + '/' + window.location.pathname;
+			return currentURL = location.protocol + '://' + location.host + '/' + location.pathname;
 		},
 		segment : function(segement) {
-			var pathArray = window.location.pathname.split('/');
+			var pathArray = location.pathname.split('/');
 			return secondLevelLocation = pathArray[segement];
 		},
 		reset : function() {
@@ -2125,10 +2148,28 @@ var MToolBar = (function() {
 			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 			return reg.test(email);
 		},
+		declared : function(input) {
+
+		},
+		optional : function(input) {
+
+		},
+		required : function(input) {
+
+		},
+		onlyContain : function(input) {
+
+		},
+		mustContain : function(input) {
+
+		},
+		between : function(input, rangeStart, rangeEnd) {
+
+		},
 		state : function(state) {
 
 			var stateString = state.toLowerCase();
-			
+
 			var stateAbbreviationArray = ['ak', 'al', 'ar', 'as', 'az', 'ca', 'co', 'ct', 'dc', 'de', 'fl', 'ga', 'gu', 'hi', 'ia', 'id', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'me', 'mh', 'mi', 'mn', 'mo', 'ms', 'mt', 'nc', 'nd', 'ne', 'nh', 'nj', 'nm', 'nv', 'ny', 'oh', 'ok', 'or', 'pa', 'pr', 'pw', 'ri', 'sc', 'sd', 'tn', 'tx', 'ut', 'va', 'vi', 'vt', 'wa', 'wi', 'wv', 'wy'];
 			var stateArray = ['alabama', 'alaska', 'arizona', 'arkansas', 'california', 'colorado', 'connecticut', 'delaware', 'florida', 'georgia', 'hawaii', 'idaho', 'illinois', 'indiana', 'iowa', 'iansas', 'kentucky', 'louisiana', 'maine', 'maryland', 'massachusetts', 'michigan', 'minnesota', 'mississippi', 'missouri', 'montana', 'nebraska', 'nevada', 'new hampshire', 'new jersey', 'new mexico', 'new york', 'north carolina', 'north dakota', 'ohio', 'oklahoma', 'oregon', 'pennsylvania', 'rhode island', 'south carolina', 'south dakota', 'tennessee', 'texas', 'utah', 'vermont', 'virginia', 'washington', 'west virginia', 'wisconsin', 'wyoming'];
 
