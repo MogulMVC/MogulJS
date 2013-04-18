@@ -1818,6 +1818,17 @@ var MToolBar = (function() {
 })();
 (function() {
 
+	var MDate = {
+		date : function() {
+			
+		}
+	};
+
+	window.MDate = MDate;
+
+})();
+(function() {
+
 	var MLoad = {
 
 		jsFramework : function(file) {
