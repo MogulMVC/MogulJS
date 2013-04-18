@@ -1,8 +1,8 @@
 $(window).load(function() {
 
 	// Fade in the stage image
-	$('#MStageImage').delay(speedNorm).animate({
+	$('#MStageImage').delay(MConfig.speedNorm).animate({
 		opacity : 1
-	}, speedSlow);
+	}, MConfig.speedSlow);
 
 });

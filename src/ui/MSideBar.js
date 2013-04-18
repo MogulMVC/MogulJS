@@ -32,11 +32,11 @@ var MSideBar = (function() {
 
 		$('#MSideBarContainer').animate({
 			minWidth : sideBarWidth
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			left : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowRight').hide();
 	};
@@ -44,11 +44,11 @@ var MSideBar = (function() {
 	MSideBar.leftHide = function() {
 		$('#MSideBarContainer').animate({
 			minWidth : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			left : -360
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowRight').show();
 	};
@@ -60,11 +60,11 @@ var MSideBar = (function() {
 
 		$('#MSideBarContainer').animate({
 			minWidth : sideBarWidth
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			right : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowLeft').hide();
 	};
@@ -72,11 +72,11 @@ var MSideBar = (function() {
 	MSideBar.rightHide = function() {
 		$('#MSideBarContainer').animate({
 			minWidth : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			right : -360
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowLeft').show();
 	};

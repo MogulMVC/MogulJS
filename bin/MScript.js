@@ -1,63 +1,72 @@
-/* 
+/*
  * MScript.js by Alan James
- * version 130416
+ * version 130418
  * recommended jQuery version 1.9.0
  */
 
-var version = "130416";
+(function() {
 
-//Speed
-var speedFast = 125;
-var speedNorm = 250;
-var speedSlow = 500; 
+	var MConfig = {};
 
-//Color
-var mono_1 = '#0a0a0a';
-var mono_1_2 = '#141414'; /* Will Fix Later */
-var mono_1_3 = '#232323'; /* Will Fix Later */
-var mono_2 = '#323232';
-var mono_3 = '#646464';
-var mono_4 = '#969696';
-var mono_4_2 = '#c8c8c8'; /* Will Fix Later */
-var mono_5 = '#e6e6e6';
-var mono_6 = '#ffffff';
-		
-var red_1 = '#960000';
-var red_2 = '#fa0000';
-var red_3 = '#f07373';
-var red_4 = '#890c0c';
-		
-var orange_1 = '#963c00';
-var orange_2 = '#fa6400';
-var orange_3 = '#f0a573';
-var orange_4 = '#8c4110';
-		
-var yellow_1 = '#969600';
-var yellow_2 = '#fafa00'; //Change to #fac800 after redesign
-var yellow_3 = '#f0f073';
-var yellow_4 = '#8b8b0e';
-		
-var green_1 = '#009600';
-var green_2 = '#00fa00';
-var green_3 = '#73f073';
-var green_4 = '#0d8a0d';
-		
-var blue_1 = '#004b96';
-var blue_2 = '#007dfa';
-var blue_3 = '#73b2f0';
-var blue_4 = '#104e8c';
-		
-var violet_1 = '#4b0096';
-var violet_2 = '#7d00fa';
-var violet_3 = '#b273f0';
-var violet_4 = '#4a0c89';
-		
-var outline = mono_3;
-var outline_down = mono_2;
-		
-//Visual
-var rounded = '3px'; //Same size as CSS
-var rounded_large = '2em';$(document).ready(function() {
+	MConfig.version = "130418";
+
+	// Speed
+	MConfig.speedFast = 125;
+	MConfig.speedNorm = 250;
+	MConfig.speedSlow = 500;
+
+	// Color
+	MConfig.mono_1 = '#0a0a0a';
+	MConfig.mono_1_2 = '#141414'; // Will Fix Later
+	MConfig.mono_1_3 = '#232323'; // Will Fix Later
+	MConfig.mono_2 = '#323232';
+	MConfig.mono_3 = '#646464';
+	MConfig.mono_4 = '#969696';
+	MConfig.mono_4_2 = '#c8c8c8'; // Will Fix Later
+	MConfig.mono_5 = '#e6e6e6';
+	MConfig.mono_6 = '#ffffff';
+
+	MConfig.red_1 = '#960000';
+	MConfig.red_2 = '#fa0000';
+	MConfig.red_3 = '#f07373';
+	MConfig.red_4 = '#890c0c';
+
+	MConfig.orange_1 = '#963c00';
+	MConfig.orange_2 = '#fa6400';
+	MConfig.orange_3 = '#f0a573';
+	MConfig.orange_4 = '#8c4110';
+
+	MConfig.yellow_1 = '#969600';
+	MConfig.yellow_2 = '#fafa00'; // Change to #fac800 after redesign
+	MConfig.yellow_3 = '#f0f073';
+	MConfig.yellow_4 = '#8b8b0e';
+
+	MConfig.green_1 = '#009600';
+	MConfig.green_2 = '#00fa00';
+	MConfig.green_3 = '#73f073';
+	MConfig.green_4 = '#0d8a0d';
+
+	MConfig.blue_1 = '#004b96';
+	MConfig.blue_2 = '#007dfa';
+	MConfig.blue_3 = '#73b2f0';
+	MConfig.blue_4 = '#104e8c';
+
+	MConfig.violet_1 = '#4b0096';
+	MConfig.violet_2 = '#7d00fa';
+	MConfig.violet_3 = '#b273f0';
+	MConfig.violet_4 = '#4a0c89';
+
+	MConfig.outline = MConfig.mono_3;
+	MConfig.outline_down = MConfig.mono_2;
+
+	// Visual
+	MConfig.rounded = '3px'; // Same size as CSS
+	MConfig.rounded_large = '2em';
+
+	window.MConfig = MConfig;
+
+})();
+$(document).ready(function() {
 
 	$('input[type="file"]').addClass('MButtonUploadInput');
 	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
@@ -98,7 +107,7 @@ $(document).ready(function() {
 
 	$('#MMainWindow img').animate({
 		opacity : 1
-	}, speedNorm);
+	}, MConfig.speedNorm);
 
 });
 $(document).ready(function() {
@@ -208,9 +217,9 @@ $(document).mousemove(function(e) {
 });$(window).load(function() {
 
 	// Fade in the stage image
-	$('#MStageImage').delay(speedNorm).animate({
+	$('#MStageImage').delay(MConfig.speedNorm).animate({
 		opacity : 1
-	}, speedSlow);
+	}, MConfig.speedSlow);
 
 });
 $(document).ready(function() {
@@ -237,48 +246,49 @@ $(window).resize(function() {
 $(document).ready(function() {
 	$('.MTabWidget').MTab();
 }); $(document).ready(function() {
-	
+
 	$('[data-mtip=n], [data-mtip=N], [data-mtip=b], [data-mtip=B]').MTip({
 		gravity : 'N',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
 
 	$('[data-mtip=nw], [data-mtip=NW]').MTip({
 		gravity : 'NW',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
 
 	$('[data-mtip=ne], [data-mtip=NE]').MTip({
 		gravity : 'NE',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
 
 	$('[data-mtip=s], [data-mtip=S], [data-mtip=t], [data-mtip=T]').MTip({
 		gravity : 'S',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
 
 	$('[data-mtip=sw], [data-mtip=SW]').MTip({
 		gravity : 'SW',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
 
 	$('[data-mtip=se], [data-mtip=SE]').MTip({
 		gravity : 'SE',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
 
 	$('[data-mtip=w], [data-mtip=W], [data-mtip=r], [data-mtip=R]').MTip({
 		gravity : 'W',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
 
 	$('[data-mtip=e], [data-mtip=E], [data-mtip=l], [data-mtip=L]').MTip({
 		gravity : 'E',
-		delayIn : speedSlow
+		delayIn : MConfig.speedSlow
 	});
-	
-}); $(window).load(function() {
+
+});
+$(window).load(function() {
 	MToolBar.position();
 });
 
@@ -581,11 +591,11 @@ var MSideBar = (function() {
 
 		$('#MSideBarContainer').animate({
 			minWidth : sideBarWidth
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			left : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowRight').hide();
 	};
@@ -593,11 +603,11 @@ var MSideBar = (function() {
 	MSideBar.leftHide = function() {
 		$('#MSideBarContainer').animate({
 			minWidth : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			left : -360
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowRight').show();
 	};
@@ -609,11 +619,11 @@ var MSideBar = (function() {
 
 		$('#MSideBarContainer').animate({
 			minWidth : sideBarWidth
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			right : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowLeft').hide();
 	};
@@ -621,11 +631,11 @@ var MSideBar = (function() {
 	MSideBar.rightHide = function() {
 		$('#MSideBarContainer').animate({
 			minWidth : 0
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('#MSideBar').animate({
 			right : -360
-		}, speedNorm);
+		}, MConfig.speedNorm);
 
 		$('.MIconArrowLeft').show();
 	};
