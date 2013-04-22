@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130421
+ * version 130422
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = "130421";
+	MConfig.version = '130422';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -82,17 +82,6 @@ $(document).ready(function() {
 		$(this).children('ul').hide();
 	});
 
-});
-$(document).ready(function() {
-
-	$(document).keydown(function(e) {
-		MKeyboard.keys[e.keyCode] = 1;
-	});
-
-	$(document).keyup(function(e) {
-		MKeyboard.keys[e.keyCode] = 0;
-	});
-	
 });
 $(document).ready(function() {
 	
