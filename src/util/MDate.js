@@ -1,6 +1,9 @@
 (function() {
 
 	var MDate = {
+		datetime : function() {
+			
+		},
 		date : function() {
 			
 		}

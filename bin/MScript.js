@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130422
+ * version 130427
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130422';
+	MConfig.version = '130427';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -1808,6 +1808,9 @@ var MToolBar = (function() {
 (function() {
 
 	var MDate = {
+		datetime : function() {
+			
+		},
 		date : function() {
 			
 		}
@@ -1863,7 +1866,7 @@ var MToolBar = (function() {
 		random : function(min, max) {
 			return Math.random() * (max - min) + min;
 		},
-		linear_regression : function(x, y) {
+		linearRegression : function(x, y) {
 			// calculate number points
 			var n = x.length;
 

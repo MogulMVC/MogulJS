@@ -4,7 +4,7 @@
 		random : function(min, max) {
 			return Math.random() * (max - min) + min;
 		},
-		linear_regression : function(x, y) {
+		linearRegression : function(x, y) {
 			// calculate number points
 			var n = x.length;
 
