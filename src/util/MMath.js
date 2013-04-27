@@ -42,6 +42,12 @@
 
 			// return result
 			return [m, b];
+		},
+		multipleOf : function(number, multiple) {
+			if (number % multiple == 0) {
+				return true;
+			};
+			return false;
 		}
 	};
 
