@@ -17,7 +17,13 @@
 		mustContain : function(input) {
 
 		},
-		between : function(input, rangeStart, rangeEnd) {
+		between : function(value, min, max) {
+
+			if (value > min && value < max) {
+				return true;
+			}
+
+			return false;
 
 		},
 		state : function(state) {
