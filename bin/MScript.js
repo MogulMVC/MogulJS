@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130427
+ * version 130428
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130427';
+	MConfig.version = '130428';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -2184,7 +2184,13 @@ var MToolBar = (function() {
 		mustContain : function(input) {
 
 		},
-		between : function(input, rangeStart, rangeEnd) {
+		between : function(value, min, max) {
+
+			if (value > min && value < max) {
+				return true;
+			}
+
+			return false;
 
 		},
 		state : function(state) {
