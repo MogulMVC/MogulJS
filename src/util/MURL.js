@@ -1,21 +1,26 @@
 (function() {
 
 	var MURL = {
-		protocal : function() {
+		protocol : function() {
 			return location.protocol;
 		},
 
 		subdomain : function() {
-			var url = document.domain.split(',');
+			var url = document.domain.split('.');
 
-			var subdomain = uri[uri.length - 3];
+			var subdomain = '';
+
+			if (url[0]) {
+				subdomain = url[0];
+			}
+
 			return subdomain;
 		},
 		domain : function() {
-			var url = document.domain.split(',');
+			var url = document.domain.split('.');
 
-			var ext = uri[uri.length - 1];
-			var domain = uri[uri.length - 2];
+			var ext = url[url.length - 1];
+			var domain = url[url.length - 2];
 			return domain + '.' + ext;
 		},
 		canonical : function() {
@@ -26,7 +31,14 @@
 		},
 		segment : function(segement) {
 			var pathArray = location.pathname.split('/');
-			return secondLevelLocation = pathArray[segement];
+			secondLevelLocation = pathArray[segement];
+
+			if (secondLevelLocation != undefined) {
+				return secondLevelLocation
+			} else {
+				return '';
+			}
+
 		},
 		reset : function() {
 			var answer = confirm('All your changes will be disgarded.\nAre you sure you want to reset?');
