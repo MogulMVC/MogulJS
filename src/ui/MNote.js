@@ -9,7 +9,7 @@ var MNote = (function() {
 		var uiElement = document.createElement('span');
 
 		$(uiElement).addClass('MNote').css({
-			'transform' : MMath.random(-8, 8)
+			'transform' : MNumber.random(-8, 8)
 		}).html(label);
 
 		return uiElement;

@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 	$('.MNote, .MNoteRed, .MNoteR, .MNoteOrange, .MNoteO, .MNoteYellow, .MNoteY, .MNoteGreen, .MNoteG, .MNoteBlue, .MNoteB, .MNoteViolet, .MNoteV').each(function() {
 		$(this).css({
-			'transform' : 'rotate(' + MMath.random(-8, 8) + 'deg)'
+			'transform' : 'rotate(' + MNumber.random(-8, 8) + 'deg)'
 		});
 	});
 
@@ -403,7 +403,7 @@ var MList = (function() {
 		var uiElement = document.createElement('span');
 
 		$(uiElement).addClass('MNote').css({
-			'transform' : MMath.random(-8, 8)
+			'transform' : MNumber.random(-8, 8)
 		}).html(label);
 
 		return uiElement;
@@ -1909,16 +1909,9 @@ var MToolBar = (function() {
 })();
 (function() {
 
-	var MMath = {
-		random : function(min, max, decimalPoints) {
-
-			if (decimalPoints == undefined) {
-				decimalPoints = 5;
-			}
-
-			var multiplier = Math.pow(10, decimalPoints);
-
-			return Math.random() * (max * multiplier - min * multiplier) + min * multiplier;
+	var MNumber = {
+		random : function(min, max) {
+			return Math.random() * (max - min) + min;
 		},
 		toBoolean : function(value) {
 			if (!isNaN(value) && value >= 1) {
@@ -1928,7 +1921,7 @@ var MToolBar = (function() {
 		}
 	};
 
-	window.MMath = MMath;
+	window.MNumber = MNumber;
 
 })();
 (function() {

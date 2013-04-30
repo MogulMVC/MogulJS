@@ -1,15 +1,8 @@
 (function() {
 
-	var MMath = {
-		random : function(min, max, decimalPoints) {
-
-			if (decimalPoints == undefined) {
-				decimalPoints = 5;
-			}
-
-			var multiplier = Math.pow(10, decimalPoints);
-
-			return Math.random() * (max * multiplier - min * multiplier) + min * multiplier;
+	var MNumber = {
+		random : function(min, max) {
+			return Math.random() * (max - min) + min;
 		},
 		toBoolean : function(value) {
 			if (!isNaN(value) && value >= 1) {
@@ -19,6 +12,6 @@
 		}
 	};
 
-	window.MMath = MMath;
+	window.MNumber = MNumber;
 
 })();
