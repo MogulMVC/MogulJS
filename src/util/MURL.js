@@ -18,7 +18,7 @@
 			var domain = uri[uri.length - 2];
 			return domain + '.' + ext;
 		},
-		base : function() {
+		canonical : function() {
 			return location.protocol + '://' + document.domain;
 		},
 		current : function() {

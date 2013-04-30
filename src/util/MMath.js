@@ -1,9 +1,6 @@
 (function() {
 
 	var MMath = {
-		random : function(min, max) {
-			return Math.random() * (max - min) + min;
-		},
 		linearRegression : function(x, y) {
 			// calculate number points
 			var n = x.length;
@@ -42,12 +39,6 @@
 
 			// return result
 			return [m, b];
-		},
-		multipleOf : function(number, multiple) {
-			if (number % multiple == 0) {
-				return true;
-			};
-			return false;
 		}
 	};
 

@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130428
+ * version 130430
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130428';
+	MConfig.version = '130430';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -1863,9 +1863,6 @@ var MToolBar = (function() {
 (function() {
 
 	var MMath = {
-		random : function(min, max) {
-			return Math.random() * (max - min) + min;
-		},
 		linearRegression : function(x, y) {
 			// calculate number points
 			var n = x.length;
@@ -1904,11 +1901,29 @@ var MToolBar = (function() {
 
 			// return result
 			return [m, b];
+		}
+	};
+
+	window.MMath = MMath;
+
+})();
+(function() {
+
+	var MMath = {
+		random : function(min, max, decimalPoints) {
+
+			if (decimalPoints == undefined) {
+				decimalPoints = 5;
+			}
+
+			var multiplier = Math.pow(10, decimalPoints);
+
+			return Math.random() * (max * multiplier - min * multiplier) + min * multiplier;
 		},
-		multipleOf : function(number, multiple) {
-			if (number % multiple == 0) {
+		toBoolean : function(value) {
+			if (!isNaN(value) && value >= 1) {
 				return true;
-			};
+			}
 			return false;
 		}
 	};
@@ -1996,6 +2011,19 @@ var MToolBar = (function() {
 			}
 
 			return string;
+		},
+		toBoolean : function(value) {
+
+			if (value != '' && (value == 'true' || value == 'TRUE')) {
+				return true;
+			}
+
+			if (value != '' && (value == '1')) {
+				return true;
+			}
+
+			return false;
+
 		},
 		subBefore : function(string, character) {
 
@@ -2102,28 +2130,6 @@ var MToolBar = (function() {
 })();
 (function() {
 
-	var MType = {
-		string2Boolean : function(value) {
-
-			// Check if it's a string of true or false
-			if (value === 'true' || value === 'TRUE') {
-				return true;
-			}
-
-			if (value === '1') {
-				return true;
-			}
-
-			return false;
-
-		}
-	};
-
-	window.MType = MType;
-
-})();
-(function() {
-
 	var MURL = {
 		protocal : function() {
 			return location.protocol;
@@ -2142,7 +2148,7 @@ var MToolBar = (function() {
 			var domain = uri[uri.length - 2];
 			return domain + '.' + ext;
 		},
-		base : function() {
+		canonical : function() {
 			return location.protocol + '://' + document.domain;
 		},
 		current : function() {
@@ -2178,20 +2184,23 @@ var MToolBar = (function() {
 		required : function(input) {
 
 		},
-		onlyContain : function(input) {
+		onlyContain : function(input, array) {
 
 		},
-		mustContain : function(input) {
+		mustContain : function(input, array) {
 
 		},
 		between : function(value, min, max) {
-
 			if (value > min && value < max) {
 				return true;
 			}
-
 			return false;
-
+		},
+		multipleOf : function(number, multiple) {
+			if (number % multiple == 0) {
+				return true;
+			}
+			return false;
 		},
 		state : function(state) {
 

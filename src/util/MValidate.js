@@ -11,20 +11,23 @@
 		required : function(input) {
 
 		},
-		onlyContain : function(input) {
+		onlyContain : function(input, array) {
 
 		},
-		mustContain : function(input) {
+		mustContain : function(input, array) {
 
 		},
 		between : function(value, min, max) {
-
 			if (value > min && value < max) {
 				return true;
 			}
-
 			return false;
-
+		},
+		multipleOf : function(number, multiple) {
+			if (number % multiple == 0) {
+				return true;
+			}
+			return false;
 		},
 		state : function(state) {
 

@@ -15,6 +15,19 @@
 
 			return string;
 		},
+		toBoolean : function(value) {
+
+			if (value != '' && (value == 'true' || value == 'TRUE')) {
+				return true;
+			}
+
+			if (value != '' && (value == '1')) {
+				return true;
+			}
+
+			return false;
+
+		},
 		subBefore : function(string, character) {
 
 		},
