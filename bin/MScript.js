@@ -2202,20 +2202,41 @@ var MToolBar = (function() {
 		required : function(input) {
 
 		},
-		onlyContain : function(input, array) {
+		onlyContain : function(input, choices) {
 
 		},
-		mustContain : function(input, array) {
+		mustContain : function(input, choices) {
 
 		},
-		between : function(value, min, max) {
-			if (value > min && value < max) {
+		cantContain : function(input, choices) {
+
+		},
+		includedIn : function(input, choices) {
+
+		},
+		excludedIn : function(input, choices) {
+
+		},
+		between : function(input, min, max) {
+			if (input > min && input < max) {
 				return true;
 			}
 			return false;
 		},
-		multipleOf : function(number, multiple) {
-			if (number % multiple == 0) {
+		multipleOf : function(input, multiple) {
+			if (input % multiple == 0) {
+				return true;
+			}
+			return false;
+		},
+		even : function(input) {
+			if (input % 2 == 0) {
+				return true;
+			}
+			return false;
+		},
+		odd : function(input) {
+			if (input % 2 != 0) {
 				return true;
 			}
 			return false;
