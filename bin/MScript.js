@@ -767,8 +767,10 @@ var MSystemMessageContainer = (function() {
 		}
 
 		$('#MSystemMessageContainer').append(MSystemMessage);
-		$('.MSystemMessage').last().delay(fadeDelay).fadeOut(fadeSpeed, function() {
-			$(this).remove()
+		$('.MSystemMessage').last().delay(fadeDelay).fadeTo(fadeSpeed, 0, function() {
+			$(this).slideUp(250, function() {
+				$(this).remove();
+			});
 		});
 
 	};
