@@ -6,25 +6,25 @@
 			return reg.test(email);
 		},
 		optional : function(input) {
-
+			
 		},
 		required : function(input) {
-
+			
 		},
 		onlyContain : function(input, choices) {
-
+			
 		},
 		mustContain : function(input, choices) {
-
+			
 		},
 		cantContain : function(input, choices) {
-
+			
 		},
 		includedIn : function(input, choices) {
-
+			
 		},
-		excludedIn : function(input, choices) {
-
+		excludedFrom : function(input, choices) {
+			
 		},
 		between : function(input, min, max) {
 			if (input > min && input < max) {

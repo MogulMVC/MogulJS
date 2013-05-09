@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130508
+ * version 130509
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130508';
+	MConfig.version = '130509';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -2197,25 +2197,25 @@ var MToolBar = (function() {
 			return reg.test(email);
 		},
 		optional : function(input) {
-
+			
 		},
 		required : function(input) {
-
+			
 		},
 		onlyContain : function(input, choices) {
-
+			
 		},
 		mustContain : function(input, choices) {
-
+			
 		},
 		cantContain : function(input, choices) {
-
+			
 		},
 		includedIn : function(input, choices) {
-
+			
 		},
-		excludedIn : function(input, choices) {
-
+		excludedFrom : function(input, choices) {
+			
 		},
 		between : function(input, min, max) {
 			if (input > min && input < max) {
