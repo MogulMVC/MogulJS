@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130509
+ * version 130510
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130509';
+	MConfig.version = '130510';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -333,6 +333,20 @@ var MInputText = (function() {
 	return MInputText;
 
 })();
+var MListItem = (function() {
+
+	function MListItem() {
+		
+		var uiElement = document.createElement('li');
+		$(uiElement).addClass('MListItem');
+		
+		return uiElement;
+		
+	};
+
+	return MListItem;
+
+})();
 var MList = (function() {
 
 	function MList() {
@@ -378,21 +392,7 @@ var MList = (function() {
 
 	return MList;
 
-})();var MListItem = (function() {
-
-	function MListItem() {
-		
-		var uiElement = document.createElement('li');
-		$(uiElement).addClass('MListItem');
-		
-		return uiElement;
-		
-	};
-
-	return MListItem;
-
-})();
-var MNote = (function() {
+})();var MNote = (function() {
 
 	function MNote(label) {
 
@@ -2236,7 +2236,7 @@ var MToolBar = (function() {
 					valid = false;
 					break;
 				}
-				
+
 			}
 
 			return valid;
