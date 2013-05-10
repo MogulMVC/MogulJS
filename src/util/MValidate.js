@@ -6,25 +6,62 @@
 			return reg.test(email);
 		},
 		optional : function(input) {
-			
+
 		},
 		required : function(input) {
-			
+
 		},
 		onlyContain : function(input, choices) {
-			
+
+			// Set a default valid
+			// The loop will change this to false if it isn't valid
+			var valid = true;
+
+			// If input is a string convert it to an array
+			if ( typeof input == 'string') {
+				input = input.split('');
+			}
+
+			// Loop over the input
+			for (var i = 0; i < input.length; i++) {
+
+				var loopValid = false;
+
+				// Loop over the choices
+				for (var j = 0; j < choices.length; j++) {
+
+					// If the item is in the choice make the loop true and break the loop
+					if (input[i] == choices[j]) {
+						loopValid = true;
+						break;
+					}
+
+				}
+
+				// Break the loop if the loop is invalid
+				// The input can only contain whats in the array
+				// So if any section of the input is invalid the entire input is invalid
+				if (!loopValid) {
+					valid = false;
+					break;
+				}
+
+			}
+
+			return valid;
+
 		},
 		mustContain : function(input, choices) {
-			
+
 		},
 		cantContain : function(input, choices) {
-			
+
 		},
 		includedIn : function(input, choices) {
-			
+
 		},
 		excludedFrom : function(input, choices) {
-			
+
 		},
 		between : function(input, min, max) {
 			if (input > min && input < max) {
