@@ -2244,9 +2244,43 @@ var MToolBar = (function() {
 		},
 		mustContain : function(input, choices) {
 
+			// If input is a string convert it to an array
+			if ( typeof input == 'string') {
+				input = input.split('');
+			}
+
+			// Create an array to check matches against
+			var matches = [];
+
+			for (var i = 0; i < choices.length; i++) {
+				matches[i] = false;
+			}
+
+			// Loop over the choices array checking if each choice is found in the input array
 			for (var i = 0; i < choices.length; i++) {
 
+				for (var j = 0; j < input.length; j++) {
+
+					// Check for a match
+					if (input[j] == choices[i]) {
+						matches[i] = true;
+					}
+
+				}
+
 			}
+
+			// The following loop needs to assume they are valid
+			var valid = true;
+
+			for (var i = 0; i < matches.length; i++) {
+				// If any match is found to be false valid is false
+				if (!matches[i]) {
+					valid = false;
+				}
+			}
+
+			return valid;
 
 		},
 		cantContain : function(input, choices) {
