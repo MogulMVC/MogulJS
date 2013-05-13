@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130510
+ * version 130512
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130510';
+	MConfig.version = '130512';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -2011,7 +2011,7 @@ var MToolBar = (function() {
 			var string = '';
 
 			for (var i = 0; i < length; i++) {
-				var randomNumber = Math.random() * possibleCharacters.length;
+				var randomNumber = Math.floor(Math.random() * possibleCharacters.length);
 				var randomCharacter = possibleCharacters[randomNumber];
 				string += randomCharacter;
 			}

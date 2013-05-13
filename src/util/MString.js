@@ -8,7 +8,7 @@
 			var string = '';
 
 			for (var i = 0; i < length; i++) {
-				var randomNumber = Math.random() * possibleCharacters.length;
+				var randomNumber = Math.floor(Math.random() * possibleCharacters.length);
 				var randomCharacter = possibleCharacters[randomNumber];
 				string += randomCharacter;
 			}
