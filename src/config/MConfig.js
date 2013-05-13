@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130509
+ * version 130513
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130509';
+	MConfig.version = '130513';
 
 	// Speed
 	MConfig.speedFast = 125;
