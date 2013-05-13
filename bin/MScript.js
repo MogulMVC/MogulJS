@@ -2236,7 +2236,7 @@ var MToolBar = (function() {
 					valid = false;
 					break;
 				}
-				
+
 			}
 
 			return valid;
