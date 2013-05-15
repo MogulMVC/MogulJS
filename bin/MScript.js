@@ -1840,13 +1840,22 @@ var MToolBar = (function() {
 	var MLoad = {
 
 		jsFramework : function(file) {
-
+			var headID = document.getElementsByTagName('head')[0];
+			var scriptNode = document.createElement('script');
+			scriptNode.src = '/framework/js/' + file;
+			headID.appendChild(scriptNode);
 		},
 		jsApplication : function(file) {
-
+			var headID = document.getElementsByTagName('head')[0];
+			var scriptNode = document.createElement('script');
+			scriptNode.src = '/js/' + file;
+			headID.appendChild(scriptNode);
 		},
 		jsCache : function(file) {
-
+			var headID = document.getElementsByTagName('head')[0];
+			var scriptNode = document.createElement('script');
+			scriptNode.src = '/cache/' + file;
+			headID.appendChild(scriptNode);
 		},
 		jsExternal : function(url) {
 			var headID = document.getElementsByTagName('head')[0];
@@ -1855,13 +1864,28 @@ var MToolBar = (function() {
 			headID.appendChild(scriptNode);
 		},
 		cssFramework : function(file) {
-
+			var headID = document.getElementsByTagName('head')[0];
+			var cssNode = document.createElement('link');
+			cssNode.href = '/framework/' + file;
+			cssNode.type = 'text/css';
+			cssNode.rel = 'stylesheet';
+			headID.appendChild(cssNode);
 		},
 		cssApplication : function(file) {
-
+			var headID = document.getElementsByTagName('head')[0];
+			var cssNode = document.createElement('link');
+			cssNode.href = '/css/' + file;
+			cssNode.type = 'text/css';
+			cssNode.rel = 'stylesheet';
+			headID.appendChild(cssNode);
 		},
 		cssCache : function(file) {
-
+			var headID = document.getElementsByTagName('head')[0];
+			var cssNode = document.createElement('link');
+			cssNode.href = '/cache/' + file;
+			cssNode.type = 'text/css';
+			cssNode.rel = 'stylesheet';
+			headID.appendChild(cssNode);
 		},
 		cssExternal : function(url) {
 			var headID = document.getElementsByTagName('head')[0];
@@ -2166,7 +2190,7 @@ var MToolBar = (function() {
 			return location.protocol + '://' + document.domain;
 		},
 		current : function() {
-			return currentURL = location.protocol + '://' + location.host + '/' + location.pathname;
+			return currentURL = location.protocol + '://' + location.host + location.pathname;
 		},
 		segment : function(segement) {
 			var pathArray = location.pathname.split('/');
@@ -2288,11 +2312,53 @@ var MToolBar = (function() {
 		},
 		cantContain : function(input, choices) {
 
+			// If input is a string convert it to an array
+			if ( typeof input == 'string') {
+				input = input.split('');
+			}
+
+			// Loop over the choices array checking if each choice is found in the input array
+			for (var i = 0; i < choices.length; i++) {
+
+				for (var j = 0; j < input.length; j++) {
+
+					// Check for a match
+					if (input[j] == choices[i]) {
+						return false;
+					}
+
+				}
+
+			}
+
+			// If no match was found return true
+			return true;
+
 		},
 		includedIn : function(input, choices) {
 
+			var valid = false;
+
+			for (var i = 0; i < choices.length; i++) {
+				if (input == choices[i]) {
+					valid = true;
+				}
+			}
+
+			return valid;
+
 		},
 		excludedFrom : function(input, choices) {
+
+			var valid = true;
+
+			for (var i = 0; i < choices.length; i++) {
+				if (input == choices[i]) {
+					valid = false;
+				}
+			}
+
+			return valid;
 
 		},
 		between : function(input, min, max) {

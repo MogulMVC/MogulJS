@@ -94,11 +94,53 @@
 		},
 		cantContain : function(input, choices) {
 
+			// If input is a string convert it to an array
+			if ( typeof input == 'string') {
+				input = input.split('');
+			}
+
+			// Loop over the choices array checking if each choice is found in the input array
+			for (var i = 0; i < choices.length; i++) {
+
+				for (var j = 0; j < input.length; j++) {
+
+					// Check for a match
+					if (input[j] == choices[i]) {
+						return false;
+					}
+
+				}
+
+			}
+
+			// If no match was found return true
+			return true;
+
 		},
 		includedIn : function(input, choices) {
 
+			var valid = false;
+
+			for (var i = 0; i < choices.length; i++) {
+				if (input == choices[i]) {
+					valid = true;
+				}
+			}
+
+			return valid;
+
 		},
 		excludedFrom : function(input, choices) {
+
+			var valid = true;
+
+			for (var i = 0; i < choices.length; i++) {
+				if (input == choices[i]) {
+					valid = false;
+				}
+			}
+
+			return valid;
 
 		},
 		between : function(input, min, max) {

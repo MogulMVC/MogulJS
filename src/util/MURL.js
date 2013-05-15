@@ -27,7 +27,7 @@
 			return location.protocol + '://' + document.domain;
 		},
 		current : function() {
-			return currentURL = location.protocol + '://' + location.host + '/' + location.pathname;
+			return currentURL = location.protocol + '://' + location.host + location.pathname;
 		},
 		segment : function(segement) {
 			var pathArray = location.pathname.split('/');
