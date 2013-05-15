@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130513
+ * version 130515
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130513';
+	MConfig.version = '130515';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -233,8 +233,11 @@ $(window).resize(function() {
 	MSystemMessageContainer.position();
 });
 $(document).ready(function() {
-	$('.MTabWidget').MTab();
-}); $(document).ready(function() {
+	$('.MTabWidget').MTab({
+		'updateHash' : false
+	});
+});
+$(document).ready(function() {
 
 	$('[data-mtip=n], [data-mtip=N], [data-mtip=b], [data-mtip=B]').MTip({
 		gravity : 'N',
