@@ -1,3 +1,5 @@
 $(document).ready(function() {
-	$('.MTabWidget').MTab();
-}); 
+	$('.MTabWidget').MTab({
+		'updateHash' : false
+	});
+});
