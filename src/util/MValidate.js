@@ -5,31 +5,6 @@
 			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 			return reg.test(email);
 		},
-		optional : function() {
-
-			var a = arguments, undef;
-
-			if (a === undef || a === null) {
-				return false;
-			}
-
-			return true;
-
-		},
-		required : function() {
-
-			var a = arguments, undef;
-
-			// Strip the whitespace
-			a.replace(/\s+/g, ' ');
-
-			if (a === undef || a === null || a === '' || a === []) {
-				return false;
-			}
-
-			return true;
-
-		},
 		onlyContain : function(input, choices) {
 
 			// Set a default valid

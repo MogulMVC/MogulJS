@@ -24,7 +24,7 @@ var MSystemMessageContainer = (function() {
 	MSystemMessageContainer.append = function(MSystemMessage, fadeDelay, fadeSpeed) {
 
 		if (fadeDelay == undefined) {
-			fadeDelay = 0;
+			fadeDelay = 1000000;
 		}
 
 		if (fadeSpeed == undefined) {
