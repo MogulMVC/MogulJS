@@ -29,9 +29,23 @@
 
 		},
 		subBefore : function(string, character) {
-
+			return string.substr(0, string.indexOf(character));
 		},
 		urlLink : function(string, noFollow) {
+
+			if (noFollow == undefined) {
+				noFollow = true;
+			}
+
+			var exp = /(\b(http):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+			if (noFollow) {
+				string = string.replace(exp, "<a href='$1' rel='nofollow'>$1</a>");
+			} else {
+				string = string.replace(exp, "<a href='$1'>$1</a>");
+			}
+
+			return string;
 
 		},
 		urlTitle : function(string, seperator) {
@@ -42,7 +56,7 @@
 
 			string = string.toLowerCase();
 
-			return string.replace(' ', seperator);
+			return string.replace(/\s/g, seperator);
 
 		},
 		escapeHtml : function(unsafe) {

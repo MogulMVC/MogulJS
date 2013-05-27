@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 130526
+ * version 130527
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '130526';
+	MConfig.version = '130527';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -2040,9 +2040,23 @@ var MToolBar = (function() {
 
 		},
 		subBefore : function(string, character) {
-
+			return string.substr(0, string.indexOf(character));
 		},
 		urlLink : function(string, noFollow) {
+
+			if (noFollow == undefined) {
+				noFollow = true;
+			}
+
+			var exp = /(\b(http):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+			if (noFollow) {
+				string = string.replace(exp, "<a href='$1' rel='nofollow'>$1</a>");
+			} else {
+				string = string.replace(exp, "<a href='$1'>$1</a>");
+			}
+
+			return string;
 
 		},
 		urlTitle : function(string, seperator) {
@@ -2053,7 +2067,7 @@ var MToolBar = (function() {
 
 			string = string.toLowerCase();
 
-			return string.replace(' ', seperator);
+			return string.replace(/\s/g, seperator);
 
 		},
 		escapeHtml : function(unsafe) {
