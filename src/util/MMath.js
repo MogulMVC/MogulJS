@@ -39,6 +39,9 @@
 
 			// return result
 			return [m, b];
+		},
+		deg2Rad : function(degrees) {
+
 		}
 	};
 

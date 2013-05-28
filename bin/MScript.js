@@ -1922,6 +1922,9 @@ var MToolBar = (function() {
 
 			// return result
 			return [m, b];
+		},
+		deg2Rad : function(degrees) {
+
 		}
 	};
 
