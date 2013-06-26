@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 1305
+ * version 130626
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '1305';
+	MConfig.version = '130626';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -146,16 +146,6 @@ $(document).ready(function() {
 	
 });$(document).ready(function() {
 	
-	// I am calling this MSearch but putting
-	// it inside of MQuery because there may
-	// be other query function
-	
-	$('#MSearch').keyup(function() {
-		MQuery.search(this.value);
-	});
-
-}); $(document).ready(function() {
-	
 	$('meter').each(function() {
 		
 		// Get default settings to reapply later
@@ -178,6 +168,16 @@ $(document).ready(function() {
 	});
 	
 });$(document).ready(function() {
+	
+	// I am calling this MSearch but putting
+	// it inside of MSearchable because there may
+	// be other query function
+	
+	$('#MSearch').keyup(function() {
+		MSearchable.show(this.value);
+	});
+
+}); $(document).ready(function() {
 	
 	// Set the default state
 	MSideBar.updateUI();
