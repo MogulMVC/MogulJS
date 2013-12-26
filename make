@@ -10,3 +10,5 @@ cat src/util/* >> bin/MScript.js
 java -jar compiler.jar bin/MScript.js > bin/MScript.min.js
 
 echo 'MScript Complete'
+
+tar cfvz versions/1.0.0.tar.gz bin/*
