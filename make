@@ -11,4 +11,4 @@ java -jar compiler.jar bin/MScript.js > bin/MScript.min.js
 
 echo 'MScript Complete'
 
-tar cfvz versions/1.0.3.tar.gz bin/*
+tar cfvz versions/1.0.4.tar.gz bin/*
