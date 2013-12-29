@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 1.0.2
+ * version 1.0.3
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '1.0.2';
+	MConfig.version = '1.0.3';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -110,12 +110,16 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 
+	$(document).on('click', '.MModal, .MModalBG, .MModalBGBlack, .MModalBGWhite', function() {
+		$(this).closest('.MPopupContainer').hide();
+	});
+
 	$(document).on('click', '.MPopup .MIconClose', function() {
 		$(this).closest('.MPopupContainer').hide();
 	});
-	
+
 	$(document).keyup(function(e) {
-		if(e.keyCode == 27){
+		if (e.keyCode == 27) {
 			$('.MPopupContainer').hide();
 		};
 	});
