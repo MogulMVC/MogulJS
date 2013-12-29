@@ -14,9 +14,11 @@
 			}
 
 			return string;
+			
 		},
 		toBoolean : function(value) {
 
+			value = value.toString();
 			value = value.toLowerCase();
 
 			if (value != '' && (value == '1' || value == 'on' || value == 'true')) {
@@ -27,7 +29,11 @@
 
 		},
 		subBefore : function(string, character) {
+			
+			string = string.toString();
+			character = character.toString();
 			return string.substr(0, string.indexOf(character));
+			
 		},
 		urlLink : function(string, noFollow) {
 
