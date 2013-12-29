@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 1.0.0
+ * version 1.0.1
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '1.0.0';
+	MConfig.version = '1.0.1';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -2031,11 +2031,9 @@ var MToolBar = (function() {
 		},
 		toBoolean : function(value) {
 
-			if (value != '' && (value == 'true' || value == 'TRUE')) {
-				return true;
-			}
+			value = value.toLowerCase();
 
-			if (value != '' && (value == '1')) {
+			if (value != '' && (value == '1' || value == 'on' || value == 'true')) {
 				return true;
 			}
 

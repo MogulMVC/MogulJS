@@ -17,11 +17,9 @@
 		},
 		toBoolean : function(value) {
 
-			if (value != '' && (value == 'true' || value == 'TRUE')) {
-				return true;
-			}
+			value = value.toLowerCase();
 
-			if (value != '' && (value == '1')) {
+			if (value != '' && (value == '1' || value == 'on' || value == 'true')) {
 				return true;
 			}
 
