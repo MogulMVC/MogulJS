@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 1.0.1
+ * version 1.0.2
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '1.0.1';
+	MConfig.version = '1.0.2';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -2072,6 +2072,7 @@ var MToolBar = (function() {
 
 		},
 		escapeHtml : function(unsafe) {
+			unsafe = unsafe.toString();
 			return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 		},
 		firstToUpperCase : function(str) {
