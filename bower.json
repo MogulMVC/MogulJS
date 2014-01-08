@@ -1,0 +1,13 @@
+{
+	"name": "mogul-js",
+	"version": "1.0.5",
+	"authors": [
+		{
+			"name": "Alan James",
+			"email": "alanjames1987@gmail.com"
+		}
+	],
+	"dependencies": {
+		"jquery": ">= 1.9.0"
+	}
+}
