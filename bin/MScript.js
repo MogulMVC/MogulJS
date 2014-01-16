@@ -72,11 +72,8 @@ $(document).ready(function() {
 	$('input[type="file"].MButton').wrap('<div class="MButtonUpload"></div>');
 	$('.MButtonUpload').append('<span>Select File</span>');
 
-<<<<<<< HEAD
-=======
 	$('input[type="file"].MButton').removeClass('MButton');
 
->>>>>>> 7dc0c6f595d686b704e0e74f94994a3b0ae7f6b9
 });
 $(document).ready(function() {
 
