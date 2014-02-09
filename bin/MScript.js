@@ -1,6 +1,6 @@
 /*
  * MScript.js by Alan James
- * version 1.0.5
+ * version 1.0.6
  * recommended jQuery version 1.9.0
  */
 
@@ -8,7 +8,7 @@
 
 	var MConfig = {};
 
-	MConfig.version = '1.0.5';
+	MConfig.version = '1.0.6';
 
 	// Speed
 	MConfig.speedFast = 125;
@@ -68,8 +68,8 @@
 })();
 $(document).ready(function() {
 
-	$('input[type="file"]').addClass('MButtonUploadInput');
-	$('input[type="file"]').wrap('<div class="MButtonUpload"></div>');
+	$('input[type="file"][data-mbuttonfile=true]').addClass('MButtonUploadInput');
+	$('input[type="file"][data-mbuttonfile=true]').wrap('<div class="MButtonUpload"></div>');
 	$('.MButtonUpload').append('<span>Select File</span>');
 
 });
